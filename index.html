@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veggie Wars - Il Cuoco vs Le Verdure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animazione sfondo */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #f39c12, #e67e22, #d68910, #f4d03f);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        header:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            text-shadow: 0 0 20px #ff6b6b;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ff6b6b;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            padding: 20px 50px;
+            font-size: 1.3em;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+            transition: all 0.3s;
+            animation: fadeIn 1s forwards 1s;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .about h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px #23d5ab;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            animation: slideUp 0.6s forwards;
+            opacity: 0;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b6b;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #feca57;
+        }
+
+        .feature-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    display: block;
+    animation: bounceY 2s ease-in-out infinite;
+}
+
+@keyframes bounceY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 100px 50px;
+            overflow: hidden;
+        }
+
+        .carousel-section h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px #e73c7e;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 500px;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-content {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-content h3 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #feca57;
+        }
+
+        .carousel-content p {
+            font-size: 1.3em;
+            line-height: 1.6;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #ff6b6b;
+            transform: scale(1.3);
+        }
+
+        /* Enemy Showcase */
+        .enemies {
+            padding: 100px 50px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .enemies h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px #23a6d5;
+        }
+
+        .enemy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enemy-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .enemy-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: #23d5ab;
+            box-shadow: 0 20px 40px rgba(35, 213, 171, 0.3);
+        }
+
+        .enemy-emoji {
+            font-size: 5em;
+            display: block;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .enemy-card:nth-child(1) .enemy-emoji { animation-delay: 0s; }
+        .enemy-card:nth-child(2) .enemy-emoji { animation-delay: 0.2s; }
+        .enemy-card:nth-child(3) .enemy-emoji { animation-delay: 0.4s; }
+        .enemy-card:nth-child(4) .enemy-emoji { animation-delay: 0.6s; }
+
+        .enemy-card h3 {
+            font-size: 1.8em;
+            color: #feca57;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        footer p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 2em;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b6b;
+            transform: scale(1.2);
+        }
+
+        /* Floating vegetables animation */
+        .floating-veggie {
+            position: fixed;
+            font-size: 3em;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: floatVeggie 15s infinite;
+        }
+
+        @keyframes floatVeggie {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3em; }
+            .about h2, .carousel-section h2, .enemies h2 { font-size: 2em; }
+            header { padding: 15px 20px; }
+            nav ul { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating vegetables background -->
+    <div id="floating-veggies"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">👨‍🍳💥🥕</span>
+            <span class="logo-text">MEALSTORM</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Introduzione</a></li>
+                <li><a href="#characters">Personaggi</a></li>
+                <li><a href="#places">Luoghi</a></li>
+                <li><a href="#gameplay">Gameplay</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>MEALSTORM</h1>
+        <p>Il cuoco più coraggioso contro le verdure più letali!</p>
+        <button class="cta-button">GIOCA ORA</button>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="gameplay">
+        <h2>CARATTERISTICHE DEL GIOCO</h2>
+        <div class="about-content">
+            <div class="feature-card">
+                <span class="feature-icon">🎲</span>
+                <h3>Roguelike</h3>
+                <p>Ogni partita è unica! Livelli procedurali, oggetti casuali e sfide sempre diverse ti aspettano in cucina.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">⚔️</span>
+                <h3>Combattimento Frenetico</h3>
+                <p>Usa utensili da cucina come armi! Padelle, coltelli, frullatori e molto altro per sconfiggere le verdure ribelli.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎨</span>
+                <h3>Stile Colorato</h3>
+                <p>Grafica vivace e cartoon che rende ogni battaglia un'esperienza visiva mozzafiato e divertente!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section" id="characters">
+        <h2>I PERSONAGGI</h2>
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <div class="carousel-content">
+                    <h3>🍳 Il Cuoco Protagonista</h3>
+                    <p>Interpreta Chef Marco, un cuoco determinato a riprendere il controllo della sua cucina invasa da verdure mutanti. Migliora le tue abilità e diventa inarrestabile!</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h3>🗺️ Livelli Infiniti</h3>
+                    <p>Esplora cucine sempre diverse, dal ristorante stellato alla tavola calda. Ogni livello presenta sfide uniche e boss verdure epici!</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h3>💎 Power-up Leggendari</h3>
+                    <p>Raccogli spezie magiche, ricette potenti e utensili leggendari. Crea combo devastanti e personalizza il tuo stile di gioco!</p>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <h3>🏆 Sfide Quotidiane</h3>
+                    <p>Completa missioni speciali, scala le classifiche globali e sblocca skin esclusive per il tuo cuoco!</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-indicators">
+            <div class="indicator active" data-slide="0"></div>
+            <div class="indicator" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+        </div>
+    </section>
+
+    <!-- Enemies Section -->
+    <section class="enemies" id="places">
+        <h2>I LUOGHI DELLA BATTAGLIA</h2>
+        <div class="enemy-grid">
+            <div class="enemy-card">
+                <span class="enemy-emoji">🏪</span>
+                <h3>Supermercato Maledetto</h3>
+                <p>Scaffali infiniti dove le verdure si nascondono in agguato!</p>
+            </div>
+            <div class="enemy-card">
+                <span class="enemy-emoji">🍽️</span>
+                <h3>Ristorante Stellato</h3>
+                <p>La cucina più prestigiosa, ora invasa dai nemici più forti!</p>
+            </div>
+            <div class="enemy-card">
+                <span class="enemy-emoji">🌾</span>
+                <h3>Fattoria Oscura</h3>
+                <p>Dove tutto è iniziato... le verdure mutanti nascono qui!</p>
+            </div>
+            <div class="enemy-card">
+                <span class="enemy-emoji">🏭</span>
+                <h3>Fabbrica del Caos</h3>
+                <p>Boss finale e segreti misteriosi ti attendono!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="download">
+        <p>Preparati alla battaglia culinaria più epica di sempre!</p>
+        <button class="cta-button">SCARICA MEALSTORM</button>
+        <div class="social-links">
+            <a href="#">📘</a>
+            <a href="#">🐦</a>
+            <a href="#">📸</a>
+            <a href="#">🎮</a>
+        </div>
+        <p style="margin-top: 30px; opacity: 0.7;">© 2025 Mealstorm. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        // Carousel automatico
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Auto-play carousel
+        setInterval(nextSlide, 4000);
+
+        // Click sugli indicatori
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => showSlide(index));
+        });
+
+        // Genera verdure fluttuanti casuali
+        const veggies = ['🥕', '🥦', '🌶️', '🍆', '🥬', '🧄', '🧅', '🍅'];
+        const container = document.getElementById('floating-veggies');
+
+        function createFloatingVeggie() {
+            const veggie = document.createElement('div');
+            veggie.className = 'floating-veggie';
+            veggie.textContent = veggies[Math.floor(Math.random() * veggies.length)];
+            veggie.style.left = Math.random() * 100 + '%';
+            veggie.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            veggie.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(veggie);
+
+            setTimeout(() => veggie.remove(), 20000);
+        }
+
+        // Crea verdure fluttuanti continuamente
+        setInterval(createFloatingVeggie, 3000);
+        for(let i = 0; i < 5; i++) {
+            setTimeout(createFloatingVeggie, i * 600);
+        }
+
+        // Smooth scroll per i link di navigazione
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Effetto scroll header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if(currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Animazione cards al scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .enemy-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
