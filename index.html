@@ -433,6 +433,136 @@
             header { padding: 15px 20px; }
             nav ul { gap: 15px; }
         }
+
+        /* MOBILE FRIENDLY: Migliora layout e leggibilità su schermi piccoli */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 10px;
+    }
+    .logo {
+        margin-bottom: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        padding-left: 0;
+    }
+    nav a {
+        font-size: 1em;
+        padding: 8px 0;
+    }
+    .hero {
+        height: auto;
+        min-height: 60vh;
+        margin-top: 70px;
+        padding: 30px 10px;
+    }
+    .hero h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    .hero p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+    .about {
+        padding: 40px 10px;
+    }
+    .about h2 {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .feature-card {
+        padding: 18px;
+    }
+    .feature-card h3 {
+        font-size: 1.2em;
+    }
+    .feature-icon {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    .carousel-section {
+        padding: 40px 10px;
+    }
+    .carousel-section h2 {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .carousel-container {
+        height: auto;
+        min-height: 250px;
+    }
+    .carousel-content {
+        padding: 18px;
+        border-radius: 18px;
+    }
+    .carousel-content h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    .carousel-content p {
+        font-size: 1em;
+    }
+    .carousel-indicators {
+        gap: 8px;
+        margin-top: 18px;
+    }
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+    .enemies {
+        padding: 40px 10px;
+    }
+    .enemies h2 {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
+    .enemy-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .enemy-card {
+        padding: 18px;
+    }
+    .enemy-emoji {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    .enemy-card h3 {
+        font-size: 1.1em;
+        margin-bottom: 6px;
+    }
+    footer {
+        padding: 25px 10px;
+    }
+    footer p {
+        font-size: 1em;
+        margin-bottom: 12px;
+    }
+    .social-links {
+        gap: 15px;
+        margin-top: 12px;
+    }
+    .social-links a {
+        font-size: 1.3em;
+    }
+    .floating-veggie {
+        font-size: 1.5em;
+    }
+}
     </style>
 </head>
 <body>
