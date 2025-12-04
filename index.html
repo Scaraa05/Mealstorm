@@ -3,7 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veggie Wars - Il Cuoco vs Le Verdure</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Mealstorm - Roguelite Culinario | Combatti le Verdure Ribelli</title>
+    <meta name="description" content="Mealstorm è un roguelite d'azione dove vestirai i panni di un cuoco coraggioso in missione per sconfiggere verdure impazzite. Mappe uniche, personaggi verdure epici e combattimenti frenetici ti aspettano.">
+    <meta name="keywords" content="mealstorm, roguelite, videogioco indie, gioco d'azione, cuoco, verdure, roguelike, gaming">
+    <meta name="author" content="Mealstorm Game Studio">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mealstorm.game/">
+    <meta property="og:title" content="Mealstorm - Roguelite Culinario">
+    <meta property="og:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato. Scopri mappe uniche e combattimenti epici!">
+    <meta property="og:image" content="https://mealstorm.game/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mealstorm.game/">
+    <meta property="twitter:title" content="Mealstorm - Roguelite Culinario">
+    <meta property="twitter:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato.">
+    <meta property="twitter:image" content="https://mealstorm.game/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Mealstorm",
+      "description": "Un roguelite d'azione dove un cuoco combatte contro verdure impazzite attraverso mappe uniche e sfide progressivamente difficili",
+      "genre": "Roguelite",
+      "gamePlatform": ["PC"],
+      "offers": {
+        "@type": "Offer",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -11,198 +54,212 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-red: #e63946;
+            --dark-bg: #0a0a0a;
+            --light-text: #ffffff;
+            --hover-red: #d62828;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
             overflow-x: hidden;
         }
 
-        /* Animazione sfondo */
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid var(--primary-red);
         }
 
-        body {
-            background: linear-gradient(-45deg, #f39c12, #e67e22, #d68910, #f4d03f);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+        .navbar.scrolled {
+            box-shadow: 0 5px 30px rgba(230, 57, 70, 0.3);
         }
 
-        /* Header */
-        header {
-            padding: 20px 50px;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s;
+            padding: 1rem 2rem;
         }
 
-        header:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo img {
+        .logo-nav {
             height: 50px;
             width: auto;
-            animation: logoFloat 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .logo-nav:hover {
+            transform: scale(1.05);
         }
 
-        .logo-text {
-            font-size: 1.8em;
-            font-weight: bold;
-            text-shadow: 0 0 20px #ff6b6b;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        nav ul {
+        .nav-links {
             display: flex;
+            gap: 2rem;
             list-style: none;
-            gap: 30px;
         }
 
-        nav a {
-            color: #fff;
+        .nav-links a {
+            color: var(--light-text);
             text-decoration: none;
-            font-size: 1.1em;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease;
             position: relative;
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 3px;
-            background: #ff6b6b;
-            transition: width 0.3s;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
         }
 
-        nav a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-red);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(230, 57, 70, 0.15) 0%, transparent 50%);
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
             text-align: center;
-            padding: 0 20px;
-            margin-top: 80px;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
         }
 
-        .hero h1 {
-            font-size: 5em;
-            text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
-            animation: float 3s ease-in-out infinite;
-            margin-bottom: 20px;
+        .logo-hero {
+            max-width: 500px;
+            width: 80%;
+            height: auto;
+            margin-bottom: 2rem;
+            animation: floatLogo 3s ease-in-out infinite, fadeInUp 1s ease;
+            filter: drop-shadow(0 0 30px rgba(230, 57, 70, 0.5));
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes floatLogo {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
-        .hero p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 1s forwards 0.5s;
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+            animation: fadeInUp 1s ease 0.3s backwards;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s backwards;
         }
 
-        .cta-button {
-            padding: 20px 50px;
-            font-size: 1.3em;
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
             border: none;
-            color: #fff;
             cursor: pointer;
-            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
-            transition: all 0.3s;
-            animation: fadeIn 1s forwards 1s;
-            opacity: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-radius: 5px;
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.7);
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
         }
 
-        /* About Section */
-        .about {
-            padding: 100px 50px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+        .btn-primary:hover {
+            background: var(--hover-red);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.6);
         }
 
-        .about h2 {
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 50px;
-            text-shadow: 0 0 20px #23d5ab;
+        .btn-secondary {
+            background: transparent;
+            color: var(--light-text);
+            border: 2px solid var(--primary-red);
         }
 
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .btn-secondary:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-            animation: slideUp 0.6s forwards;
-            opacity: 0;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes slideUp {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -210,708 +267,536 @@
             }
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #ff6b6b;
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+        /* Price Badge */
+        .price-badge {
+            display: inline-block;
+            background: var(--primary-red);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease 0.9s backwards;
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
         }
 
-        .feature-card h3 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #feca57;
-        }
-
-        .feature-icon {
-    font-size: 4em;
-    margin-bottom: 20px;
-    display: block;
-    animation: bounceY 2s ease-in-out infinite;
-}
-
-@keyframes bounceY {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-        /* Carousel Section */
-        .carousel-section {
-            padding: 100px 50px;
-            overflow: hidden;
-        }
-
-        .carousel-section h2 {
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 50px;
-            text-shadow: 0 0 20px #e73c7e;
-        }
-
-        .carousel-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            height: 500px;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-        }
-
-        .carousel-content {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 50px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .carousel-content h3 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #feca57;
-        }
-
-        .carousel-content p {
-            font-size: 1.3em;
-            line-height: 1.6;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .indicator {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .indicator.active {
-            background: #ff6b6b;
-            transform: scale(1.3);
-        }
-
-        /* Enemy Showcase */
-        .enemies {
-            padding: 100px 50px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .enemies h2 {
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 50px;
-            text-shadow: 0 0 20px #23a6d5;
-        }
-
-        .enemy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .enemy-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
+        h2 {
+            font-size: 3rem;
             text-align: center;
-            transition: all 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
 
-        .enemy-card:hover {
-            transform: scale(1.05) rotate(2deg);
-            border-color: #23d5ab;
-            box-shadow: 0 20px 40px rgba(35, 213, 171, 0.3);
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-red);
         }
 
-        .enemy-emoji {
-            font-size: 5em;
-            display: block;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
         }
 
-        .enemy-card:nth-child(1) .enemy-emoji { animation-delay: 0s; }
-        .enemy-card:nth-child(2) .enemy-emoji { animation-delay: 0.2s; }
-        .enemy-card:nth-child(3) .enemy-emoji { animation-delay: 0.4s; }
-        .enemy-card:nth-child(4) .enemy-emoji { animation-delay: 0.6s; }
+        .carousel-item {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
 
-        .enemy-card h3 {
-            font-size: 1.8em;
-            color: #feca57;
-            margin-bottom: 10px;
+        .carousel-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .carousel-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .carousel-text {
+            flex: 1;
+        }
+
+        .carousel-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        .carousel-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--hover-red);
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.3);
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        /* Download Section Background Image */
+        #download .about-content {
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+                        url('mealstormeye.png') center/cover no-repeat;
+            backdrop-filter: blur(5px);
         }
 
         /* Footer */
         footer {
-            padding: 50px;
+            background: rgba(10, 10, 10, 0.98);
+            padding: 2rem;
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--primary-red);
         }
 
         footer p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
+            color: #888;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: #fff;
-            font-size: 2em;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #ff6b6b;
-            transform: scale(1.2);
-        }
-
-        /* Floating vegetables animation */
-        .floating-veggie {
-            position: fixed;
-            font-size: 3em;
-            opacity: 0.3;
-            pointer-events: none;
-            animation: floatVeggie 15s infinite;
-        }
-
-        @keyframes floatVeggie {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.3;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3em; }
-            .about h2, .carousel-section h2, .enemies h2 { font-size: 2em; }
-            header { padding: 15px 20px; }
-            nav ul { gap: 15px; }
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                width: 100%;
+                padding: 2rem;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .logo-hero {
+                max-width: 350px;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .carousel-item {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
         }
 
-        /* MOBILE FRIENDLY: Migliora layout e leggibilità su schermi piccoli */
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 10px;
-    }
-    .logo {
-        margin-bottom: 10px;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        padding-left: 0;
-    }
-    nav a {
-        font-size: 1em;
-        padding: 8px 0;
-    }
-    .hero {
-        height: auto;
-        min-height: 60vh;
-        margin-top: 70px;
-        padding: 30px 10px;
-    }
-    .hero h1 {
-        font-size: 2.2em;
-        margin-bottom: 10px;
-    }
-    .hero p {
-        font-size: 1.1em;
-        margin-bottom: 20px;
-    }
-    .cta-button {
-        padding: 12px 24px;
-        font-size: 1em;
-    }
-    .about {
-        padding: 40px 10px;
-    }
-    .about h2 {
-        font-size: 1.5em;
-        margin-bottom: 25px;
-    }
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .feature-card {
-        padding: 18px;
-    }
-    .feature-card h3 {
-        font-size: 1.2em;
-    }
-    .feature-icon {
-        font-size: 2.2em;
-        margin-bottom: 10px;
-    }
-    .carousel-section {
-        padding: 40px 10px;
-    }
-    .carousel-section h2 {
-        font-size: 1.5em;
-        margin-bottom: 25px;
-    }
-    .carousel-container {
-        height: auto;
-        min-height: 250px;
-    }
-    .carousel-content {
-        padding: 18px;
-        border-radius: 18px;
-    }
-    .carousel-content h3 {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-    .carousel-content p {
-        font-size: 1em;
-    }
-    .carousel-indicators {
-        gap: 8px;
-        margin-top: 18px;
-    }
-    .indicator {
-        width: 12px;
-        height: 12px;
-    }
-    .enemies {
-        padding: 40px 10px;
-    }
-    .enemies h2 {
-        font-size: 1.5em;
-        margin-bottom: 25px;
-    }
-    .enemy-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-    .enemy-card {
-        padding: 18px;
-    }
-    .enemy-emoji {
-        font-size: 2.2em;
-        margin-bottom: 10px;
-    }
-    .enemy-card h3 {
-        font-size: 1.1em;
-        margin-bottom: 6px;
-    }
-    footer {
-        padding: 25px 10px;
-    }
-    footer p {
-        font-size: 1em;
-        margin-bottom: 12px;
-    }
-    .social-links {
-        gap: 15px;
-        margin-top: 12px;
-    }
-    .social-links a {
-        font-size: 1.3em;
-    }
-    .floating-veggie {
-        font-size: 1.5em;
-    }
-}
-/* MOBILE FRIENDLY: Migliora layout e leggibilità su schermi piccoli */
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 10px;
-    }
-    .logo {
-        margin-bottom: 10px;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        padding-left: 0;
-    }
-    nav a {
-        font-size: 1em;
-        padding: 8px 0;
-    }
-    .hero {
-        height: auto;
-        min-height: 60vh;
-        margin-top: 70px;
-        padding: 30px 10px;
-    }
-    .hero h1 {
-        font-size: 2.2em;
-        margin-bottom: 10px;
-    }
-    .hero p {
-        font-size: 1.1em;
-        margin-bottom: 20px;
-    }
-    .cta-button {
-        padding: 12px 24px;
-        font-size: 1em;
-    }
-    .about {
-        padding: 40px 10px;
-    }
-    .about h2 {
-        font-size: 1.5em;
-        margin-bottom: 25px;
-    }
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .feature-card {
-        padding: 18px;
-    }
-    .feature-card h3 {
-        font-size: 1.2em;
-    }
-    .feature-icon {
-        font-size: 2.2em;
-        margin-bottom: 10px;
-    }
-    .carousel-section {
-        padding: 40px 10px;
-    }
-    .carousel-section h2 {
-        font-size: 1.5em;
-        margin-bottom: 25px;
-    }
-    .carousel-container {
-        height: auto;
-        min-height: 250px;
-    }
-    .carousel-content {
-        padding: 18px;
-        border-radius: 18px;
-    }
-    .carousel-content h3 {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-    .carousel-content p {
-        font-size: 1em;
-    }
-    .carousel-indicators {
-        gap: 8px;
-        margin-top: 18px;
-    }
-    .indicator {
-        width: 12px;
-        height: 12px;
-    }
-    .enemies {
-        padding: 40px 10px;
-    }
-    .enemies h2 {
-        font-size: 1.5em;
-        margin-bottom: 25px;
-    }
-    .enemy-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-    .enemy-card {
-        padding: 18px;
-    }
-    .enemy-emoji {
-        font-size: 2.2em;
-        margin-bottom: 10px;
-    }
-    .enemy-card h3 {
-        font-size: 1.1em;
-        margin-bottom: 6px;
-    }
-    footer {
-        padding: 25px 10px;
-    }
-    footer p {
-        font-size: 1em;
-        margin-bottom: 12px;
-    }
-    .social-links {
-        gap: 15px;
-        margin-top: 12px;
-    }
-    .social-links a {
-        font-size: 1.3em;
-    }
-    .floating-veggie {
-        font-size: 1.5em;
-    }
-}
+        /* Parallax effect */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+        }
     </style>
 </head>
 <body>
-    <!-- Floating vegetables background -->
-    <div id="floating-veggies"></div>
+    <div class="parallax-bg"></div>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <span class="logo-icon">👨‍🍳💥🥕</span>
-            <span class="logo-text">MEALSTORM</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Introduzione</a></li>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Qui metterai il tuo logo: <img src="logo.png" alt="Mealstorm Logo" class="logo-nav"> -->
+            <img src="logo_mealstrom.png" alt="Mealstorm Logo" class="logo-nav">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Gioco</a></li>
+                <li><a href="#maps">Mappe</a></li>
                 <li><a href="#characters">Personaggi</a></li>
-                <li><a href="#places">Luoghi</a></li>
-                <li><a href="#gameplay">Gameplay</a></li>
+                <li><a href="#download">Download</a></li>
             </ul>
-        </nav>
-    </header>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <h1>MEALSTORM</h1>
-        <p>Il cuoco più coraggioso contro le verdure più letali!</p>
-        <button class="cta-button">GIOCA ORA</button>
+        <div class="hero-content">
+            <!-- Qui metterai il tuo logo senza sfondo: <img src="logo.png" alt="Mealstorm" class="logo-hero"> -->
+            <img src="logo_mealstrom.png" alt="Mealstorm" class="logo-hero">
+            <p class="tagline">Quando la cucina diventa un campo di battaglia</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn btn-primary">Scarica Ora</a>
+                <a href="#about" class="btn btn-secondary">Scopri di Più</a>
+            </div>
+            <div class="price-badge">Solo 9.99€</div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="gameplay">
-        <h2>CARATTERISTICHE DEL GIOCO</h2>
+    <section id="about">
+        <h2>Il Gioco</h2>
         <div class="about-content">
-            <div class="feature-card">
-                <span class="feature-icon">🎲</span>
-                <h3>Roguelike</h3>
-                <p>Ogni partita è unica! Livelli procedurali, oggetti casuali e sfide sempre diverse ti aspettano in cucina.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">⚔️</span>
-                <h3>Combattimento Frenetico</h3>
-                <p>Usa utensili da cucina come armi! Padelle, coltelli, frullatori e molto altro per sconfiggere le verdure ribelli.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🎨</span>
-                <h3>Stile Colorato</h3>
-                <p>Grafica vivace e cartoon che rende ogni battaglia un'esperienza visiva mozzafiato e divertente!</p>
-            </div>
+            <p>
+                Benvenuto in <strong>Mealstorm</strong>, un roguelite frenetico dove vestirai i panni di un cuoco coraggioso 
+                in missione per salvare il regno culinario da verdure impazzite e ribelli!
+            </p>
+            <p>
+                Ogni partita è unica: esplora mappe procedurali, affronta nemici sempre più difficili, 
+                sblocca nuove abilità e padroneggia l'arte del combattimento culinario. La morte è solo l'inizio 
+                di una nuova avventura più forte e preparata.
+            </p>
+            <p>
+                Con combattimenti veloci, power-up strategici e un sistema di progressione avvincente, 
+                Mealstorm offre ore di divertimento per gli amanti dei roguelite e dell'azione arcade.
+            </p>
         </div>
     </section>
 
-    <!-- Carousel Section -->
-    <section class="carousel-section" id="characters">
-        <h2>I PERSONAGGI</h2>
+    <!-- Maps Carousel -->
+    <section id="maps">
+        <h2>Mappe Epiche</h2>
         <div class="carousel-container">
-            <div class="carousel-slide active">
-                <div class="carousel-content">
-                    <h3>🍳 Il Cuoco Protagonista</h3>
-                    <p>Interpreta Chef Marco, un cuoco determinato a riprendere il controllo della sua cucina invasa da verdure mutanti. Migliora le tue abilità e diventa inarrestabile!</p>
+            <div class="carousel" id="mapsCarousel">
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Mappa+1" alt="Cucina Infernale">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>La Cucina Infernale</h3>
+                        <p>
+                            Una cucina industriale dove le fiamme danzano e i pericoli si nascondono dietro ogni angolo. 
+                            Affronta orde di verdure inferocite tra fornelli roventi e coltelli volanti. 
+                            Solo i cuochi più coraggiosi sopravviveranno in questo inferno culinario dove ogni secondo conta.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <h3>🗺️ Livelli Infiniti</h3>
-                    <p>Esplora cucine sempre diverse, dal ristorante stellato alla tavola calda. Ogni livello presenta sfide uniche e boss verdure epici!</p>
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Mappa+2" alt="Mercato Oscuro">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Il Mercato Oscuro</h3>
+                        <p>
+                            Un mercato abbandonato dove le verdure hanno preso il controllo. Naviga tra bancarelle 
+                            pericolanti e corridoi stretti mentre affronti nemici che emergono dalle ombre. 
+                            Raccogli risorse preziose ma attenzione: qui nulla è come sembra.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <h3>💎 Power-up Leggendari</h3>
-                    <p>Raccogli spezie magiche, ricette potenti e utensili leggendari. Crea combo devastanti e personalizza il tuo stile di gioco!</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <h3>🏆 Sfide Quotidiane</h3>
-                    <p>Completa missioni speciali, scala le classifiche globali e sblocca skin esclusive per il tuo cuoco!</p>
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Mappa+3" alt="Giardino Maledetto">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Il Giardino Maledetto</h3>
+                        <p>
+                            Un giardino rigoglioso trasformato in un incubo vivente. Le verdure qui sono cresciute 
+                            oltre ogni limite naturale e difendono il loro territorio con ferocia. Tra serre rotte 
+                            e piante carnivore, dovrai usare tutta la tua astuzia per sopravvivere.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="carousel-indicators">
-            <div class="indicator active" data-slide="0"></div>
-            <div class="indicator" data-slide="1"></div>
-            <div class="indicator" data-slide="2"></div>
-            <div class="indicator" data-slide="3"></div>
+        <div class="carousel-controls">
+            <button class="carousel-btn" onclick="changeSlide('maps', -1)">‹</button>
+            <button class="carousel-btn" onclick="changeSlide('maps', 1)">›</button>
         </div>
+        <div class="carousel-dots" id="mapsDots"></div>
     </section>
 
-    <!-- Enemies Section -->
-    <section class="enemies" id="places">
-        <h2>I LUOGHI DELLA BATTAGLIA</h2>
-        <div class="enemy-grid">
-            <div class="enemy-card">
-                <span class="enemy-emoji">🏪</span>
-                <h3>Supermercato Maledetto</h3>
-                <p>Scaffali infiniti dove le verdure si nascondono in agguato!</p>
+    <!-- Characters Carousel -->
+    <section id="characters">
+        <h2>Le Verdure Nemiche</h2>
+        <div class="carousel-container">
+            <div class="carousel" id="charactersCarousel">
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Pomodoro+Boss" alt="Re Pomodoro">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Re Pomodoro</h3>
+                        <p>
+                            Il sovrano supremo delle verdure ribelli. Questo pomodoro gigante comanda le sue truppe 
+                            con un'intelligenza tattica sorprendente. I suoi attacchi a base di succo acido possono 
+                            corrodere qualsiasi difesa. Affronta questo boss solo se sei pronto alla sfida definitiva!
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Broccolo+Warrior" alt="Guerriero Broccolo">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Guerriero Broccolo</h3>
+                        <p>
+                            Un combattente d'élite con una corazza verde impenetrabile. Questi broccoli si muovono 
+                            in formazione e attaccano con precisione militare. Le loro lance affilate possono 
+                            trafiggere anche l'armatura più resistente. Approcciali con strategia!
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Carota+Ninja" alt="Ninja Carota">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Ninja Carota</h3>
+                        <p>
+                            Veloci, letali e quasi invisibili. Le carote ninja si muovono nell'ombra e colpiscono 
+                            quando meno te lo aspetti. I loro attacchi fulminei richiedono riflessi pronti e 
+                            movimenti precisi. Impara i loro pattern o sarai sconfitto prima ancora di vederle!
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image">
+                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Cipolla+Mage" alt="Mago Cipolla">
+                    </div>
+                    <div class="carousel-text">
+                        <h3>Mago Cipolla</h3>
+                        <p>
+                            Maestri delle arti arcane, questi maghi lanciano incantesimi lacrimogeni che possono 
+                            offuscare la tua vista e rallentare i tuoi movimenti. Mantieni le distanze e colpiscili 
+                            velocemente prima che completino i loro rituali devastanti!
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="enemy-card">
-                <span class="enemy-emoji">🍽️</span>
-                <h3>Ristorante Stellato</h3>
-                <p>La cucina più prestigiosa, ora invasa dai nemici più forti!</p>
-            </div>
-            <div class="enemy-card">
-                <span class="enemy-emoji">🌾</span>
-                <h3>Fattoria Oscura</h3>
-                <p>Dove tutto è iniziato... le verdure mutanti nascono qui!</p>
-            </div>
-            <div class="enemy-card">
-                <span class="enemy-emoji">🏭</span>
-                <h3>Fabbrica del Caos</h3>
-                <p>Boss finale e segreti misteriosi ti attendono!</p>
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-btn" onclick="changeSlide('characters', -1)">‹</button>
+            <button class="carousel-btn" onclick="changeSlide('characters', 1)">›</button>
+        </div>
+        <div class="carousel-dots" id="charactersDots"></div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download">
+        <h2>Inizia l'Avventura</h2>
+        <div class="about-content" style="text-align: center;">
+            <p style="font-size: 1.5rem; margin-bottom: 2rem;">
+                Scarica Mealstorm ora e preparati a cucinare la vittoria!
+            </p>
+            <div class="price-badge" style="font-size: 2rem; margin-bottom: 2rem;">9.99€</div>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Download per Windows</a>
+                <a href="#" class="btn btn-secondary">Download per Mac</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="download">
-        <p>Preparati alla battaglia culinaria più epica di sempre!</p>
-        <button class="cta-button">SCARICA MEALSTORM</button>
-        <div class="social-links">
-            <a href="#">📘</a>
-            <a href="#">🐦</a>
-            <a href="#">📸</a>
-            <a href="#">🎮</a>
-        </div>
-        <p style="margin-top: 30px; opacity: 0.7;">© 2025 Mealstorm. Tutti i diritti riservati.</p>
+    <footer>
+        <p>&copy; 2024 Mealstorm. Tutti i diritti riservati.</p>
     </footer>
 
     <script>
-        // Carousel automatico
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
-
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
-            indicators[currentSlide].classList.add('active');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        // Auto-play carousel
-        setInterval(nextSlide, 4000);
-
-        // Click sugli indicatori
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => showSlide(index));
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
-        // Genera verdure fluttuanti casuali
-        const veggies = ['🥕', '🥦', '🌶️', '🍆', '🥬', '🧄', '🧅', '🍅'];
-        const container = document.getElementById('floating-veggies');
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-        function createFloatingVeggie() {
-            const veggie = document.createElement('div');
-            veggie.className = 'floating-veggie';
-            veggie.textContent = veggies[Math.floor(Math.random() * veggies.length)];
-            veggie.style.left = Math.random() * 100 + '%';
-            veggie.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            veggie.style.animationDelay = Math.random() * 5 + 's';
-            container.appendChild(veggie);
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-            setTimeout(() => veggie.remove(), 20000);
-        }
-
-        // Crea verdure fluttuanti continuamente
-        setInterval(createFloatingVeggie, 3000);
-        for(let i = 0; i < 5; i++) {
-            setTimeout(createFloatingVeggie, i * 600);
-        }
-
-        // Smooth scroll per i link di navigazione
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
             });
         });
 
-        // Effetto scroll header
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if(currentScroll > lastScroll && currentScroll > 100) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            lastScroll = currentScroll;
-        });
-
-        // Animazione cards al scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+        // Carousel functionality
+        const carousels = {
+            maps: { current: 0, total: 3 },
+            characters: { current: 0, total: 4 }
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        function changeSlide(type, direction) {
+            const carousel = carousels[type];
+            carousel.current += direction;
+            
+            if (carousel.current < 0) {
+                carousel.current = carousel.total - 1;
+            } else if (carousel.current >= carousel.total) {
+                carousel.current = 0;
+            }
+            
+            const carouselElement = document.getElementById(`${type}Carousel`);
+            carouselElement.style.transform = `translateX(-${carousel.current * 100}%)`;
+            
+            updateDots(type);
+        }
+
+        function updateDots(type) {
+            const dots = document.querySelectorAll(`#${type}Dots .dot`);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousels[type].current);
+            });
+        }
+
+        function createDots(type) {
+            const dotsContainer = document.getElementById(`${type}Dots`);
+            const total = carousels[type].total;
+            
+            for (let i = 0; i < total; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    carousels[type].current = i;
+                    const carouselElement = document.getElementById(`${type}Carousel`);
+                    carouselElement.style.transform = `translateX(-${i * 100}%)`;
+                    updateDots(type);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Initialize dots
+        createDots('maps');
+        createDots('characters');
+
+        // Auto-rotate carousels
+        setInterval(() => {
+            changeSlide('maps', 1);
+        }, 7000);
+
+        setInterval(() => {
+            changeSlide('characters', 1);
+        }, 8000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-        }, observerOptions);
+        });
 
-        document.querySelectorAll('.feature-card, .enemy-card').forEach(card => {
-            observer.observe(card);
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.parallax-bg');
+            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
     </script>
 </body>
