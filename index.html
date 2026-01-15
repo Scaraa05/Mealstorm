@@ -6,9 +6,9 @@
     
     <!-- SEO Meta Tags -->
     <title>Mealstorm - Roguelite Culinario | Combatti le Verdure Ribelli</title>
-    <meta name="description" content="Mealstorm è un roguelite d'azione nel quale vestirai i panni di un cuoco coraggioso in missione per sconfiggere verdure impazzite. Mappe uniche, verdure epiche e combattimenti frenetici ti aspettano!">
-    <meta name="keywords" content="mealstorm, roguelite, videogioco indie, gioco d'azione, cuoco, verdure, gaming">
-    <meta name="author" content="Mealstorm Game Studio">
+    <meta name="description" content="Mealstorm è un roguelite d'azione nel quale vestirai i panni di un cuoco coraggioso in missione per sconfiggere ingredienti impazziti. Mappe uniche, nemici epici e combattimenti frenetici ti aspettano!">
+    <meta name="keywords" content="mealstorm, roguelite, videogioco indie, gioco d'azione, cuoco, verdure, gaming, action-game">
+    <meta name="author" content="Mealstorm">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
@@ -17,13 +17,6 @@
     <meta property="og:title" content="Mealstorm - Roguelite Culinario">
     <meta property="og:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato. Scopri mappe uniche e combattimenti epici!">
     <meta property="og:image" content="https://mealstorm.game/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mealstorm.game/">
-    <meta property="twitter:title" content="Mealstorm - Roguelite Culinario">
-    <meta property="twitter:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato.">
-    <meta property="twitter:image" content="https://mealstorm.game/twitter-image.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -442,6 +435,59 @@
             color: #888;
         }
 
+        /* Social follow under download */
+        .social-follow {
+            margin-top: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-icons a {
+            display: inline-flex;
+            width: 56px;
+            height: 56px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            transition: transform 0.18s ease, background 0.18s ease;
+            color: var(--light-text);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .social-icons a:hover {
+            transform: translateY(-6px);
+            background: rgba(230,57,70,0.16);
+            border-color: rgba(230,57,70,0.22);
+        }
+        .social-icons svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+        .social-icons img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            display: block;
+        }
+
+        
+
+        @media (max-width: 480px) {
+            .auth-modal { width: calc(100% - 32px); }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .social-icons a { width:48px; height:48px; }
+            .social-icons svg { width:22px; height:22px; }
+            .btn { padding:0.8rem 1.2rem; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hamburger {
@@ -505,13 +551,14 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <!-- Qui metterai il tuo logo: <img src="logo.png" alt="Mealstorm Logo" class="logo-nav"> -->
-            <img src="logo_mealstrom.png" alt="Mealstorm Logo" class="logo-nav">
+            <img src="logo_mealstorm (2).png" alt="Mealstorm Logo" class="logo-nav">
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Gioco</a></li>
                 <li><a href="#maps">Mappe</a></li>
                 <li><a href="#characters">Personaggi</a></li>
                 <li><a href="#download">Download</a></li>
+                
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -525,7 +572,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <!-- Qui metterai il tuo logo senza sfondo: <img src="logo.png" alt="Mealstorm" class="logo-hero"> -->
-            <img src="logo_mealstrom.png" alt="Mealstorm" class="logo-hero">
+            <img src="logo_mealstorm (2).png" alt="Mealstorm" class="logo-hero">
             <p class="tagline">Quando la cucina diventa un campo di battaglia!</p>
             <div class="cta-buttons">
                 <a href="#download" class="btn btn-primary">Scarica Ora</a>
@@ -540,14 +587,14 @@
         <h2>Il Gioco</h2>
         <div class="about-content">
             <p>
-                <strong>Mealstorm</strong>, un frenetico action-game dove vestirai i panni di un cuoco coraggioso 
-                in missione per salvare il mondo da una ribellione culinaria dove gli ingredienti hanno preso vita e si sono ribellati contro gli umani! 
-                Imbattiti in una serie di rapide run e scala la classifica per essere il migliore! Cosa stai aspettando? Gettati 
+                <strong>Mealstorm</strong>, un roguelite frenetico dove vestirai i panni di un cuoco coraggioso 
+                in missione per salvare il regno culinario da verdure impazzite e ribelli! Imbattiti in una
+                serie di rapide run e scala la classifica per essere il migliore! Cosa stai aspettando? Gettati 
                 nella mischia!
             </p>
             <p>
                 Ogni partita è unica: esplora mappe nuove, affronta nemici sempre più difficili, 
-                affina la tua lama e cucina gli ingredienti con la tua padella!
+                sblocca nuovi utensili e padroneggia l'arte del combattimento culinario.
             </p>
             <p>
                 Con combattimenti veloci, un sistema di progressione avvincente e features uniche
@@ -715,12 +762,26 @@
                 <a href="#" class="btn btn-secondary">Download per Mac</a>
             </div>
         </div>
+        <div class="social-follow" aria-label="Follow us">
+            <div class="label">Follow us on</div>
+            <div class="social-icons" role="group" aria-label="Social links">
+                <a href="https://www.instagram.com/mealstorm_game/" id="instagram-link" aria-label="Instagram" title="Instagram">
+                    <!-- Sostituisci il valore di src con il percorso della tua PNG Instagram -->
+                    <img src="instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/@mealstorm_official" id="tiktok-link" aria-label="TikTok" title="TikTok">
+                    <!-- Sostituisci il valore di src con il percorso della tua PNG TikTok -->
+                    <img src="tik tok.png" alt="TikTok">
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Mealstorm. Tutti i diritti riservati.</p>
     </footer>
+
 
     <script>
         // Navbar scroll effect
@@ -828,7 +889,8 @@
             const parallax = document.querySelector('.parallax-bg');
             parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
+
+
     </script>
 </body>
-
 </html>
