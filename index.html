@@ -4,41 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Meta Tags -->
+    <!-- SEO Meta -->
     <title>Mealstorm - Roguelite Culinario | Combatti le Verdure Ribelli</title>
     <meta name="description" content="Mealstorm è un roguelite d'azione nel quale vestirai i panni di un cuoco coraggioso in missione per sconfiggere ingredienti impazziti. Mappe uniche, nemici epici e combattimenti frenetici ti aspettano!">
     <meta name="keywords" content="mealstorm, roguelite, videogioco indie, gioco d'azione, cuoco, verdure, gaming, action-game">
-    <meta name="author" content="Mealstorm">
+    <meta name="author" content="Ydea's Drawer">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mealstorm.game/">
     <meta property="og:title" content="Mealstorm - Roguelite Culinario">
     <meta property="og:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato. Scopri mappe uniche e combattimenti epici!">
     <meta property="og:image" content="https://mealstorm.game/og-image.jpg">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="logo_mealstorm (2).png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     
     <!-- Structured Data / JSON-LD -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "Mealstorm",
-      "description": "Un roguelite d'azione dove un cuoco combatte contro verdure impazzite attraverso mappe uniche e sfide progressivamente difficili",
-      "genre": "Roguelite",
-      "gamePlatform": ["PC"],
-      "offers": {
-        "@type": "Offer",
-        "price": "9.99",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock"
-      }
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Mealstorm",
+  "url": "https://mealstorm.game/",
+  "description": "Roguelite d'azione in cui un cuoco combatte contro ingredienti impazziti attraverso run e mappe uniche.",
+  "image": "https://mealstorm.game/og-image.jpg",
+  "genre": ["Roguelite", "Action"],
+  "gamePlatform": ["PC"],
+  "inLanguage": "it",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ydea's Drawer",
+    "url": "https://mealstorm.game/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://mealstorm.game/#download",
+    "price": "4.99",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "sameAs": [
+    "https://www.instagram.com/mealstorm_game/",
+    "https://www.tiktok.com/@mealstorm_official"
+  ]
+}
+</script>
+
 
     <style>
         * {
@@ -52,6 +65,12 @@
             --dark-bg: #0a0a0a;
             --light-text: #ffffff;
             --hover-red: #d62828;
+            --accent-orange: #ff8c42;
+            --accent-yellow: #ffd60a;
+            --accent-green: #06d6a0;
+            --accent-purple: #b76edb;
+            --accent-cyan: #00d9ff;
+            --secondary-white: #f5f5f5;
         }
 
         body {
@@ -260,7 +279,36 @@
             }
         }
 
-        /* Price Badge */
+        @keyframes cardHoverGlow {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(230, 57, 70, 0.4);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Prezzo */
         .price-badge {
             display: inline-block;
             background: var(--primary-red);
@@ -273,11 +321,51 @@
             box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
         }
 
-        /* Section Styling */
+        /* selezione stile */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* Sezioni con sfondo bianco */
+        #maps,
+        #characters {
+            color: #333;
+        }
+
+        /* Contenitore wrapper per sfondo bianco */
+        .white-bg-wrapper {
+            background-color: #f5f5f5;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 5rem calc(50vw - 50% + 2rem);
+        }
+
+        #maps {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #characters {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #maps h2,
+        #characters h2 {
+            background: linear-gradient(120deg, #333 0%, rgba(230, 57, 70, 0.8) 50%, #333 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #maps h2::after,
+        #characters h2::after {
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-orange) 100%);
         }
 
         h2 {
@@ -289,6 +377,19 @@
             position: relative;
             display: inline-block;
             width: 100%;
+            background: linear-gradient(120deg, var(--light-text) 0%, rgba(230, 57, 70, 0.8) 50%, var(--light-text) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s linear infinite;
+            font-weight: 800;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
         }
 
         h2::after {
@@ -299,10 +400,158 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: var(--primary-red);
+            background: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-orange) 100%);
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
         }
 
-        /* Carousel */
+        /* Flip Card Grid */
+        .flip-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #maps .flip-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #characters .flip-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .flip-card-wrapper {
+            perspective: 1000px;
+            height: 300px;
+            animation: slideUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .flip-card-wrapper:nth-child(1) { animation-delay: 0.1s; }
+        .flip-card-wrapper:nth-child(2) { animation-delay: 0.2s; }
+        .flip-card-wrapper:nth-child(3) { animation-delay: 0.3s; }
+        .flip-card-wrapper:nth-child(4) { animation-delay: 0.4s; }
+        .flip-card-wrapper:nth-child(5) { animation-delay: 0.5s; }
+        .flip-card-wrapper:nth-child(6) { animation-delay: 0.6s; }
+        .flip-card-wrapper:nth-child(7) { animation-delay: 0.7s; }
+        .flip-card-wrapper:nth-child(8) { animation-delay: 0.8s; }
+
+        .flip-card-wrapper:hover {
+            /* Hover rimosso - le card non scompaiono più */
+        }
+
+        .flip-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            border-radius: 15px;
+        }
+
+        .flip-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.8), 0 10px 40px rgba(230, 57, 70, 0.6);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card.flipped:hover {
+            transform: rotateY(180deg) scale(1.08);
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.8), 0 10px 40px rgba(230, 57, 70, 0.6);
+        }
+
+        .flip-card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .flip-card-front {
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all 0.4s ease;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Zoom rimosso dall'immagine */
+
+        .flip-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(230, 57, 70, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Effetto hover sull'icona rimosso */
+
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.95) 0%, rgba(193, 18, 31, 0.95) 100%);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            transform: rotateY(180deg);
+            top: 0;
+            left: 0;
+        }
+
+        .flip-card-back h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .flip-card-back p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+        }
+
+        /* Carosello */
         .carousel-container {
             position: relative;
             overflow: hidden;
@@ -321,7 +570,7 @@
             align-items: center;
             gap: 3rem;
             padding: 3rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(230, 57, 70, 0.08) 100%);
             backdrop-filter: blur(10px);
         }
 
@@ -329,6 +578,18 @@
             flex: 0 0 250px;
             width: 250px;
             height: 250px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .carousel-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+            z-index: 1;
         }
 
         .carousel-image img {
@@ -337,6 +598,11 @@
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-image:hover img {
+            transform: scale(1.05);
         }
 
         .carousel-text {
@@ -347,6 +613,8 @@
             font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--primary-red);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .carousel-text p {
@@ -365,18 +633,24 @@
         .carousel-btn {
             width: 50px;
             height: 50px;
-            background: var(--primary-red);
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--hover-red) 100%);
             border: none;
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.5rem;
             color: white;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .carousel-btn:hover {
-            background: var(--hover-red);
-            transform: scale(1.1);
+            background: linear-gradient(135deg, var(--hover-red) 0%, #a01819 100%);
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.5);
         }
 
         .carousel-dots {
@@ -393,20 +667,44 @@
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .dot.active {
             background: var(--primary-red);
             transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
         }
 
         /* About Section */
         .about-content {
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(230, 57, 70, 0.1) 100%);
             padding: 3rem;
             border-radius: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(230, 57, 70, 0.2);
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 60%, rgba(255, 141, 66, 0.05) 0%, transparent 50%);
+            animation: floatGradient 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatGradient {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 20px); }
         }
 
         .about-content p {
@@ -414,6 +712,34 @@
             line-height: 2;
             margin-bottom: 1.5rem;
             color: #ddd;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image {
+            flex: 0 0 300px;
+            min-width: 250px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
         }
 
         /* Download Section Background Image */
@@ -425,14 +751,29 @@
 
         /* Footer */
         footer {
-            background: rgba(10, 10, 10, 0.98);
-            padding: 2rem;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(20, 5, 5, 0.98) 100%);
+            padding: 3rem 2rem;
             text-align: center;
-            border-top: 2px solid var(--primary-red);
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-orange) 100%) 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
         }
 
         footer p {
-            color: #888;
+            color: #bbb;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* Social follow under download */
@@ -443,11 +784,20 @@
             align-items: center;
             justify-content: center;
             color: #ccc;
+            animation: slideUp 0.8s ease;
         }
+
+        .social-follow .label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
         .social-icons {
             display: flex;
             gap: 1rem;
         }
+
         .social-icons a {
             display: inline-flex;
             width: 56px;
@@ -461,16 +811,19 @@
             text-decoration: none;
             border: 1px solid rgba(255,255,255,0.05);
         }
+
         .social-icons a:hover {
             transform: translateY(-6px);
             background: rgba(230,57,70,0.16);
             border-color: rgba(230,57,70,0.22);
         }
+
         .social-icons svg {
             width: 28px;
             height: 28px;
             fill: currentColor;
         }
+
         .social-icons img {
             width: 70%;
             height: 70%;
@@ -482,10 +835,12 @@
 
         @media (max-width: 480px) {
             .auth-modal { width: calc(100% - 32px); }
-            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .social-icons a { width:48px; height:48px; }
             .social-icons svg { width:22px; height:22px; }
             .btn { padding:0.8rem 1.2rem; }
+            .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            h2 { font-size: 1.8rem; }
         }
 
         /* Responsive */
@@ -524,6 +879,19 @@
             .carousel-item {
                 flex-direction: column;
                 padding: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .flip-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .about-image {
+                flex: 0 0 auto;
             }
 
             h2 {
@@ -571,7 +939,6 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- Qui metterai il tuo logo senza sfondo: <img src="logo.png" alt="Mealstorm" class="logo-hero"> -->
             <img src="logo_mealstorm (2).png" alt="Mealstorm" class="logo-hero">
             <p class="tagline">Quando la cucina diventa un campo di battaglia!</p>
             <div class="cta-buttons">
@@ -586,168 +953,233 @@
     <section id="about">
         <h2>Il Gioco</h2>
         <div class="about-content">
-            <p>
-                <strong>Mealstorm</strong>, un roguelite frenetico dove vestirai i panni di un cuoco coraggioso 
-                in missione per salvare il regno culinario da verdure impazzite e ribelli! Imbattiti in una
-                serie di rapide run e scala la classifica per essere il migliore! Cosa stai aspettando? Gettati 
-                nella mischia!
-            </p>
-            <p>
-                Ogni partita è unica: esplora mappe nuove, affronta nemici sempre più difficili, 
-                sblocca nuovi utensili e padroneggia l'arte del combattimento culinario.
-            </p>
-            <p>
-                Con combattimenti veloci, un sistema di progressione avvincente e features uniche
-                Mealstorm offre ore di divertimento per gli amanti dei roguelite e dell'azione arcade!
-            </p>
+            <div class="about-text">
+                <p>
+                    <strong>Mealstorm</strong>, un roguelite frenetico dove vestirai i panni di un cuoco coraggioso 
+                    in missione per salvare il regno culinario da verdure impazzite e ribelli! Imbattiti in una
+                    serie di rapide run e scala la classifica per essere il migliore! Cosa stai aspettando? Gettati 
+                    nella mischia!
+                </p>
+                <p>
+                    Ogni partita è unica: esplora mappe nuove, affronta nemici sempre più difficili, 
+                    sblocca nuovi utensili e padroneggia l'arte del combattimento culinario.
+                </p>
+                <p>
+                    Con combattimenti veloci, un sistema di progressione avvincente e features uniche
+                    Mealstorm offre ore di divertimento per gli amanti dei roguelite e dell'azione arcade!
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="chef.png" alt="Mealstorm - Gameplay">
+            </div>
         </div>
     </section>
 
-    <!-- Maps Carousel -->
+    <div class="white-bg-wrapper">
+    <!-- Maps Flip Grid -->
     <section id="maps">
         <h2>Mappe Epiche</h2>
-        <div class="carousel-container">
-            <div class="carousel" id="mapsCarousel">
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Mappa+1" alt="Cucina Infernale">
+        <div class="flip-grid">
+            <!-- Mappa 1 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="map">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Cucina+Infernale" alt="Cucina Infernale">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>?</h3>
-                        <p>
-                            x
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Mappa+2" alt="Mercato Oscuro">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>?</h3>
-                        <p>
-                            x
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Cucina Infernale</h3>
+                            <p>Un'infuocata cucina piena di pericoli nascosti. I nemici sono veloci e senza pietà. Preparati allo scontro finale!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Mappa+3" alt="Giardino Maledetto">
+            </div>
+
+            <!-- Mappa 2 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="map">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Mercato+Oscuro" alt="Mercato Oscuro">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>?</h3>
-                        <p>
-                            x
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Mercato Oscuro</h3>
+                            <p>Un antico mercato avvolto dall'ombra. Gli ingredienti ribelli si nascondono tra i banchi. Stai attento ai colpi di sorpresa!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mappa 3 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="map">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Giardino+Maledetto" alt="Giardino Maledetto">
+                        <div class="flip-icon">↻</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Giardino Maledetto</h3>
+                            <p>Vegetali selvaggi e verdure impazzite controllano questo giardino. La natura è la tua nemica, ma anche la tua alleata.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mappa 4 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="map">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Pantry+Suprema" alt="Pantry Suprema">
+                        <div class="flip-icon">↻</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Pantry Suprema</h3>
+                            <p>La sala del tesoro dove gli ingredienti più potenti risiedono. Un'ultima sfida prima della vittoria finale!</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="carousel-controls">
-            <button class="carousel-btn" onclick="changeSlide('maps', -1)">‹</button>
-            <button class="carousel-btn" onclick="changeSlide('maps', 1)">›</button>
-        </div>
-        <div class="carousel-dots" id="mapsDots"></div>
     </section>
 
-    <!-- Characters Carousel -->
+    <!-- Characters Flip Grid -->
     <section id="characters">
         <h2>Le Verdure Nemiche</h2>
-        <div class="carousel-container">
-            <div class="carousel" id="charactersCarousel">
-                <div class="carousel-item">
-                    <div class="carousel-image">
+        <div class="flip-grid">
+            <!-- Personaggio 1 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
                         <img src="carota.jpg" alt="Carota malefica">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>Carota malefica</h3>
-                        <p>
-                            Una carota che non penserà due volte prima di attaccarti con le sue radici letali!
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Cipolla+Mage" alt="Carota malefica">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Grano malvagio</h3>
-                        <p>
-                            x
-                        </p>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Carota Malefica</h3>
+                            <p>Una carota che non penserà due volte prima di attaccarti con le sue radici letali! Veloce e imprevedibile.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Cipolla+Mage" alt="Grano malvagio">
+            </div>
+
+            <!-- Personaggio 2 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Grano+Malvagio" alt="Grano malvagio">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>latte rancido</h3>
-                        <p>
-                            x
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Cipolla+Mage" alt="latte rancido">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Pomodoro marcio</h3>
-                        <p>
-                            x
-                        </p>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Grano Malvagio</h3>
+                            <p>Un nemico resistente che si nasconde dietro la sua corazza dorata. Richiede strategie speciali per essere sconfitto.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Cipolla+Mage" alt="Pomodoro marcio">
+            </div>
+
+            <!-- Personaggio 3 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Latte+Rancido" alt="Latte rancido">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>Patata selvaggia</h3>
-                        <p>
-                            x
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Broccolo+Warrior" alt="Patata selvaggia">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Tonno rapido</h3>
-                        <p>
-                            x
-                        </p>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Latte Rancido</h3>
+                            <p>Un nemico appiccicaticcio che lascia tracce sulla mappa. Evita il suo veleno e contrattacca con precisione!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Carota+Ninja" alt="Tonno rapido">
+            </div>
+
+            <!-- Personaggio 4 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Pomodoro+Marcio" alt="Pomodoro marcio">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>Wasabi piccante</h3>
-                        <p>
-                            x
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Pomodoro Marcio</h3>
+                            <p>Un nemico che esplode proiettili in tutte le direzioni. Mantieni le distanze e attacca quando è vulnerabile!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-image">
-                        <img src="https://via.placeholder.com/500x300/e63946/ffffff?text=Cipolla+Mage" alt="Wasabi piccante">
+            </div>
+
+            <!-- Personaggio 5 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Patata+Selvaggia" alt="Patata selvaggia">
+                        <div class="flip-icon">↻</div>
                     </div>
-                    <div class="carousel-text">
-                        <h3>Ramen bollente</h3>
-                        <p>
-                            x
-                        </p>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Patata Selvaggia</h3>
+                            <p>Lenta ma estremamente resistente. Accumula terra per raddoppiare la sua difesa. Scegli il momento giusto per attaccare!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personaggio 6 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Tonno+Rapido" alt="Tonno rapido">
+                        <div class="flip-icon">↻</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Tonno Rapido</h3>
+                            <p>Il re della velocità! Si muove alla luce del fulmine e colpisce da tutte le direzioni. Agile e mortale!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personaggio 7 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Wasabi+Piccante" alt="Wasabi piccante">
+                        <div class="flip-icon">↻</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Wasabi Piccante</h3>
+                            <p>Piccolo ma devastante! Causa danni nel tempo e intossica i tuoi sensi. Restituisci il fuoco con fuoco!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personaggio 8 -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Ramen+Bollente" alt="Ramen bollente">
+                        <div class="flip-icon">↻</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <div>
+                            <h3>Ramen Bollente</h3>
+                            <p>Un nemico denso e appiccaticcio! Brucia tutto ciò che tocca e si regenera costantemente. Richiede una strategia particolare!</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="carousel-controls">
-            <button class="carousel-btn" onclick="changeSlide('characters', -1)">‹</button>
-            <button class="carousel-btn" onclick="changeSlide('characters', 1)">›</button>
-        </div>
-        <div class="carousel-dots" id="charactersDots"></div>
     </section>
+    </div>
 
     <!-- Download Section -->
     <section id="download">
@@ -771,7 +1203,7 @@
                 </a>
                 <a href="https://www.tiktok.com/@mealstorm_official" id="tiktok-link" aria-label="TikTok" title="TikTok">
                     <!-- Sostituisci il valore di src con il percorso della tua PNG TikTok -->
-                    <img src="tik tok.png" alt="TikTok">
+                    <img src="tiktok.png" alt="TikTok">
                 </a>
             </div>
         </div>
@@ -809,65 +1241,12 @@
             });
         });
 
-        // Carousel functionality
-        const carousels = {
-            maps: { current: 0, total: 3 },
-            characters: { current: 0, total: 8 }
-        };
-
-        function changeSlide(type, direction) {
-            const carousel = carousels[type];
-            carousel.current += direction;
-            
-            if (carousel.current < 0) {
-                carousel.current = carousel.total - 1;
-            } else if (carousel.current >= carousel.total) {
-                carousel.current = 0;
-            }
-            
-            const carouselElement = document.getElementById(`${type}Carousel`);
-            carouselElement.style.transform = `translateX(-${carousel.current * 100}%)`;
-            
-            updateDots(type);
-        }
-
-        function updateDots(type) {
-            const dots = document.querySelectorAll(`#${type}Dots .dot`);
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === carousels[type].current);
+        // Flip card functionality
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
             });
-        }
-
-        function createDots(type) {
-            const dotsContainer = document.getElementById(`${type}Dots`);
-            const total = carousels[type].total;
-            
-            for (let i = 0; i < total; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    carousels[type].current = i;
-                    const carouselElement = document.getElementById(`${type}Carousel`);
-                    carouselElement.style.transform = `translateX(-${i * 100}%)`;
-                    updateDots(type);
-                });
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        // Initialize dots
-        createDots('maps');
-        createDots('characters');
-
-        // Auto-rotate carousels
-        setInterval(() => {
-            changeSlide('maps', 1);
-        }, 7000);
-
-        setInterval(() => {
-            changeSlide('characters', 1);
-        }, 8000);
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
