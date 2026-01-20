@@ -841,41 +841,40 @@
             .btn { padding:0.8rem 1.2rem; }
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
-            #characters .flip-grid { grid-template-columns: 1fr; }
+            #characters .flip-grid { grid-template-columns: 1fr; position: relative; }
             
             /* Layout zigzag per personaggi su mobile */
             #characters .flip-card-wrapper {
-                margin-left: 0;
-                margin-right: 0;
+                margin: 2rem auto;
+                width: 75%;
+                position: relative;
+                z-index: 1;
             }
 
             #characters .flip-card-wrapper:nth-child(odd) {
-                margin-right: auto;
-                margin-left: 10%;
-                width: 80%;
+                margin-left: auto;
+                margin-right: 0;
             }
 
             #characters .flip-card-wrapper:nth-child(even) {
-                margin-left: auto;
-                margin-right: 10%;
-                width: 80%;
+                margin-right: auto;
+                margin-left: 0;
             }
 
-            /* Filo tratteggiato che collega i personaggi */
-            #characters .flip-card-wrapper:not(:last-child)::after {
+            /* Filo tratteggiato con curve */
+            #characters .flip-grid::before {
                 content: '';
                 position: absolute;
+                top: 0;
                 left: 50%;
+                width: 100%;
+                height: 100%;
                 transform: translateX(-50%);
-                width: 2px;
-                height: 2rem;
-                border-left: 2px dashed rgba(230, 57, 70, 0.6);
-                bottom: -2rem;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 800' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M 50 0 Q 20 50 20 100 Q 20 150 50 150 Q 80 150 80 200 Q 80 250 50 250 Q 20 250 20 300 Q 20 350 50 350 Q 80 350 80 400 Q 80 450 50 450 Q 20 450 20 500 Q 20 550 50 550 Q 80 550 80 600 Q 80 650 50 650 Q 20 650 20 700 Q 20 750 50 800' stroke='rgba(230, 57, 70, 0.5)' stroke-width='2' fill='none' stroke-dasharray='8,4' /%3E%3C/svg%3E");
+                background-repeat: repeat-y;
+                background-size: 100% auto;
                 z-index: 0;
-            }
-
-            #characters .flip-card-wrapper {
-                position: relative;
+                pointer-events: none;
             }
         }
 
