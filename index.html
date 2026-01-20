@@ -363,9 +363,26 @@
             background-clip: text;
         }
 
-        #maps h2::after,
+        #maps h2::before {
+            content: '🗺️ ';
+        }
+
+        #maps h2::after {
+            content: ' 🗺️';
+            background: none;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
+        }
+
+        #characters h2::before {
+            content: '🔪 ';
+        }
+
         #characters h2::after {
-            background: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-orange) 100%);
+            content: ' 🍴';
+            background: none;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
         }
 
         h2 {
@@ -384,6 +401,57 @@
             background-clip: text;
             animation: gradientShift 3s linear infinite;
             font-weight: 800;
+        }
+
+        /* Separatore tematico */
+        .separator-section {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 100%);
+            padding: 3rem 2rem;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            border-top: 2px solid rgba(230, 57, 70, 0.3);
+            border-bottom: 2px solid rgba(230, 57, 70, 0.3);
+        }
+
+        .separator-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .separator-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.6), transparent);
+        }
+
+        .separator-plus {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            animation: glowText 2s ease-in-out infinite;
+        }
+
+        .separator-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            text-align: center;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            animation: glowText 2s ease-in-out infinite;
+        }
+
+        @keyframes glowText {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(230, 57, 70, 0.8);
+            }
         }
 
         @keyframes gradientShift {
@@ -437,10 +505,6 @@
         .flip-card-wrapper:nth-child(6) { animation-delay: 0.6s; }
         .flip-card-wrapper:nth-child(7) { animation-delay: 0.7s; }
         .flip-card-wrapper:nth-child(8) { animation-delay: 0.8s; }
-
-        .flip-card-wrapper:hover {
-            /* Hover rimosso - le card non scompaiono più */
-        }
 
         .flip-card {
             position: relative;
@@ -534,6 +598,31 @@
         }
 
         .flip-card:hover .flip-icon {
+            animation: rotateFlip 0.6s ease-in-out;
+        }
+
+        /* Icona flip sul retro - colori inversi */
+        .flip-icon-back {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(245, 245, 245, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: var(--primary-red);
+            border: 2px solid rgba(230, 57, 70, 0.5);
+        }
+
+        .flip-card:hover .flip-icon-back {
             animation: rotateFlip 0.6s ease-in-out;
         }
 
@@ -1018,6 +1107,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Cucina Infernale</h3>
                             <p>Un'infuocata cucina piena di pericoli nascosti. I nemici sono veloci e senza pietà. Preparati allo scontro finale!</p>
@@ -1034,6 +1124,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Mercato Oscuro</h3>
                             <p>Un antico mercato avvolto dall'ombra. Gli ingredienti ribelli si nascondono tra i banchi. Stai attento ai colpi di sorpresa!</p>
@@ -1050,6 +1141,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Giardino Maledetto</h3>
                             <p>Vegetali selvaggi e verdure impazzite controllano questo giardino. La natura è la tua nemica, ma anche la tua alleata.</p>
@@ -1066,6 +1158,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Pantry Suprema</h3>
                             <p>La sala del tesoro dove gli ingredienti più potenti risiedono. Un'ultima sfida prima della vittoria finale!</p>
@@ -1076,9 +1169,18 @@
         </div>
     </section>
 
+    <!-- Separatore Tematico -->
+    <div class="separator-section">
+        <div class="separator-content">
+            <div class="separator-line"></div>
+            <div class="separator-text"> Affronta gli Ingredienti </div>
+            <div class="separator-line"></div>
+        </div>
+    </div>
+
     <!-- Characters Flip Grid -->
     <section id="characters">
-        <h2>Le Verdure Nemiche</h2>
+        <h2>Ingredienti Nemici</h2>
         <div class="flip-grid">
             <!-- Personaggio 1 -->
             <div class="flip-card-wrapper">
@@ -1088,6 +1190,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Carota Malefica</h3>
                             <p>Una carota che non penserà due volte prima di attaccarti con le sue radici letali! Veloce e imprevedibile.</p>
@@ -1104,6 +1207,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Grano Malvagio</h3>
                             <p>Un nemico resistente che si nasconde dietro la sua corazza dorata. Richiede strategie speciali per essere sconfitto.</p>
@@ -1120,6 +1224,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Latte Rancido</h3>
                             <p>Un nemico appiccicaticcio che lascia tracce sulla mappa. Evita il suo veleno e contrattacca con precisione!</p>
@@ -1136,6 +1241,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Pomodoro Marcio</h3>
                             <p>Un nemico che esplode proiettili in tutte le direzioni. Mantieni le distanze e attacca quando è vulnerabile!</p>
@@ -1152,6 +1258,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Patata Selvaggia</h3>
                             <p>Lenta ma estremamente resistente. Accumula terra per raddoppiare la sua difesa. Scegli il momento giusto per attaccare!</p>
@@ -1168,6 +1275,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Tonno Rapido</h3>
                             <p>Il re della velocità! Si muove alla luce del fulmine e colpisce da tutte le direzioni. Agile e mortale!</p>
@@ -1184,6 +1292,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Wasabi Piccante</h3>
                             <p>Piccolo ma devastante! Causa danni nel tempo e intossica i tuoi sensi. Restituisci il fuoco con fuoco!</p>
@@ -1200,6 +1309,7 @@
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Ramen Bollente</h3>
                             <p>Un nemico denso e appiccaticcio! Brucia tutto ciò che tocca e si regenera costantemente. Richiede una strategia particolare!</p>
