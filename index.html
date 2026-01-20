@@ -842,7 +842,41 @@
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
             #characters .flip-grid { grid-template-columns: 1fr; }
-            h2 { font-size: 1.8rem; }
+            
+            /* Layout zigzag per personaggi su mobile */
+            #characters .flip-card-wrapper {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #characters .flip-card-wrapper:nth-child(odd) {
+                margin-right: auto;
+                margin-left: 10%;
+                width: 80%;
+            }
+
+            #characters .flip-card-wrapper:nth-child(even) {
+                margin-left: auto;
+                margin-right: 10%;
+                width: 80%;
+            }
+
+            /* Filo tratteggiato che collega i personaggi */
+            #characters .flip-card-wrapper:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 2rem;
+                border-left: 2px dashed rgba(230, 57, 70, 0.6);
+                bottom: -2rem;
+                z-index: 0;
+            }
+
+            #characters .flip-card-wrapper {
+                position: relative;
+            }
         }
 
         /* Responsive */
