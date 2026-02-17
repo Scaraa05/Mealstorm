@@ -1148,6 +1148,39 @@
             display: flex;
         }
 
+        /* Mobile flip-card carousel (scroll-snap) */
+        .enemies-flip-carousel {
+            display: none;
+            position: relative;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+
+        .enemies-flip-carousel .enemies-track {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .enemies-flip-carousel .enemies-track .flip-card-wrapper {
+            flex: 0 0 82%;
+            min-width: 82%;
+            scroll-snap-align: center;
+            height: auto !important;
+            aspect-ratio: 1 / 1;
+            max-width: 420px;
+        }
+
+        .enemies-flip-carousel .carousel-arrow {
+            flex-shrink: 0;
+        }
+
         .enemy-simple-dot {
             width: 12px;
             height: 12px;
@@ -1175,11 +1208,16 @@
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
             #characters-first .flip-grid { display: none; }
-            #characters-first .enemies-simple-carousel { display: flex; }
-            #characters-first .enemies-simple-dots { display: flex; }
+            #characters-first .enemies-simple-carousel { display: none; }
+            #characters-first .enemies-flip-carousel { display: flex; }
+            #characters-first .enemies-dots { display: flex; }
             #characters-second .flip-grid { display: none; }
             .characters-divider { display: none; }
             h2 { font-size: 1.8rem; }
+            /* Make flip-card images cover the card on mobile */
+            .flip-card-wrapper { height: auto !important; }
+            .flip-card-front img { width: 100%; height: 100%; object-fit: cover; padding: 0; border-radius: 12px; }
+            .flip-card { height: 100%; }
         }
 
         /* Responsive */
@@ -1411,18 +1449,15 @@
             </div>
         </div>
 
-        <!-- Simple Image Carousel Mobile -->
-        <div class="enemies-simple-carousel">
+        <!-- Mobile Flip-card Carousel (uses flip-card wrappers) -->
+        <div class="enemies-flip-carousel" aria-hidden="false">
             <button class="carousel-arrow prev" aria-label="Previous enemy">❮</button>
-            <div class="carousel-image-slot" id="enemyImageSlot">
-                <img src="carota.png" alt="Nemico">
-            </div>
+            <div class="enemies-track" id="enemyCarouselSlot" role="list"></div>
             <button class="carousel-arrow next" aria-label="Next enemy">❯</button>
         </div>
 
-        <!-- Dots Navigation -->
-        <div class="enemies-simple-dots" id="enemySimpleDots">
-        </div>
+        <!-- Dots Navigation for flip-card carousel -->
+        <div class="enemies-dots" id="enemyDots"></div>
     </section>
 
     <!-- Divider Line -->
@@ -1575,129 +1610,140 @@
             parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
 
-        // Character Carousel for Mobile
-        let currentCharacterIndex = 0;
-        const characterCards = document.querySelectorAll('#characters-first .flip-grid .flip-card-wrapper, #characters-second .flip-grid .flip-card-wrapper');
-        const characterCarouselSlot = document.getElementById('characterCarouselSlot');
-        const characterDots = document.getElementById('characterDots');
-        const totalCharacters = characterCards.length;
+        // Character Carousel for Mobile (only initialize if container exists)
+        (function() {
+            const characterCarouselSlot = document.getElementById('characterCarouselSlot');
+            const characterDots = document.getElementById('characterDots');
+            if (!characterCarouselSlot || !characterDots) return;
 
-        // Crea i dots
-        function createCharacterDots() {
-            characterDots.innerHTML = '';
-            for (let i = 0; i < totalCharacters; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('character-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToCharacter(i));
-                characterDots.appendChild(dot);
+            let currentCharacterIndex = 0;
+            const characterCards = document.querySelectorAll('#characters-first .flip-grid .flip-card-wrapper, #characters-second .flip-grid .flip-card-wrapper');
+            const totalCharacters = characterCards.length;
+
+            // Crea i dots
+            function createCharacterDots() {
+                characterDots.innerHTML = '';
+                for (let i = 0; i < totalCharacters; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('character-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToCharacter(i));
+                    characterDots.appendChild(dot);
+                }
             }
-        }
 
-        // Mostra il personaggio corrente
-        function updateCharacterCarousel() {
-            characterCarouselSlot.innerHTML = '';
-            const clonedCard = characterCards[currentCharacterIndex].cloneNode(true);
-            characterCarouselSlot.appendChild(clonedCard);
+            // Mostra il personaggio corrente
+            function updateCharacterCarousel() {
+                characterCarouselSlot.innerHTML = '';
+                const clonedCard = characterCards[currentCharacterIndex].cloneNode(true);
+                characterCarouselSlot.appendChild(clonedCard);
 
-            // Aggiorna i dots
-            document.querySelectorAll('.character-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentCharacterIndex);
-            });
+                // Aggiorna i dots
+                document.querySelectorAll('.character-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentCharacterIndex);
+                });
 
-            // Ri-aggancia l'event listener per il flip
-            const clonedFlipCard = clonedCard.querySelector('.flip-card');
-            clonedFlipCard.addEventListener('click', function() {
-                this.classList.toggle('flipped');
-            });
-        }
+                // Ri-aggancia l'event listener per il flip
+                const clonedFlipCard = clonedCard.querySelector('.flip-card');
+                if (clonedFlipCard) clonedFlipCard.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+            }
 
-        // Vai a un personaggio specifico
-        function goToCharacter(index) {
-            currentCharacterIndex = index;
+            // Vai a un personaggio specifico
+            function goToCharacter(index) {
+                currentCharacterIndex = index;
+                updateCharacterCarousel();
+            }
+
+            // Prossimo personaggio
+            function nextCharacter() {
+                currentCharacterIndex = (currentCharacterIndex + 1) % totalCharacters;
+                updateCharacterCarousel();
+            }
+
+            // Personaggio precedente
+            function prevCharacter() {
+                currentCharacterIndex = (currentCharacterIndex - 1 + totalCharacters) % totalCharacters;
+                updateCharacterCarousel();
+            }
+
+            // Event listeners per i pulsanti
+            const nextBtn = document.querySelector('.characters-carousel-container .next');
+            const prevBtn = document.querySelector('.characters-carousel-container .prev');
+            if (nextBtn) nextBtn.addEventListener('click', nextCharacter);
+            if (prevBtn) prevBtn.addEventListener('click', prevCharacter);
+
+            // Inizializza il carosello
+            createCharacterDots();
             updateCharacterCarousel();
-        }
-
-        // Prossimo personaggio
-        function nextCharacter() {
-            currentCharacterIndex = (currentCharacterIndex + 1) % totalCharacters;
-            updateCharacterCarousel();
-        }
-
-        // Personaggio precedente
-        function prevCharacter() {
-            currentCharacterIndex = (currentCharacterIndex - 1 + totalCharacters) % totalCharacters;
-            updateCharacterCarousel();
-        }
-
-        // Event listeners per i pulsanti
-        document.querySelector('.characters-carousel-container .next').addEventListener('click', nextCharacter);
-        document.querySelector('.characters-carousel-container .prev').addEventListener('click', prevCharacter);
-
-        // Inizializza il carosello
-        createCharacterDots();
-        updateCharacterCarousel();
+        })();
 
         // Simple Image Carousel for Enemies (Mobile)
-        const enemyImages = ['carota.png', 'talpa.png', 'grano.png', 'pomodoro.png', 'latte.png'];
-        let currentEnemyImageIndex = 0;
-        const enemyImageSlot = document.getElementById('enemyImageSlot');
-        const enemySimpleDots = document.getElementById('enemySimpleDots');
+        // Initialize only if the simple carousel markup is present (we replaced it with flip carousel on mobile)
+        (function() {
+            const simpleCarousel = document.querySelector('.enemies-simple-carousel');
+            if (!simpleCarousel) return;
 
-        // Crea i dots per il carosello semplice
-        function createSimpleEnemyDots() {
-            enemySimpleDots.innerHTML = '';
-            for (let i = 0; i < enemyImages.length; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('enemy-simple-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSimpleEnemy(i));
-                enemySimpleDots.appendChild(dot);
+            const enemyImages = ['carota.png', 'talpa.png', 'grano.png', 'pomodoro.png', 'latte.png'];
+            let currentEnemyImageIndex = 0;
+            const enemyImageSlot = document.getElementById('enemyImageSlot');
+            const enemySimpleDots = document.getElementById('enemySimpleDots');
+
+            if (!enemyImageSlot || !enemySimpleDots) return;
+
+            // Crea i dots per il carosello semplice
+            function createSimpleEnemyDots() {
+                enemySimpleDots.innerHTML = '';
+                for (let i = 0; i < enemyImages.length; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('enemy-simple-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSimpleEnemy(i));
+                    enemySimpleDots.appendChild(dot);
+                }
+                enemySimpleDots.classList.add('active');
             }
-            enemySimpleDots.classList.add('active');
-        }
 
-        // Aggiorna il carosello semplice
-        function updateSimpleEnemyCarousel() {
-            enemyImageSlot.innerHTML = `<img src="${enemyImages[currentEnemyImageIndex]}" alt="Nemico">`;
-            document.querySelectorAll('.enemy-simple-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentEnemyImageIndex);
-            });
-        }
+            // Aggiorna il carosello semplice
+            function updateSimpleEnemyCarousel() {
+                enemyImageSlot.innerHTML = `<img src="${enemyImages[currentEnemyImageIndex]}" alt="Nemico">`;
+                document.querySelectorAll('.enemy-simple-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentEnemyImageIndex);
+                });
+            }
 
-        // Vai a un nemico specifico
-        function goToSimpleEnemy(index) {
-            currentEnemyImageIndex = index;
-            updateSimpleEnemyCarousel();
-        }
+            // Vai a un nemico specifico
+            function goToSimpleEnemy(index) {
+                currentEnemyImageIndex = index;
+                updateSimpleEnemyCarousel();
+            }
 
-        // Prossimo nemico
-        function nextSimpleEnemy() {
-            currentEnemyImageIndex = (currentEnemyImageIndex + 1) % enemyImages.length;
-            updateSimpleEnemyCarousel();
-        }
+            // Prossimo nemico
+            function nextSimpleEnemy() {
+                currentEnemyImageIndex = (currentEnemyImageIndex + 1) % enemyImages.length;
+                updateSimpleEnemyCarousel();
+            }
 
-        // Nemico precedente
-        function prevSimpleEnemy() {
-            currentEnemyImageIndex = (currentEnemyImageIndex - 1 + enemyImages.length) % enemyImages.length;
-            updateSimpleEnemyCarousel();
-        }
+            // Nemico precedente
+            function prevSimpleEnemy() {
+                currentEnemyImageIndex = (currentEnemyImageIndex - 1 + enemyImages.length) % enemyImages.length;
+                updateSimpleEnemyCarousel();
+            }
 
-        // Event listeners per il carosello semplice
-        const simpleCarousel = document.querySelector('.enemies-simple-carousel');
-        if (simpleCarousel) {
-            simpleCarousel.querySelector('.next').addEventListener('click', nextSimpleEnemy);
-            simpleCarousel.querySelector('.prev').addEventListener('click', prevSimpleEnemy);
+            // Event listeners per il carosello semplice
+            if (simpleCarousel.querySelector('.next')) simpleCarousel.querySelector('.next').addEventListener('click', nextSimpleEnemy);
+            if (simpleCarousel.querySelector('.prev')) simpleCarousel.querySelector('.prev').addEventListener('click', prevSimpleEnemy);
             simpleCarousel.classList.add('active');
-        }
 
-        // Inizializza il carosello semplice
-        createSimpleEnemyDots();
-        updateSimpleEnemyCarousel();
+            // Inizializza il carosello semplice
+            createSimpleEnemyDots();
+            updateSimpleEnemyCarousel();
+        })();
 
         // Enemy Carousel for Mobile
         let currentEnemyIndex = 0;
-        const enemyCards = document.querySelectorAll('#characters-second .flip-grid .flip-card-wrapper');
+        const enemyCards = document.querySelectorAll('#characters-first .flip-grid .flip-card-wrapper, #characters-second .flip-grid .flip-card-wrapper');
         const enemyCarouselSlot = document.getElementById('enemyCarouselSlot');
         const enemyDots = document.getElementById('enemyDots');
         const totalEnemies = enemyCards.length;
@@ -1727,7 +1773,7 @@
 
             // Ri-aggancia l'event listener per il flip
             const clonedFlipCard = clonedCard.querySelector('.flip-card');
-            clonedFlipCard.addEventListener('click', function() {
+            if (clonedFlipCard) clonedFlipCard.addEventListener('click', function() {
                 this.classList.toggle('flipped');
             });
         }
@@ -1750,10 +1796,10 @@
             updateEnemyCarousel();
         }
 
-        // Event listeners per i pulsanti dei nemici
-        const enemyNextBtn = document.querySelector('.enemies-carousel-container .next');
-        const enemyPrevBtn = document.querySelector('.enemies-carousel-container .prev');
-        
+        // Event listeners per i pulsanti dei nemici (mobile flip carousel)
+        const enemyNextBtn = document.querySelector('.enemies-flip-carousel .next');
+        const enemyPrevBtn = document.querySelector('.enemies-flip-carousel .prev');
+
         if (enemyNextBtn) enemyNextBtn.addEventListener('click', nextEnemy);
         if (enemyPrevBtn) enemyPrevBtn.addEventListener('click', prevEnemy);
 
