@@ -1225,12 +1225,20 @@
             .btn { padding:0.8rem 1.2rem; }
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
-            #characters-first .flip-grid { display: none; }
-            #characters-first .enemies-simple-carousel { display: none; }
-            #characters-first .enemies-flip-carousel { display: flex; }
-            #characters-first .enemies-dots { display: flex; }
-            #characters-second .flip-grid { display: none; }
+                /* Mobile: show flip-grids in 2x, 2x, 1 centered layout */
+                #characters-first .flip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+                #characters-first .enemies-simple-carousel { display: none; }
+                #characters-first .enemies-flip-carousel { display: none; }
+                #characters-first .enemies-dots { display: none; }
+                #characters-second .flip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
             .characters-divider { display: none; }
+            /* Center the third card of the second row */
+            #characters-second .flip-card-wrapper:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 70%;
+                max-width: 520px;
+            }
             h2 { font-size: 1.8rem; }
             /* Make flip-card images cover the card on mobile */
             .flip-card-wrapper { height: auto !important; }
@@ -1521,15 +1529,7 @@
             </div>
         </div>
 
-        <!-- Mobile Flip-card Carousel (uses flip-card wrappers) -->
-        <div class="enemies-flip-carousel" aria-hidden="false">
-            <button class="carousel-arrow prev" aria-label="Previous enemy">❮</button>
-            <div class="enemies-track" id="enemyCarouselSlot" role="list"></div>
-            <button class="carousel-arrow next" aria-label="Next enemy">❯</button>
-        </div>
-
-        <!-- Dots Navigation for flip-card carousel -->
-        <div class="enemies-dots" id="enemyDots"></div>
+        <!-- Mobile: show native flip-card grids (no carousel) -->
     </section>
 
     <!-- Divider Line -->
@@ -1813,71 +1813,7 @@
             updateSimpleEnemyCarousel();
         })();
 
-        // Enemy Carousel for Mobile
-        let currentEnemyIndex = 0;
-        const enemyCards = document.querySelectorAll('#characters-first .flip-grid .flip-card-wrapper, #characters-second .flip-grid .flip-card-wrapper');
-        const enemyCarouselSlot = document.getElementById('enemyCarouselSlot');
-        const enemyDots = document.getElementById('enemyDots');
-        const totalEnemies = enemyCards.length;
-
-        // Crea i dots per i nemici
-        function createEnemyDots() {
-            enemyDots.innerHTML = '';
-            for (let i = 0; i < totalEnemies; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('enemy-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToEnemy(i));
-                enemyDots.appendChild(dot);
-            }
-        }
-
-        // Mostra il nemico corrente
-        function updateEnemyCarousel() {
-            enemyCarouselSlot.innerHTML = '';
-            const clonedCard = enemyCards[currentEnemyIndex].cloneNode(true);
-            enemyCarouselSlot.appendChild(clonedCard);
-
-            // Aggiorna i dots
-            document.querySelectorAll('.enemy-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentEnemyIndex);
-            });
-
-            // Ri-aggancia l'event listener per il flip
-            const clonedFlipCard = clonedCard.querySelector('.flip-card');
-            if (clonedFlipCard) clonedFlipCard.addEventListener('click', function() {
-                this.classList.toggle('flipped');
-            });
-        }
-
-        // Vai a un nemico specifico
-        function goToEnemy(index) {
-            currentEnemyIndex = index;
-            updateEnemyCarousel();
-        }
-
-        // Prossimo nemico
-        function nextEnemy() {
-            currentEnemyIndex = (currentEnemyIndex + 1) % totalEnemies;
-            updateEnemyCarousel();
-        }
-
-        // Nemico precedente
-        function prevEnemy() {
-            currentEnemyIndex = (currentEnemyIndex - 1 + totalEnemies) % totalEnemies;
-            updateEnemyCarousel();
-        }
-
-        // Event listeners per i pulsanti dei nemici (mobile flip carousel)
-        const enemyNextBtn = document.querySelector('.enemies-flip-carousel .next');
-        const enemyPrevBtn = document.querySelector('.enemies-flip-carousel .prev');
-
-        if (enemyNextBtn) enemyNextBtn.addEventListener('click', nextEnemy);
-        if (enemyPrevBtn) enemyPrevBtn.addEventListener('click', prevEnemy);
-
-        // Inizializza il carosello nemici
-        createEnemyDots();
-        updateEnemyCarousel();
+        // Removed mobile enemy carousel — using native flip-card grids on mobile (2-2-1 layout)
 
     </script>
 </body>
