@@ -1169,12 +1169,30 @@
         }
 
         .enemies-flip-carousel .enemies-track .flip-card-wrapper {
-            flex: 0 0 82%;
-            min-width: 82%;
+            flex: 0 0 92%;
+            min-width: 92%;
             scroll-snap-align: center;
             height: auto !important;
             aspect-ratio: 1 / 1;
-            max-width: 420px;
+            max-width: 640px;
+        }
+
+        .enemies-flip-carousel .enemies-track .flip-card {
+            height: 100%;
+            display: block;
+        }
+
+        /* Larger arrows and dots for touch friendliness */
+        .enemies-flip-carousel .carousel-arrow {
+            width: 56px;
+            height: 56px;
+            font-size: 1.6rem;
+        }
+
+        .enemies-dots .enemy-dot,
+        .enemies-simple-dots .enemy-simple-dot {
+            width: 14px;
+            height: 14px;
         }
 
         .enemies-flip-carousel .carousel-arrow {
