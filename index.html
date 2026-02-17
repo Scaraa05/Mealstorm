@@ -78,6 +78,8 @@
             background-color: var(--dark-bg);
             color: var(--light-text);
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         /* Navbar */
@@ -486,8 +488,77 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
+        .flip-card.construction {
+            position: relative;
+        }
+
+        .flip-card.construction::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                #ffd60a,
+                #ffd60a 20px,
+                #000000 20px,
+                #000000 40px
+            );
+            pointer-events: none;
+            z-index: 5;
+            border-radius: 15px;
+        }
+
+        .construction-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(230, 57, 70, 0.95);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
         #characters .flip-grid {
             grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* Character grids separate */
+        #characters-first .flip-grid {
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #characters-second .flip-grid {
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            max-width: 1350px;
+            margin: 0 auto;
+        }
+
+        .characters-divider {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-red) 20%, var(--primary-red) 80%, transparent);
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.6);
+            margin: 2rem 0;
+        }
+
+        #characters-first .flip-card-wrapper,
+        #characters-second .flip-card-wrapper {
+            width: 100%;
+            max-width: 350px;
         }
 
         .flip-card-wrapper {
@@ -788,12 +859,12 @@
         /* About Section */
         .about-content {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(230, 57, 70, 0.1) 100%);
-            padding: 3rem;
+            padding: clamp(2rem, 5vw, 4rem);
             border-radius: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(230, 57, 70, 0.2);
             display: flex;
-            gap: 3rem;
+            gap: clamp(2rem, 5vw, 3rem);
             align-items: center;
             position: relative;
             overflow: hidden;
@@ -832,8 +903,8 @@
         }
 
         .about-image {
-            flex: 0 0 300px;
-            min-width: 250px;
+            flex: 0 0 clamp(200px, 30vw, 350px);
+            min-width: 200px;
             position: relative;
             z-index: 2;
         }
@@ -852,6 +923,22 @@
         }
 
         /* Download Section Background Image */
+        #download {
+            background-color: var(--dark-bg);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 5rem calc(50vw - 50% + 2rem);
+            max-width: 100vw;
+        }
+
+        .download-content {
+            background: transparent;
+            border: none;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         #download .about-content {
             background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
                         url('mealstormeye.png') center/cover no-repeat;
@@ -861,12 +948,12 @@
         /* Footer */
         footer {
             background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(20, 5, 5, 0.98) 100%);
-            padding: 3rem 2rem;
             text-align: center;
-            border-top: 3px solid;
-            border-image: linear-gradient(90deg, var(--primary-red) 0%, var(--accent-orange) 100%) 1;
-            position: relative;
             overflow: hidden;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 3rem calc(50vw - 50% + 2rem);
+            max-width: 100vw;
         }
 
         footer::before {
@@ -940,6 +1027,78 @@
             display: block;
         }
 
+        /* Carousel mobili per characters */
+        .characters-carousel-container {
+            display: none;
+            position: relative;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .characters-carousel-container.active {
+            display: flex;
+        }
+
+        .carousel-arrow {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--hover-red) 100%);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .carousel-arrow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.5);
+        }
+
+        .carousel-card-wrapper {
+            flex: 1;
+            max-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .characters-dots {
+            display: none;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .characters-dots.active {
+            display: flex;
+        }
+
+        .character-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .character-dot.active {
+            background: var(--primary-red);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
+        }
+
         
 
         @media (max-width: 480px) {
@@ -950,7 +1109,9 @@
             .btn { padding:0.8rem 1.2rem; }
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
-            #characters .flip-grid { grid-template-columns: 1fr; }
+            #characters .flip-grid { display: none; }
+            #characters .characters-carousel-container { display: flex; }
+            #characters .characters-dots { display: flex; }
             h2 { font-size: 1.8rem; }
         }
 
@@ -1070,7 +1231,7 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2>Il Gioco</h2>
+        <h2>MEALSTORM</h2>
         <div class="about-content">
             <div class="about-text">
                 <p>
@@ -1118,50 +1279,15 @@
 
             <!-- Mappa 2 -->
             <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="map">
+                <div class="flip-card construction" data-flip="map">
                     <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Mercato+Oscuro" alt="Mercato Oscuro">
-                        <div class="flip-icon">↻</div>
+                        <div class="construction-badge">In Costruzione</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
                         <div class="flip-icon-back">↻</div>
                         <div>
                             <h3>Mercato Oscuro</h3>
                             <p>Un antico mercato avvolto dall'ombra. Gli ingredienti ribelli si nascondono tra i banchi. Stai attento ai colpi di sorpresa!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mappa 3 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="map">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Giardino+Maledetto" alt="Giardino Maledetto">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Giardino Maledetto</h3>
-                            <p>Vegetali selvaggi e verdure impazzite controllano questo giardino. La natura è la tua nemica, ma anche la tua alleata.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mappa 4 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="map">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Pantry+Suprema" alt="Pantry Suprema">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Pantry Suprema</h3>
-                            <p>La sala del tesoro dove gli ingredienti più potenti risiedono. Un'ultima sfida prima della vittoria finale!</p>
                         </div>
                     </div>
                 </div>
@@ -1178,141 +1304,113 @@
         </div>
     </div>
 
-    <!-- Characters Flip Grid -->
-    <section id="characters">
+    <div class="white-bg-wrapper">
+    <!-- Characters Flip Grid - First Row (2 characters) -->
+    <section id="characters-first">
         <h2>Ingredienti Nemici</h2>
         <div class="flip-grid">
-            <!-- Personaggio 1 -->
+            <!-- Carota -->
             <div class="flip-card-wrapper">
                 <div class="flip-card" data-flip="character">
                     <div class="flip-card-face flip-card-front">
-                        <img src="carotaa.png" alt="Carota malefica">
+                        <img src="carota.png" alt="Carota trottola">
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
                         <div class="flip-icon-back">↻</div>
                         <div>
-                            <h3>Carota Malefica</h3>
-                            <p>Una carota che non penserà due volte prima di attaccarti con le sue radici letali! Veloce e imprevedibile.</p>
+                            <h3>Carota Trottola</h3>
+                            <p>Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Personaggio 2 -->
+            <!-- Patata -->
             <div class="flip-card-wrapper">
                 <div class="flip-card" data-flip="character">
                     <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Grano+Malvagio" alt="Grano malvagio">
+                        <img src="talpa.png" alt="Talpa con pentola">
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
                         <div class="flip-icon-back">↻</div>
                         <div>
-                            <h3>Grano Malvagio</h3>
-                            <p>Un nemico resistente che si nasconde dietro la sua corazza dorata. Richiede strategie speciali per essere sconfitto.</p>
+                            <h3>Patata con pentola</h3>
+                            <p>Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Mobile per Characters (First Row) -->
+        <div class="characters-carousel-container">
+            <button class="carousel-arrow prev" aria-label="Previous character">❮</button>
+            <div class="carousel-card-wrapper" id="characterCarouselSlot">
+                <!-- Il carosello popola qui tramite JavaScript -->
+            </div>
+            <button class="carousel-arrow next" aria-label="Next character">❯</button>
+        </div>
+
+        <!-- Dots Navigation (First Row) -->
+        <div class="characters-dots" id="characterDots">
+            <!-- I dot si popoleranno dinamicamente via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Divider Line -->
+    <div class="characters-divider"></div>
+
+    <!-- Characters Flip Grid - Second Row (3 characters) -->
+    <section id="characters-second">
+        <div class="flip-grid">
+            <!-- Grano -->
+            <div class="flip-card-wrapper">
+                <div class="flip-card" data-flip="character">
+                    <div class="flip-card-face flip-card-front">
+                        <img src="grano.png" alt="Grano corona">
+                        <div class="flip-icon">↻</div>
+                    </div>
+                    <div class="flip-card-face flip-card-back">
+                        <div class="flip-icon-back">↻</div>
+                        <div>
+                            <h3>Grano con corona</h3>
+                            <p>Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Personaggio 3 -->
+            <!-- Pomodoro -->
             <div class="flip-card-wrapper">
                 <div class="flip-card" data-flip="character">
                     <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Latte+Rancido" alt="Latte rancido">
+                        <img src="pomodoro.png" alt="Pomodoro esplosivo">
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
                         <div class="flip-icon-back">↻</div>
                         <div>
-                            <h3>Latte Rancido</h3>
-                            <p>Un nemico appiccicaticcio che lascia tracce sulla mappa. Evita il suo veleno e contrattacca con precisione!</p>
+                            <h3>Pomodoro Esplosivo</h3>
+                            <p>Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Personaggio 4 -->
+            <!-- Latte -->
             <div class="flip-card-wrapper">
                 <div class="flip-card" data-flip="character">
                     <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Pomodoro+Marcio" alt="Pomodoro marcio">
+                        <img src="latte.png" alt="Latte che piange">
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
                         <div class="flip-icon-back">↻</div>
                         <div>
-                            <h3>Pomodoro Marcio</h3>
-                            <p>Un nemico che esplode proiettili in tutte le direzioni. Mantieni le distanze e attacca quando è vulnerabile!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personaggio 5 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Patata+Selvaggia" alt="Patata selvaggia">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Patata Selvaggia</h3>
-                            <p>Lenta ma estremamente resistente. Accumula terra per raddoppiare la sua difesa. Scegli il momento giusto per attaccare!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personaggio 6 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Tonno+Rapido" alt="Tonno rapido">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Tonno Rapido</h3>
-                            <p>Il re della velocità! Si muove alla luce del fulmine e colpisce da tutte le direzioni. Agile e mortale!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personaggio 7 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Wasabi+Piccante" alt="Wasabi piccante">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Wasabi Piccante</h3>
-                            <p>Piccolo ma devastante! Causa danni nel tempo e intossica i tuoi sensi. Restituisci il fuoco con fuoco!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personaggio 8 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Ramen+Bollente" alt="Ramen bollente">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Ramen Bollente</h3>
-                            <p>Un nemico denso e appiccaticcio! Brucia tutto ciò che tocca e si regenera costantemente. Richiede una strategia particolare!</p>
+                            <h3>Latte scolta che piange</h3>
+                            <p>Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi</p>
                         </div>
                     </div>
                 </div>
@@ -1324,7 +1422,7 @@
     <!-- Download Section -->
     <section id="download">
         <h2>Inizia l'Avventura</h2>
-        <div class="about-content" style="text-align: center;">
+        <div class="about-content download-content">
             <p style="font-size: 1.5rem; margin-bottom: 2rem;">
                 Scarica Mealstorm ora e preparati a cucinare la vittoria!
             </p>
@@ -1384,7 +1482,9 @@
         // Flip card functionality
         document.querySelectorAll('.flip-card').forEach(card => {
             card.addEventListener('click', function() {
-                this.classList.toggle('flipped');
+                if (!this.classList.contains('construction')) {
+                    this.classList.toggle('flipped');
+                }
             });
         });
 
@@ -1409,6 +1509,68 @@
             parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
 
+        // Character Carousel for Mobile
+        let currentCharacterIndex = 0;
+        const characterCards = document.querySelectorAll('#characters .flip-grid .flip-card-wrapper');
+        const characterCarouselSlot = document.getElementById('characterCarouselSlot');
+        const characterDots = document.getElementById('characterDots');
+        const totalCharacters = characterCards.length;
+
+        // Crea i dots
+        function createCharacterDots() {
+            characterDots.innerHTML = '';
+            for (let i = 0; i < totalCharacters; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('character-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToCharacter(i));
+                characterDots.appendChild(dot);
+            }
+        }
+
+        // Mostra il personaggio corrente
+        function updateCharacterCarousel() {
+            characterCarouselSlot.innerHTML = '';
+            const clonedCard = characterCards[currentCharacterIndex].cloneNode(true);
+            characterCarouselSlot.appendChild(clonedCard);
+
+            // Aggiorna i dots
+            document.querySelectorAll('.character-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentCharacterIndex);
+            });
+
+            // Ri-aggancia l'event listener per il flip
+            const clonedFlipCard = clonedCard.querySelector('.flip-card');
+            clonedFlipCard.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+        }
+
+        // Vai a un personaggio specifico
+        function goToCharacter(index) {
+            currentCharacterIndex = index;
+            updateCharacterCarousel();
+        }
+
+        // Prossimo personaggio
+        function nextCharacter() {
+            currentCharacterIndex = (currentCharacterIndex + 1) % totalCharacters;
+            updateCharacterCarousel();
+        }
+
+        // Personaggio precedente
+        function prevCharacter() {
+            currentCharacterIndex = (currentCharacterIndex - 1 + totalCharacters) % totalCharacters;
+            updateCharacterCarousel();
+        }
+
+        // Event listeners per i pulsanti
+        document.querySelector('.characters-carousel-container .next').addEventListener('click', nextCharacter);
+        document.querySelector('.characters-carousel-container .prev').addEventListener('click', prevCharacter);
+
+        // Inizializza il carosello
+        createCharacterDots();
+        updateCharacterCarousel();
 
     </script>
 </body>
