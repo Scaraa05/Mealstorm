@@ -1157,10 +1157,9 @@
             .btn { padding:0.8rem 1.2rem; }
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
-            #characters .flip-grid { display: none; }
-            #characters .characters-carousel-container { display: flex; }
-            #characters .characters-dots { display: flex; }
             #characters-first .flip-grid { display: none; }
+            #characters-first .characters-carousel-container { display: flex; }
+            #characters-first .characters-dots { display: flex; }
             #characters-second .flip-grid { display: none; }
             .enemies-carousel-container { display: flex; }
             .enemies-dots { display: flex; }
@@ -1578,7 +1577,7 @@
 
         // Character Carousel for Mobile
         let currentCharacterIndex = 0;
-        const characterCards = document.querySelectorAll('#characters .flip-grid .flip-card-wrapper');
+        const characterCards = document.querySelectorAll('#characters-first .flip-grid .flip-card-wrapper, #characters-second .flip-grid .flip-card-wrapper');
         const characterCarouselSlot = document.getElementById('characterCarouselSlot');
         const characterDots = document.getElementById('characterDots');
         const totalCharacters = characterCards.length;
