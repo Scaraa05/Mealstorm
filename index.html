@@ -1160,12 +1160,10 @@
             #maps .flip-grid { grid-template-columns: 1fr; }
             #characters-first .flip-grid { display: none; }
             #characters-first .characters-carousel-container { display: flex; }
+            #characters-first .characters-carousel-container .carousel-card-wrapper { max-width: 100%; padding: 0 10px; }
+            #characters-first .characters-carousel-container .flip-card-wrapper { height: 450px !important; width: 100% !important; }
             #characters-first .characters-dots { display: flex; }
             #characters-second .flip-grid { display: none; }
-            .enemies-carousel-container { display: flex; }
-            .enemies-carousel-container .carousel-card-wrapper { max-width: 100%; padding: 0 10px; }
-            .enemies-carousel-container .flip-card-wrapper { height: 450px !important; width: 100% !important; }
-            .enemies-dots { display: flex; }
             .characters-divider { display: none; }
             h2 { font-size: 1.8rem; }
         }
@@ -1470,20 +1468,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Carousel Mobile per Nemici -->
-        <div class="enemies-carousel-container">
-            <button class="carousel-arrow prev" aria-label="Previous enemy">❮</button>
-            <div class="carousel-card-wrapper" id="enemyCarouselSlot">
-                <!-- Il carosello popola qui tramite JavaScript -->
-            </div>
-            <button class="carousel-arrow next" aria-label="Next enemy">❯</button>
-        </div>
-
-        <!-- Dots Navigation (Nemici) -->
-        <div class="enemies-dots" id="enemyDots">
-            <!-- I dot si popoleranno dinamicamente via JavaScript -->
         </div>
     </section>
     </div>
