@@ -1240,36 +1240,20 @@
                 max-width: 520px;
             }
             h2 { font-size: 1.8rem; }
-            /* Make flip-card images cover the card on mobile */
-            .flip-card-wrapper { height: auto !important; }
-            .flip-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 0; border-radius: 12px; }
-            .flip-card { height: 100%; }
+            /* Make flip-card images cover the card on mobile and match desktop behavior */
+            .flip-card-wrapper { height: auto !important; aspect-ratio: 4 / 3; width: 100%; max-width: 760px; margin-left: auto; margin-right: auto; }
+            .flip-card { height: 100%; display: flex; }
+            .flip-card-face { padding: 0.6rem; }
+            .flip-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 0; border-radius: 12px; display:block; }
+            .flip-card-back h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+            .flip-card-back p { font-size: 1rem; line-height: 1.5; }
 
             /* Stronger overrides to make carousel flip-cards larger on small devices */
-            .enemies-flip-carousel .enemies-track {
-                padding: 1rem 0.5rem;
-            }
+            /* Ensure any carousel remnants don't affect the native grids */
+            .enemies-flip-carousel, .enemies-simple-carousel { display: none !important; }
 
-            .enemies-flip-carousel .enemies-track .flip-card-wrapper {
-                flex: 0 0 96% !important;
-                min-width: 360px !important;
-                max-width: 820px !important;
-                scroll-snap-align: center;
-                height: 520px !important;
-                aspect-ratio: 4 / 3 !important;
-            }
-
-            .enemies-flip-carousel .enemies-track .flip-card {
-                height: 100% !important;
-            }
-
-            /* Make front images fill fully and show centered */
-            .enemies-flip-carousel .flip-card-front img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                border-radius: 14px;
-            }
+            /* Make front images fill fully and show centered like desktop */
+            .flip-card-front img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
         }
 
         /* Responsive */
@@ -1449,14 +1433,16 @@
             <div class="flip-card-wrapper">
                 <div class="flip-card" data-flip="map">
                     <div class="flip-card-face flip-card-front">
-                        <img src="https://via.placeholder.com/500x400/e63946/ffffff?text=Cucina+Infernale" alt="Cucina Infernale">
+                        <img src="mappa1.png" alt="Cucina Infernale">
                         <div class="flip-icon">↻</div>
                     </div>
                     <div class="flip-card-face flip-card-back">
                         <div class="flip-icon-back">↻</div>
                         <div>
-                            <h3>Cucina Infernale</h3>
-                            <p>Un'infuocata cucina piena di pericoli nascosti. I nemici sono veloci e senza pietà. Preparati allo scontro finale!</p>
+                            <h3>Trattoria</h3>
+                            <p>Una trattoria dove ogni stanza è una battaglia: dal forno rovente alla cantina dei vini, 
+                                passando per la sala da pranzo della nonna. Sopravvivi fino all’Antica Sala del Banchetto per affrontare 
+                                il Boss definitivo!</p>
                         </div>
                     </div>
                 </div>
