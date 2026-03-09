@@ -210,12 +210,8 @@
         }
 
         @keyframes floatLogo {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .hero .tagline {
@@ -271,43 +267,18 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes cardHoverGlow {
-            0%, 100% {
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            }
-            50% {
-                box-shadow: 0 15px 50px rgba(230, 57, 70, 0.4);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(10px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Prezzo */
@@ -323,7 +294,6 @@
             box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
         }
 
-        /* selezione stile */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -336,7 +306,6 @@
             color: #333;
         }
 
-        /* Contenitore wrapper per sfondo bianco */
         .white-bg-wrapper {
             background-color: #f5f5f5;
             width: 100vw;
@@ -365,10 +334,7 @@
             background-clip: text;
         }
 
-        #maps h2::before {
-            content: '🗺️ ';
-        }
-
+        #maps h2::before { content: '🗺️ '; }
         #maps h2::after {
             content: ' 🗺️';
             background: none;
@@ -376,10 +342,7 @@
             background-clip: unset;
         }
 
-        #characters h2::before {
-            content: '🔪 ';
-        }
-
+        #characters h2::before { content: '🔪 '; }
         #characters h2::after {
             content: ' 🍴';
             background: none;
@@ -405,7 +368,6 @@
             font-weight: 800;
         }
 
-        /* Separatore tematico */
         .separator-section {
             background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 100%);
             padding: 3rem 2rem;
@@ -430,13 +392,6 @@
             background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.6), transparent);
         }
 
-        .separator-plus {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary-red);
-            animation: glowText 2s ease-in-out infinite;
-        }
-
         .separator-text {
             font-size: 1.5rem;
             font-weight: bold;
@@ -448,12 +403,8 @@
         }
 
         @keyframes glowText {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(230, 57, 70, 0.8);
-            }
+            0%, 100% { text-shadow: 0 0 10px rgba(230, 57, 70, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(230, 57, 70, 0.8); }
         }
 
         @keyframes gradientShift {
@@ -474,7 +425,10 @@
             box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
         }
 
-        /* Flip Card Grid */
+        /* =====================================================
+           FLIP CARD — FIX PRINCIPALE
+           ===================================================== */
+
         .flip-grid {
             display: grid;
             gap: 2rem;
@@ -495,16 +449,11 @@
         .flip-card.construction::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: repeating-linear-gradient(
                 45deg,
-                #ffd60a,
-                #ffd60a 20px,
-                #000000 20px,
-                #000000 40px
+                #ffd60a, #ffd60a 20px,
+                #000000 20px, #000000 40px
             );
             pointer-events: none;
             z-index: 5;
@@ -528,11 +477,6 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
-        #characters .flip-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        /* Character grids separate */
         #characters-first .flip-grid {
             grid-template-columns: repeat(2, 1fr);
             justify-items: center;
@@ -577,55 +521,50 @@
         .flip-card-wrapper:nth-child(7) { animation-delay: 0.7s; }
         .flip-card-wrapper:nth-child(8) { animation-delay: 0.8s; }
 
+        /* Contenitore della card: deve preservare il 3D */
         .flip-card {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.6s ease, box-shadow 0.3s ease;
             cursor: pointer;
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
             border-radius: 15px;
+            /* Transizione flip + hover scale */
+            transition: transform 0.65s ease, box-shadow 0.3s ease;
         }
 
+        /* Hover: leggero ingrandimento (solo se NON è in fase di flip) */
         .flip-card:hover {
-            transform: scale(1.08);
             box-shadow: 0 0 30px rgba(230, 57, 70, 0.8), 0 10px 40px rgba(230, 57, 70, 0.6);
         }
 
+        /* Stato flippato */
         .flip-card.flipped {
             transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
         }
 
-        .flip-card.flipped:hover {
-            transform: rotateY(180deg) scale(1.08);
-            -webkit-transform: rotateY(180deg) scale(1.08);
-            box-shadow: 0 0 30px rgba(230, 57, 70, 0.8), 0 10px 40px rgba(230, 57, 70, 0.6);
-        }
-
+        /* Le due facce: ENTRAMBE absolute, backface hidden */
         .flip-card-face {
-            position: absolute;
+            position: absolute;         /* ← fondamentale */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             overflow: hidden;
         }
 
+        /* Faccia frontale */
         .flip-card-front {
             background: #f5f5f5;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: all 0.4s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            /* NON ha transform — è la faccia "0°" */
         }
 
         #characters .flip-card-front {
@@ -641,17 +580,7 @@
             border-radius: 15px;
         }
 
-        /* Zoom rimosso dall'immagine */
-
-        @keyframes rotateFlip {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
+        /* Icona flip — fronte */
         .flip-icon {
             position: absolute;
             top: 15px;
@@ -672,11 +601,16 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
+        @keyframes rotateFlip {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .flip-card:hover .flip-icon {
             animation: rotateFlip 0.6s ease-in-out;
         }
 
-        /* Icona flip sul retro - colori inversi */
+        /* Icona flip — retro */
         .flip-icon-back {
             position: absolute;
             top: 15px;
@@ -701,10 +635,9 @@
             animation: rotateFlip 0.6s ease-in-out;
         }
 
+        /* Faccia posteriore: ruotata di 180° di default → invisibile finché il contenitore non viene flippato */
         .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            transform: rotateY(180deg);          /* ← la ruota al contrario */
             background: linear-gradient(135deg, rgba(230, 57, 70, 0.95) 0%, rgba(193, 18, 31, 0.95) 100%);
             padding: 2rem;
             display: flex;
@@ -712,11 +645,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            transform: rotateY(180deg);
-            top: 0;
-            left: 0;
         }
 
         .flip-card-back h3 {
@@ -735,134 +663,12 @@
             font-weight: 500;
         }
 
-        /* Carosello */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
+        /* =====================================================
+           ABOUT / DOWNLOAD / FOOTER
+           ===================================================== */
 
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(230, 57, 70, 0.08) 100%);
-            backdrop-filter: blur(10px);
-        }
-
-        .carousel-image {
-            flex: 0 0 250px;
-            width: 250px;
-            height: 250px;
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .carousel-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-            z-index: 1;
-        }
-
-        .carousel-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .carousel-text {
-            flex: 1;
-        }
-
-        .carousel-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-red);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .carousel-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ddd;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .carousel-btn {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--hover-red) 100%);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            background: linear-gradient(135deg, var(--hover-red) 0%, #a01819 100%);
-            transform: scale(1.15);
-            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.5);
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .dot.active {
-            background: var(--primary-red);
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
-        }
-
-        /* About Section */
         .about-content {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(230, 57, 70, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(230,57,70,0.1) 100%);
             padding: clamp(2rem, 5vw, 4rem);
             border-radius: 10px;
             backdrop-filter: blur(10px);
@@ -877,11 +683,9 @@
         .about-content::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 60%, rgba(255, 141, 66, 0.05) 0%, transparent 50%);
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 60%, rgba(255,141,66,0.05) 0%, transparent 50%);
             animation: floatGradient 8s ease-in-out infinite;
             pointer-events: none;
         }
@@ -900,11 +704,7 @@
             z-index: 1;
         }
 
-        .about-text {
-            flex: 1;
-            position: relative;
-            z-index: 2;
-        }
+        .about-text { flex: 1; position: relative; z-index: 2; }
 
         .about-image {
             flex: 0 0 clamp(200px, 30vw, 350px);
@@ -919,14 +719,11 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
             transition: transform 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255,255,255,0.1);
         }
 
-        .about-image img:hover {
-            transform: scale(1.05);
-        }
+        .about-image img:hover { transform: scale(1.05); }
 
-        /* Download Section Background Image */
         #download {
             background-color: var(--dark-bg);
             width: 100vw;
@@ -944,14 +741,13 @@
         }
 
         #download .about-content {
-            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+            background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.7)),
                         url('mealstormeye.png') center/cover no-repeat;
             backdrop-filter: blur(5px);
         }
 
-        /* Footer */
         footer {
-            background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(20, 5, 5, 0.98) 100%);
+            background: linear-gradient(180deg, rgba(10,10,10,0.98) 0%, rgba(20,5,5,0.98) 100%);
             text-align: center;
             overflow: hidden;
             width: 100vw;
@@ -963,20 +759,13 @@
         footer::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
         }
 
-        footer p {
-            color: #bbb;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
+        footer p { color: #bbb; font-weight: 500; letter-spacing: 0.5px; }
 
-        /* Social follow under download */
         .social-follow {
             margin-top: 2rem;
             display: flex;
@@ -987,21 +776,13 @@
             animation: slideUp 0.8s ease;
         }
 
-        .social-follow .label {
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
+        .social-follow .label { font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px; }
 
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
+        .social-icons { display: flex; gap: 1rem; }
 
         .social-icons a {
             display: inline-flex;
-            width: 56px;
-            height: 56px;
+            width: 56px; height: 56px;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
@@ -1018,389 +799,39 @@
             border-color: rgba(230,57,70,0.22);
         }
 
-        .social-icons svg {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
+        .social-icons img { width: 70%; height: 70%; object-fit: contain; display: block; }
 
-        .social-icons img {
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-            display: block;
-        }
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
 
-        /* Carousel mobili per characters */
-        .characters-carousel-container {
-            display: none;
-            position: relative;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 1rem;
-        }
-
-        .characters-carousel-container.active {
-            display: flex;
-        }
-
-        .carousel-arrow {
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--hover-red) 100%);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: white;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            flex-shrink: 0;
-        }
-
-        .carousel-arrow:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.5);
-        }
-
-        .carousel-card-wrapper {
-            flex: 1;
-            max-width: 300px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .carousel-card-wrapper .flip-card-wrapper {
-            opacity: 1 !important;
-            animation: none !important;
-            height: 400px !important;
-        }
-
-        .characters-dots {
-            display: none;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            width: 100%;
-        }
-
-        .characters-dots.active {
-            display: flex;
-        }
-
-        .character-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .character-dot.active {
-            background: var(--primary-red);
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
-        }
-
-        /* Simple Image Carousel */
-        .enemies-simple-carousel {
-            display: none;
-            position: relative;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 1rem;
-        }
-
-        .enemies-simple-carousel.active {
-            display: flex;
-        }
-
-        .carousel-image-slot {
-            flex: 1;
-            max-width: 400px;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .carousel-image-slot img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .enemies-simple-dots {
-            display: none;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            width: 100%;
-        }
-
-        .enemies-simple-dots.active {
-            display: flex;
-        }
-
-        /* Mobile flip-card carousel (scroll-snap) */
-        .enemies-flip-carousel {
-            display: none;
-            position: relative;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1.5rem;
-            gap: 1rem;
-        }
-
-        .enemies-flip-carousel .enemies-track {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .enemies-flip-carousel .enemies-track .flip-card-wrapper {
-            flex: 0 0 92%;
-            min-width: 92%;
-            scroll-snap-align: center;
-            height: auto !important;
-            aspect-ratio: 1 / 1;
-            max-width: 640px;
-        }
-
-        .enemies-flip-carousel .enemies-track .flip-card {
-            height: 100%;
-            display: block;
-        }
-
-        /* Larger arrows and dots for touch friendliness */
-        .enemies-flip-carousel .carousel-arrow {
-            width: 56px;
-            height: 56px;
-            font-size: 1.6rem;
-        }
-
-        .enemies-dots .enemy-dot,
-        .enemies-simple-dots .enemy-simple-dot {
-            width: 14px;
-            height: 14px;
-        }
-
-        .enemies-flip-carousel .carousel-arrow {
-            flex-shrink: 0;
-        }
-
-        .enemy-simple-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .enemy-simple-dot.active {
-            background: var(--primary-red);
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
-        }
-
-        /* ===== MOBILE CAROUSEL NEMICI ===== */
-        .mobile-enemies-carousel {
-            display: none;
-            width: 100%;
-            padding: 1.5rem 0;
-        }
-
-        .mobile-enemies-carousel.active {
-            display: block;
-        }
-
-        .carousel-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-            padding: 0 1rem;
-            box-sizing: border-box;
-        }
-
-        .carousel-btn {
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--hover-red) 100%);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
-        }
-
-        .carousel-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
-        }
-
-        .carousel-btn:active {
-            transform: scale(0.95);
-        }
-
-        .carousel-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .enemy-card {
-            background: linear-gradient(135deg, rgba(230, 57, 70, 0.08) 0%, rgba(230, 57, 70, 0.03) 100%);
-            border: 2px solid rgba(230, 57, 70, 0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            min-width: 0;
-        }
-
-        .enemy-card:hover {
-            border-color: rgba(230, 57, 70, 0.6);
-            background: linear-gradient(135deg, rgba(230, 57, 70, 0.12) 0%, rgba(230, 57, 70, 0.06) 100%);
-        }
-
-        .enemy-card-image {
-            width: 100%;
-            height: 250px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 0.5rem;
-        }
-
-        .enemy-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .enemy-card-text h3 {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--accent-yellow);
-            margin: 0 0 0.5rem 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .enemy-card-text p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #ddd;
-            margin: 0;
-        }
-
-        @media (max-width: 480px) {
-            .auth-modal { width: calc(100% - 32px); }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .social-icons a { width:48px; height:48px; }
-            .social-icons svg { width:22px; height:22px; }
-            .btn { padding:0.8rem 1.2rem; }
-            .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
-            #maps .flip-grid { grid-template-columns: 1fr; }
-            
-            /* SHOW MOBILE CAROUSEL FOR CHARACTERS, HIDE FLIP-GRID */
-            #characters-first .mobile-enemies-carousel { display: block !important; }
-            #characters-first .mobile-enemies-carousel.active { display: block !important; }
-            #characters-first .flip-grid { display: none !important; }
-            
-            .characters-divider { display: none; }
-            h2 { font-size: 1.8rem; }
-            
-            /* Make flip-card images cover the card on mobile and match desktop behavior */
-            .flip-card-wrapper { height: auto !important; aspect-ratio: 4 / 3; width: 100%; max-width: 760px; margin-left: auto; margin-right: auto; }
-            .flip-card { height: 100%; display: flex; }
-            .flip-card-face { padding: 0.6rem; }
-            .flip-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 0; border-radius: 12px; display:block; }
-            .flip-card-back h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-            .flip-card-back p { font-size: 1rem; line-height: 1.5; }
-
-            /* Ensure any carousel remnants don't affect the native grids */
-            .enemies-flip-carousel, .enemies-simple-carousel { display: none !important; }
-
-            /* Make front images fill fully and show centered like desktop */
-            .flip-card-front img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
+            .hamburger { display: flex; }
 
             .nav-links {
                 position: fixed;
                 top: 70px;
                 right: -100%;
                 flex-direction: column;
-                background: rgba(10, 10, 10, 0.98);
+                background: rgba(10,10,10,0.98);
                 width: 100%;
                 padding: 2rem;
                 transition: right 0.3s ease;
             }
 
-            .nav-links.active {
-                right: 0;
-            }
+            .nav-links.active { right: 0; }
 
-            .logo-hero {
-                max-width: 350px;
-            }
+            .logo-hero { max-width: 350px; }
+            .hero .tagline { font-size: 1.2rem; }
+            .cta-buttons { flex-direction: column; }
+            .about-content { flex-direction: column; }
+            .about-image { flex: 0 0 auto; }
+            h2 { font-size: 2rem; }
 
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
+            .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            #maps .flip-grid { grid-template-columns: 1fr; }
+            #characters .flip-grid { grid-template-columns: 1fr; }
 
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .carousel-item {
-                flex-direction: column;
-                padding: 2rem;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .flip-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            /* Use a consistent 4:3 card format on tablet/mobile */
             .flip-card-wrapper {
                 aspect-ratio: 4 / 3;
                 height: auto !important;
@@ -1409,9 +840,7 @@
                 margin-right: auto;
             }
 
-            .flip-card {
-                height: 100%;
-            }
+            .flip-card { height: 100%; }
 
             .flip-card-front img {
                 width: 100%;
@@ -1420,41 +849,37 @@
                 padding: 0.5rem;
                 border-radius: 12px;
             }
-
-            .enemies-flip-carousel .enemies-track .flip-card-wrapper {
-                min-width: 88% !important;
-                aspect-ratio: 4 / 3 !important;
-                height: auto !important;
-                max-width: 780px !important;
-            }
-
-            #maps .flip-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #characters .flip-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                flex: 0 0 auto;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
         }
 
-        /* Parallax effect */
+        @media (max-width: 480px) {
+            .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
+            #maps .flip-grid { grid-template-columns: 1fr; }
+            #characters-first .flip-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            #characters-second .flip-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            #characters-second .flip-card-wrapper:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 90%;
+                max-width: 400px;
+            }
+            .characters-divider { display: none; }
+            h2 { font-size: 1.8rem; }
+            .flip-card-wrapper { height: auto !important; aspect-ratio: 4 / 3; width: 100%; }
+            .flip-card { height: 100%; }
+            .flip-card-face { padding: 0.6rem; }
+            .flip-card-front img { width: 100%; height: 100%; object-fit: contain; padding: 0; border-radius: 12px; display: block; }
+            .flip-card-back h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+            .flip-card-back p { font-size: 1rem; line-height: 1.5; }
+            .btn { padding: 0.8rem 1.2rem; }
+        }
+
+        /* Parallax */
         .parallax-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
-            background: 
-                linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
         }
     </style>
 </head>
@@ -1464,20 +889,16 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <!-- Qui metterai il tuo logo: <img src="logo.png" alt="Mealstorm Logo" class="logo-nav"> -->
             <img src="mealstorm_logo.png" alt="Mealstorm Logo" class="logo-nav">
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Gioco</a></li>
                 <li><a href="#maps">Mappe</a></li>
-                <li><a href="#characters">Personaggi</a></li>
+                <li><a href="#characters">Ingredienti</a></li>
                 <li><a href="#download">Download</a></li>
-                
             </ul>
             <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -1522,179 +943,141 @@
     </section>
 
     <div class="white-bg-wrapper">
-    <!-- Maps Flip Grid -->
-    <section id="maps">
-        <h2>Mappe Epiche</h2>
-        <div class="flip-grid">
-            <!-- Mappa 1 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="map">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="mappa1.png" alt="Trattoria">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
+        <!-- Maps Flip Grid -->
+        <section id="maps">
+            <h2>Mappe Epiche</h2>
+            <div class="flip-grid">
+                <!-- Mappa 1 -->
+                <div class="flip-card-wrapper">
+                    <div class="flip-card" data-flip="map">
+                        <div class="flip-card-face flip-card-front">
+                            <img src="mappa1.png" alt="Trattoria">
+                            <div class="flip-icon">↻</div>
+                        </div>
+                        <div class="flip-card-face flip-card-back">
+                            <div class="flip-icon-back">↻</div>
                             <h3>Trattoria</h3>
                             <p>Una trattoria dove ogni stanza è una battaglia: dal forno rovente alla cantina dei vini, 
-                                passando per la sala da pranzo della nonna. Sopravvivi fino all’Antica Sala del Banchetto per affrontare 
+                                passando per la sala da pranzo della nonna. Sopravvivi fino all'Antica Sala del Banchetto per affrontare 
                                 il Boss definitivo!</p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Mappa 2 -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card construction" data-flip="map">
-                    <div class="flip-card-face flip-card-front">
-                        <div class="construction-badge">In Costruzione</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
+                <!-- Mappa 2 -->
+                <div class="flip-card-wrapper">
+                    <div class="flip-card construction" data-flip="map">
+                        <div class="flip-card-face flip-card-front">
+                            <div class="construction-badge">In Costruzione</div>
+                        </div>
+                        <div class="flip-card-face flip-card-back">
+                            <div class="flip-icon-back">↻</div>
                             <h3>Mercato Oscuro</h3>
                             <p>Un antico mercato avvolto dall'ombra. Gli ingredienti ribelli si nascondono tra i banchi. Stai attento ai colpi di sorpresa!</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Separatore Tematico -->
-    <div class="separator-section">
-        <div class="separator-content">
-            <div class="separator-line"></div>
-            <div class="separator-text"> Affronta gli Ingredienti </div>
-            <div class="separator-line"></div>
-        </div>
-    </div>
-
-    <div class="white-bg-wrapper">
-    <!-- Characters Flip Grid - First Row (2 characters) -->
-    <section id="characters-first">
-        <h2>Ingredienti Nemici</h2>
-        
-        <!-- Mobile Carousel -->
-        <div class="mobile-enemies-carousel">
-            <div class="carousel-wrapper">
-                <button class="carousel-btn carousel-prev" aria-label="Nemico precedente">❮</button>
-                
-                <div class="carousel-content">
-                    <div class="enemy-card">
-                        <div class="enemy-card-image">
-                            <img id="carouselImage" src="carota.png" alt="Nemico">
-                        </div>
-                        <div class="enemy-card-text">
-                            <h3 id="carouselName">Carota Trottola</h3>
-                            <p id="carouselDesc">Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="carousel-btn carousel-next" aria-label="Nemico successivo">❯</button>
-            </div>
-        </div>
-        
-        <div class="flip-grid">
-            <!-- Carota -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="carota.png" alt="Carota trottola">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Carota Trottola</h3>
-                            <p>Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Patata -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="talpa.png" alt="Talpa con pentola">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Patata con pentola</h3>
-                            <p>Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Separatore Tematico -->
+        <div class="separator-section">
+            <div class="separator-content">
+                <div class="separator-line"></div>
+                <div class="separator-text"> Affronta gli Ingredienti </div>
+                <div class="separator-line"></div>
             </div>
         </div>
 
-        <!-- Mobile: show native flip-card grids (no carousel) -->
-    </section>
-
-    <!-- Divider Line -->
-    <div class="characters-divider"></div>
-
-    <!-- Characters Flip Grid - Second Row (3 characters) -->
-    <section id="characters-second">
-        <div class="flip-grid">
-            <!-- Grano -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="grano.png" alt="Grano corona">
-                        <div class="flip-icon">↻</div>
+        <div class="white-bg-wrapper">
+            <!-- Characters - Prima riga (2 personaggi) -->
+            <section id="characters-first">
+                <h2>Ingredienti Nemici</h2>
+                <div class="flip-grid">
+                    <!-- Carota -->
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card" data-flip="character">
+                            <div class="flip-card-face flip-card-front">
+                                <img src="carota.png" alt="Carota trottola">
+                                <div class="flip-icon">↻</div>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <div class="flip-icon-back">↻</div>
+                                <h3>Carota Trottola</h3>
+                                <p>Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Grano con corona</h3>
-                            <p>Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!</p>
+
+                    <!-- Patata -->
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card" data-flip="character">
+                            <div class="flip-card-face flip-card-front">
+                                <img src="talpa.png" alt="Talpa con pentola">
+                                <div class="flip-icon">↻</div>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <div class="flip-icon-back">↻</div>
+                                <h3>Patata con pentola</h3>
+                                <p>Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Pomodoro -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="pomodoro.png" alt="Pomodoro esplosivo">
-                        <div class="flip-icon">↻</div>
+            <div class="characters-divider"></div>
+
+            <!-- Characters - Seconda riga (3 personaggi) -->
+            <section id="characters-second">
+                <div class="flip-grid">
+                    <!-- Grano -->
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card" data-flip="character">
+                            <div class="flip-card-face flip-card-front">
+                                <img src="grano.png" alt="Grano corona">
+                                <div class="flip-icon">↻</div>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <div class="flip-icon-back">↻</div>
+                                <h3>Grano con corona</h3>
+                                <p>Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Pomodoro Esplosivo</h3>
-                            <p>Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti</p>
+
+                    <!-- Pomodoro -->
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card" data-flip="character">
+                            <div class="flip-card-face flip-card-front">
+                                <img src="pomodoro.png" alt="Pomodoro esplosivo">
+                                <div class="flip-icon">↻</div>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <div class="flip-icon-back">↻</div>
+                                <h3>Pomodoro Esplosivo</h3>
+                                <p>Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latte -->
+                    <div class="flip-card-wrapper">
+                        <div class="flip-card" data-flip="character">
+                            <div class="flip-card-face flip-card-front">
+                                <img src="latte.png" alt="Latte che piange">
+                                <div class="flip-icon">↻</div>
+                            </div>
+                            <div class="flip-card-face flip-card-back">
+                                <div class="flip-icon-back">↻</div>
+                                <h3>Latte scolta che piange</h3>
+                                <p>Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Latte -->
-            <div class="flip-card-wrapper">
-                <div class="flip-card" data-flip="character">
-                    <div class="flip-card-face flip-card-front">
-                        <img src="latte.png" alt="Latte che piange">
-                        <div class="flip-icon">↻</div>
-                    </div>
-                    <div class="flip-card-face flip-card-back">
-                        <div class="flip-icon-back">↻</div>
-                        <div>
-                            <h3>Latte scolta che piange</h3>
-                            <p>Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
     </div>
 
     <!-- Download Section -->
@@ -1704,7 +1087,6 @@
             <p style="font-size: 1.5rem; margin-bottom: 2rem;">
                 Scarica Mealstorm ora e preparati a cucinare la vittoria!
             </p>
-            
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">Download per Windows</a>
                 <a href="#" class="btn btn-secondary">Download per Mac</a>
@@ -1713,12 +1095,10 @@
         <div class="social-follow" aria-label="Follow us">
             <div class="label">Follow us on</div>
             <div class="social-icons" role="group" aria-label="Social links">
-                <a href="https://www.instagram.com/mealstorm_game/" id="instagram-link" aria-label="Instagram" title="Instagram">
-                    <!-- Sostituisci il valore di src con il percorso della tua PNG Instagram -->
+                <a href="https://www.instagram.com/mealstorm_game/" aria-label="Instagram" title="Instagram">
                     <img src="instagram.png" alt="Instagram">
                 </a>
-                <a href="https://www.tiktok.com/@mealstorm_official" id="tiktok-link" aria-label="TikTok" title="TikTok">
-                    <!-- Sostituisci il valore di src con il percorso della tua PNG TikTok -->
+                <a href="https://www.tiktok.com/@mealstorm_official" aria-label="TikTok" title="TikTok">
                     <img src="tiktok.png" alt="TikTok">
                 </a>
             </div>
@@ -1730,260 +1110,44 @@
         <p>&copy; 2025 Mealstorm. Tutti i diritti riservati.</p>
     </footer>
 
-
     <script>
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
+        const navLinks  = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // Flip card functionality - Make sure we wait for DOM
-        function initializeFlipCards() {
-            const flipCards = document.querySelectorAll('.flip-card');
-            console.log('Found flip cards:', flipCards.length);
-            flipCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    if (!this.classList.contains('construction')) {
-                        this.classList.toggle('flipped');
-                        console.log('Card flipped, class:', this.className);
-                    }
-                });
+        // ── FLIP CARD ──────────────────────────────────────────────
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function () {
+                if (!this.classList.contains('construction')) {
+                    this.classList.toggle('flipped');
+                }
             });
-        }
-
-        // Initialize on DOM ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeFlipCards);
-        } else {
-            initializeFlipCards();
-        }
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
         // Parallax effect
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.parallax-bg');
-            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            parallax.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
         });
-
-        // Character Carousel for Mobile (only initialize if container exists)
-        (function() {
-            const characterCarouselSlot = document.getElementById('characterCarouselSlot');
-            const characterDots = document.getElementById('characterDots');
-            if (!characterCarouselSlot || !characterDots) return;
-
-            let currentCharacterIndex = 0;
-            const characterCards = document.querySelectorAll('#characters-first .flip-grid .flip-card-wrapper, #characters-second .flip-grid .flip-card-wrapper');
-            const totalCharacters = characterCards.length;
-
-            // Crea i dots
-            function createCharacterDots() {
-                characterDots.innerHTML = '';
-                for (let i = 0; i < totalCharacters; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('character-dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToCharacter(i));
-                    characterDots.appendChild(dot);
-                }
-            }
-
-            // Mostra il personaggio corrente
-            function updateCharacterCarousel() {
-                characterCarouselSlot.innerHTML = '';
-                const clonedCard = characterCards[currentCharacterIndex].cloneNode(true);
-                characterCarouselSlot.appendChild(clonedCard);
-
-                // Aggiorna i dots
-                document.querySelectorAll('.character-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentCharacterIndex);
-                });
-
-                // Ri-aggancia l'event listener per il flip
-                const clonedFlipCard = clonedCard.querySelector('.flip-card');
-                if (clonedFlipCard) clonedFlipCard.addEventListener('click', function() {
-                    this.classList.toggle('flipped');
-                });
-            }
-
-            // Vai a un personaggio specifico
-            function goToCharacter(index) {
-                currentCharacterIndex = index;
-                updateCharacterCarousel();
-            }
-
-            // Prossimo personaggio
-            function nextCharacter() {
-                currentCharacterIndex = (currentCharacterIndex + 1) % totalCharacters;
-                updateCharacterCarousel();
-            }
-
-            // Personaggio precedente
-            function prevCharacter() {
-                currentCharacterIndex = (currentCharacterIndex - 1 + totalCharacters) % totalCharacters;
-                updateCharacterCarousel();
-            }
-
-            // Event listeners per i pulsanti
-            const nextBtn = document.querySelector('.characters-carousel-container .next');
-            const prevBtn = document.querySelector('.characters-carousel-container .prev');
-            if (nextBtn) nextBtn.addEventListener('click', nextCharacter);
-            if (prevBtn) prevBtn.addEventListener('click', prevCharacter);
-
-            // Inizializza il carosello
-            createCharacterDots();
-            updateCharacterCarousel();
-        })();
-
-        // Simple Image Carousel for Enemies (Mobile)
-        // Initialize only if the simple carousel markup is present (we replaced it with flip carousel on mobile)
-        (function() {
-            const simpleCarousel = document.querySelector('.enemies-simple-carousel');
-            if (!simpleCarousel) return;
-
-            const enemyImages = ['carota.png', 'talpa.png', 'grano.png', 'pomodoro.png', 'latte.png'];
-            let currentEnemyImageIndex = 0;
-            const enemyImageSlot = document.getElementById('enemyImageSlot');
-            const enemySimpleDots = document.getElementById('enemySimpleDots');
-
-            if (!enemyImageSlot || !enemySimpleDots) return;
-
-            // Crea i dots per il carosello semplice
-            function createSimpleEnemyDots() {
-                enemySimpleDots.innerHTML = '';
-                for (let i = 0; i < enemyImages.length; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('enemy-simple-dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToSimpleEnemy(i));
-                    enemySimpleDots.appendChild(dot);
-                }
-                enemySimpleDots.classList.add('active');
-            }
-
-            // Aggiorna il carosello semplice
-            function updateSimpleEnemyCarousel() {
-                enemyImageSlot.innerHTML = `<img src="${enemyImages[currentEnemyImageIndex]}" alt="Nemico">`;
-                document.querySelectorAll('.enemy-simple-dot').forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentEnemyImageIndex);
-                });
-            }
-
-            // Vai a un nemico specifico
-            function goToSimpleEnemy(index) {
-                currentEnemyImageIndex = index;
-                updateSimpleEnemyCarousel();
-            }
-
-            // Prossimo nemico
-            function nextSimpleEnemy() {
-                currentEnemyImageIndex = (currentEnemyImageIndex + 1) % enemyImages.length;
-                updateSimpleEnemyCarousel();
-            }
-
-            // Nemico precedente
-            function prevSimpleEnemy() {
-                currentEnemyImageIndex = (currentEnemyImageIndex - 1 + enemyImages.length) % enemyImages.length;
-                updateSimpleEnemyCarousel();
-            }
-
-            // Event listeners per il carosello semplice
-            if (simpleCarousel.querySelector('.next')) simpleCarousel.querySelector('.next').addEventListener('click', nextSimpleEnemy);
-            if (simpleCarousel.querySelector('.prev')) simpleCarousel.querySelector('.prev').addEventListener('click', prevSimpleEnemy);
-            simpleCarousel.classList.add('active');
-
-            // Inizializza il carosello semplice
-            createSimpleEnemyDots();
-            updateSimpleEnemyCarousel();
-        })();
-
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.parallax-bg');
-            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
-
-        // Mobile Enemies Carousel
-        (function() {
-            const enemies = [
-                { name: "Carota Trottola", desc: "Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!", image: "carota.png" },
-                { name: "Patata con pentola", desc: "Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!", image: "talpa.png" },
-                { name: "Grano con corona", desc: "Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!", image: "grano.png" },
-                { name: "Pomodoro Esplosivo", desc: "Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti", image: "pomodoro.png" },
-                { name: "Latte scolta che piange", desc: "Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi", image: "latte.png" }
-            ];
-
-            let currentIndex = 0;
-
-            const carousel = document.querySelector('.mobile-enemies-carousel');
-            if (!carousel) return;
-
-            const prevBtn = carousel.querySelector('.carousel-prev');
-            const nextBtn = carousel.querySelector('.carousel-next');
-            const imageEl = carousel.querySelector('#carouselImage');
-            const nameEl = carousel.querySelector('#carouselName');
-            const descEl = carousel.querySelector('#carouselDesc');
-
-            if (!prevBtn || !nextBtn || !imageEl || !nameEl || !descEl) return;
-
-            function updateCarousel() {
-                const enemy = enemies[currentIndex];
-                imageEl.src = enemy.image;
-                imageEl.alt = enemy.name;
-                nameEl.textContent = enemy.name;
-                descEl.textContent = enemy.desc;
-            }
-
-            function nextEnemy() {
-                currentIndex = (currentIndex + 1) % enemies.length;
-                updateCarousel();
-            }
-
-            function prevEnemy() {
-                currentIndex = (currentIndex - 1 + enemies.length) % enemies.length;
-                updateCarousel();
-            }
-
-            prevBtn.addEventListener('click', prevEnemy);
-            nextBtn.addEventListener('click', nextEnemy);
-
-            carousel.classList.add('active');
-            updateCarousel();
-        })();
+    </script>
 </body>
 </html>
