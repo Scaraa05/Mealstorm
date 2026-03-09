@@ -805,61 +805,53 @@
            ENEMY CAROUSEL — MOBILE ONLY
            ===================================================== */
 
-        /* Hidden on desktop, revealed in the media query below */
         .enemy-carousel {
-            display: none;
+            display: none;          /* shown only in mobile media query */
             width: 100%;
             margin-top: 1.5rem;
         }
 
-        /* Row: [←] [stage] [→] */
-        .enemy-carousel-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-        }
-
-        /* The visible window — clips the sliding track */
+        /* Stage: full width, overflow hidden, arrows sit on top */
         .enemy-stage {
-            flex: 1;
-            overflow: hidden;
             position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
-        /* The sliding strip of cards */
+        /*
+         * CRITICAL — use margin-left, NOT transform/translateX.
+         * translateX on a parent creates a new stacking context on
+         * mobile WebKit which FLATTENS the 3D flip of children.
+         * margin-left does NOT create a stacking context.
+         */
         .enemy-track {
             display: flex;
-            gap: 12px;
-            transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            /* CRITICAL: keep 3D context alive through the translateX transform */
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
+            gap: 16px;
+            /* transition on margin-left is safe for 3D children */
+            transition: margin-left 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* NO transform-style here — keep default flat, 3D lives on .flip-card only */
         }
 
-        /* Each card slot — width set in JS */
+        /* Each slide — width set by JS */
         .enemy-slide {
             flex: 0 0 auto;
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
+            /* NO transform, NO filter, NO opacity<1 here to avoid stacking-context issues */
+            transition: opacity 0.35s ease;
         }
 
-        /* Non-active slides are dimmed / slightly shrunk */
+        /* Peek cards: just fade — no blur/scale which would create stacking contexts */
         .enemy-slide.slide-dim {
-            opacity: 0.42;
-            filter: blur(1.5px);
-            transform: scale(0.92);
-            pointer-events: none; /* can't flip side cards */
+            opacity: 0.38;
+            pointer-events: none;
         }
 
-        /* The flip-card-wrapper inside the carousel */
+        /* Flip-card-wrapper inside carousel */
         .enemy-slide .flip-card-wrapper {
             width: 100%;
-            aspect-ratio: 5 / 6;    /* portrait: shows art + readable back text */
+            aspect-ratio: 3 / 4;       /* tall portrait = big art + legible back text */
             height: auto !important;
             perspective: 900px;
-            opacity: 1 !important;  /* override slideUp animation */
+            opacity: 1 !important;
             animation: none !important;
         }
 
@@ -867,48 +859,51 @@
             height: 100%;
         }
 
-        /* Arrow buttons */
+        /* Overlay arrow buttons — positioned over the peeking areas */
         .enemy-car-arrow {
-            flex-shrink: 0;
-            width: 38px;
-            height: 38px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 44px;
+            height: 44px;
             background: var(--primary-red);
             border: none;
             border-radius: 50%;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             line-height: 1;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 3px 12px rgba(230, 57, 70, 0.45);
-            transition: opacity 0.25s, transform 0.2s, background 0.2s;
-            align-self: center; /* vertically centered relative to stage */
+            box-shadow: 0 3px 14px rgba(230, 57, 70, 0.55);
+            transition: opacity 0.2s, background 0.2s;
         }
+
+        .enemy-car-arrow.arrow-prev { left: 4px; }
+        .enemy-car-arrow.arrow-next { right: 4px; }
 
         .enemy-car-arrow:disabled {
-            opacity: 0.3;
+            opacity: 0.25;
             cursor: default;
-            transform: none !important;
         }
 
-        .enemy-car-arrow:not(:disabled):hover {
-            transform: scale(1.12);
+        .enemy-car-arrow:not(:disabled):active {
             background: var(--hover-red);
         }
 
-        /* Dots row */
+        /* Dots */
         .enemy-car-dots {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 1rem;
+            margin-top: 1.1rem;
         }
 
         .enemy-car-dot {
-            width: 10px;
-            height: 10px;
+            width: 11px;
+            height: 11px;
             border-radius: 50%;
             background: rgba(51, 51, 51, 0.28);
             border: 1px solid rgba(51, 51, 51, 0.2);
@@ -922,31 +917,30 @@
             box-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
         }
 
-        /* ── Readable flip-card text inside carousel ── */
+        /* Readable text on the back face inside carousel */
         .enemy-slide .flip-card-back {
-            padding: 0.9rem 0.85rem;
-            gap: 0;
+            padding: 1.2rem 1rem;
         }
 
         .enemy-slide .flip-card-back h3 {
-            font-size: clamp(0.85rem, 3.8vw, 1.05rem);
-            margin-bottom: 0.35rem;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         .enemy-slide .flip-card-back p {
-            font-size: clamp(0.72rem, 3.2vw, 0.85rem);
-            line-height: 1.4;
+            font-size: 0.9rem;
+            line-height: 1.55;
         }
 
         .enemy-slide .flip-icon,
         .enemy-slide .flip-icon-back {
-            width: 30px;
-            height: 30px;
-            font-size: 1.1rem;
-            top: 8px;
-            right: 8px;
+            width: 34px;
+            height: 34px;
+            font-size: 1.2rem;
+            top: 10px;
+            right: 10px;
         }
 
         /* =====================================================
@@ -1182,10 +1176,12 @@
                  Shows all 5 enemies with peek of prev/next card
                  ══════════════════════════════════════════════════════ -->
             <div class="enemy-carousel" id="enemyCarousel">
-                <div class="enemy-carousel-row">
-                    <button class="enemy-car-arrow" id="enemyCarPrev" aria-label="Precedente">&#8249;</button>
-                    <div class="enemy-stage" id="enemyCarStage">
-                        <div class="enemy-track" id="enemyCarTrack">
+                <div class="enemy-stage" id="enemyCarStage">
+                    <!-- Overlay arrows — sit on top of the stage -->
+                    <button class="enemy-car-arrow arrow-prev" id="enemyCarPrev" aria-label="Precedente">&#8249;</button>
+                    <button class="enemy-car-arrow arrow-next" id="enemyCarNext" aria-label="Successivo">&#8250;</button>
+
+                    <div class="enemy-track" id="enemyCarTrack">
 
                             <!-- Slide 1: Carota -->
                             <div class="enemy-slide">
@@ -1274,8 +1270,6 @@
 
                         </div><!-- /enemy-track -->
                     </div><!-- /enemy-stage -->
-                    <button class="enemy-car-arrow" id="enemyCarNext" aria-label="Successivo">&#8250;</button>
-                </div><!-- /enemy-carousel-row -->
 
                 <div class="enemy-car-dots" id="enemyCarDots"></div>
             </div><!-- /enemy-carousel -->
@@ -1379,12 +1373,16 @@
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // ── FLIP CARD ──────────────────────────────────────────────
+        // ── FLIP CARD (global — maps + desktop + carousel cards) ──
+        // Single listener for ALL flip-cards.
+        // For carousel cards: skip if the slide is dimmed (side preview cards).
         document.querySelectorAll('.flip-card').forEach(card => {
             card.addEventListener('click', function () {
-                if (!this.classList.contains('construction')) {
-                    this.classList.toggle('flipped');
-                }
+                if (this.classList.contains('construction')) return;
+                // If inside a carousel slide, only flip if it's the active (non-dimmed) card
+                const slide = this.closest('.enemy-slide');
+                if (slide && slide.classList.contains('slide-dim')) return;
+                this.classList.toggle('flipped');
             });
         });
 
@@ -1402,23 +1400,25 @@
             const parallax = document.querySelector('.parallax-bg');
             parallax.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
         });
+
         // ── ENEMY CAROUSEL (mobile only) ─────────────────────────
         (function () {
-            const carousel  = document.getElementById('enemyCarousel');
-            const stage     = document.getElementById('enemyCarStage');
-            const track     = document.getElementById('enemyCarTrack');
-            const prevBtn   = document.getElementById('enemyCarPrev');
-            const nextBtn   = document.getElementById('enemyCarNext');
-            const dotsWrap  = document.getElementById('enemyCarDots');
+            const carousel = document.getElementById('enemyCarousel');
+            const stage    = document.getElementById('enemyCarStage');
+            const track    = document.getElementById('enemyCarTrack');
+            const prevBtn  = document.getElementById('enemyCarPrev');
+            const nextBtn  = document.getElementById('enemyCarNext');
+            const dotsWrap = document.getElementById('enemyCarDots');
             if (!carousel || !stage || !track) return;
 
-            const slides    = Array.from(track.querySelectorAll('.enemy-slide'));
-            const TOTAL     = slides.length;
-            const GAP       = 12; // must match CSS gap
-            const CARD_RATIO = 0.78; // card occupies 78 % of stage width → 11 % peek each side
-            let current     = 0;
+            const slides = Array.from(track.querySelectorAll('.enemy-slide'));
+            const TOTAL  = slides.length;
+            const GAP    = 16; // px — matches CSS gap
+            // Active card = 80% of stage, leaving ~10% peek on each side
+            const RATIO  = 0.80;
+            let current  = 0;
 
-            /* ── Build dot indicators ─────────────────── */
+            /* Build dots */
             slides.forEach((_, i) => {
                 const dot = document.createElement('div');
                 dot.className = 'enemy-car-dot' + (i === 0 ? ' active' : '');
@@ -1426,38 +1426,42 @@
                 dotsWrap.appendChild(dot);
             });
 
-            /* ── Layout: set every slide to pixel width ── */
-            function layout() {
-                const stageW  = stage.offsetWidth;
-                const cardW   = Math.round(stageW * CARD_RATIO);
-                slides.forEach(s => {
-                    s.style.width    = cardW + 'px';
-                    s.style.flexShrink = '0';
-                });
-                positionTrack(cardW, stageW, false); // instant on resize
+            /* Compute card width and set all slides */
+            function cardWidth() {
+                return Math.round(stage.offsetWidth * RATIO);
             }
 
-            /* ── Translate track so current card is centred ── */
-            function positionTrack(cardW, stageW, animate) {
-                const offset = (stageW - cardW) / 2;     // centres the card
-                const tx     = offset - current * (cardW + GAP);
-                track.style.transition = animate
-                    ? 'transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94)'
-                    : 'none';
-                track.style.transform  = `translateX(${tx}px)`;
+            function setWidths() {
+                const w = cardWidth();
+                slides.forEach(s => { s.style.width = w + 'px'; });
             }
 
-            /* ── Update visual state (dim, dots, arrows) ── */
-            function refresh(animate) {
+            /*
+             * IMPORTANT: we use margin-left (NOT transform/translateX) to
+             * shift the track. translateX creates a new CSS stacking context
+             * which flattens 3D children on mobile WebKit — margin-left does not.
+             */
+            function positionTrack(animate) {
                 const stageW = stage.offsetWidth;
-                const cardW  = Math.round(stageW * CARD_RATIO);
-                positionTrack(cardW, stageW, animate);
+                const w      = cardWidth();
+                const peek   = (stageW - w) / 2;          // centred offset
+                const tx     = peek - current * (w + GAP); // left edge of current card
+
+                track.style.transition = animate
+                    ? 'margin-left 0.42s cubic-bezier(0.25,0.46,0.45,0.94)'
+                    : 'none';
+                track.style.marginLeft = tx + 'px';
+            }
+
+            function refresh(animate) {
+                setWidths();
+                positionTrack(animate);
 
                 slides.forEach((s, i) => {
-                    const isCurrent = i === current;
-                    s.classList.toggle('slide-dim', !isCurrent);
-                    // flip cards on non-current slides back to front
-                    if (!isCurrent) {
+                    const active = i === current;
+                    s.classList.toggle('slide-dim', !active);
+                    /* Reset flipped state on cards we navigated away from */
+                    if (!active) {
                         const fc = s.querySelector('.flip-card');
                         if (fc) fc.classList.remove('flipped');
                     }
@@ -1470,7 +1474,6 @@
                 nextBtn.disabled = current === TOTAL - 1;
             }
 
-            /* ── Navigation ── */
             function goTo(index) {
                 current = Math.max(0, Math.min(TOTAL - 1, index));
                 refresh(true);
@@ -1479,24 +1482,15 @@
             prevBtn.addEventListener('click', () => goTo(current - 1));
             nextBtn.addEventListener('click', () => goTo(current + 1));
 
-            /* ── Attach flip listeners to carousel cards ── */
-            track.querySelectorAll('.flip-card').forEach(fc => {
-                fc.addEventListener('click', function () {
-                    // Only the active (non-dimmed) card can be flipped
-                    const slide = this.closest('.enemy-slide');
-                    if (slide && slide.classList.contains('slide-dim')) return;
-                    this.classList.toggle('flipped');
-                });
+            /* Init — wait one frame so layout is settled */
+            requestAnimationFrame(() => {
+                refresh(false);
             });
-
-            /* ── Init ── */
-            layout();
-            refresh(false);
 
             let resizeTimer;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(layout, 80);
+                resizeTimer = setTimeout(() => refresh(false), 80);
             });
         })();
     </script>
