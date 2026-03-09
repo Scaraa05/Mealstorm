@@ -1236,12 +1236,14 @@
             background: linear-gradient(135deg, rgba(230, 57, 70, 0.08) 0%, rgba(230, 57, 70, 0.03) 100%);
             border: 2px solid rgba(230, 57, 70, 0.3);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
             transition: all 0.3s ease;
+            width: 100%;
+            max-width: 100%;
         }
 
         .enemy-card-single:hover {
@@ -1291,7 +1293,7 @@
         }
 
         .enemy-nav-dots {
-            display: flex;
+            display: none;
             justify-content: center;
             gap: 0.6rem;
             margin-top: 1.5rem;
@@ -1327,7 +1329,7 @@
             font-size: 1.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: none;
+            display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
@@ -1363,8 +1365,14 @@
             #characters-first .enemies-mobile-carousel.active { display: block !important; }
             #characters-first .flip-grid { display: none !important; }
             
-            /* Hide side arrows on very small screens, use dots instead */
-            .enemy-carousel-arrow { display: none; }
+            /* Show arrows, hide nav dots */
+            .enemy-carousel-arrow { display: flex !important; }
+            .enemy-nav-dots { display: none !important; }
+            
+            /* Make carousel card full width and responsive */
+            .enemy-carousel-container { padding: 0 1rem; }
+            .enemy-card-single { width: 100%; padding: 2rem 1.5rem; }
+            .enemy-image-large { height: 280px; }
             
             .characters-divider { display: none; }
             h2 { font-size: 1.8rem; }
