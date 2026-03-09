@@ -971,14 +971,20 @@
 
             /* Sezione personaggi: meno padding verticale per non sprecare spazio */
             #characters-first {
-                padding-top: 2rem;
+                padding-top: 1.5rem;
                 padding-bottom: 0.5rem;
             }
 
-            /* Card ancora più grande su mobile: 94% dello stage */
-            .enemy-slide .flip-card-wrapper {
-                /* sovrascrive il 88% impostato nel JS tramite inline style — */
-                /* il JS legge RATIO=0.94 solo se aggiornato; qui forziamo col wrapper */
+            #characters-second {
+                padding-top: 0.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            /* Wrapper bianco: padding verticale ridotto */
+            #characters-first ~ * .white-bg-wrapper,
+            .white-bg-wrapper {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
             }
         }
 
