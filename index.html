@@ -956,12 +956,30 @@
                 border-radius: 12px;
             }
 
-            /* ── Enemy characters: HIDE grids, SHOW carousel ── */
+        /* ── Enemy characters: HIDE grids, SHOW carousel ── */
             #characters-first .flip-grid,
             #characters-second .flip-grid,
             .characters-divider { display: none !important; }
 
             .enemy-carousel { display: block; }
+
+            /* Niente ombra rossa sul hover/touch delle card nel carosello */
+            .enemy-slide .flip-card:hover,
+            .enemy-slide .flip-card:active {
+                box-shadow: none !important;
+            }
+
+            /* Sezione personaggi: meno padding verticale per non sprecare spazio */
+            #characters-first {
+                padding-top: 2rem;
+                padding-bottom: 0.5rem;
+            }
+
+            /* Card ancora più grande su mobile: 94% dello stage */
+            .enemy-slide .flip-card-wrapper {
+                /* sovrascrive il 88% impostato nel JS tramite inline style — */
+                /* il JS legge RATIO=0.94 solo se aggiornato; qui forziamo col wrapper */
+            }
         }
 
         @media (max-width: 480px) {
@@ -1370,7 +1388,7 @@
             const slides = Array.from(track.querySelectorAll('.enemy-slide'));
             const TOTAL  = slides.length;
             const GAP    = 14;      // px — deve corrispondere al CSS gap
-            const RATIO  = 0.88;   // card occupa 88% dello stage (4% peek per lato)
+            const RATIO  = 0.94;   // card occupa 94% dello stage (3% peek per lato)
             let current  = 0;
 
             /* ── Dots ── */
