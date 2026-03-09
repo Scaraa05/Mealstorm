@@ -584,6 +584,7 @@
             transition: transform 0.6s ease, box-shadow 0.3s ease;
             cursor: pointer;
             transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
             border-radius: 15px;
         }
 
@@ -594,10 +595,12 @@
 
         .flip-card.flipped {
             transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
         }
 
         .flip-card.flipped:hover {
             transform: rotateY(180deg) scale(1.08);
+            -webkit-transform: rotateY(180deg) scale(1.08);
             box-shadow: 0 0 30px rgba(230, 57, 70, 0.8), 0 10px 40px rgba(230, 57, 70, 0.6);
         }
 
@@ -606,6 +609,7 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             display: flex;
             flex-direction: column;
             border-radius: 15px;
@@ -1215,145 +1219,107 @@
             box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
         }
 
-        /* ============ MOBILE ENEMIES CAROUSEL - Ultra Readable ============ */
-        .enemies-mobile-carousel {
+        /* ===== MOBILE CAROUSEL NEMICI ===== */
+        .mobile-enemies-carousel {
             display: none;
             width: 100%;
-            padding: 1.5rem 1rem;
+            padding: 1.5rem 0;
         }
 
-        .enemies-mobile-carousel.active {
+        .mobile-enemies-carousel.active {
             display: block;
         }
 
-        .enemy-carousel-container {
+        .carousel-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .enemy-card-single {
-            background: linear-gradient(135deg, rgba(230, 57, 70, 0.08) 0%, rgba(230, 57, 70, 0.03) 100%);
-            border: 2px solid rgba(230, 57, 70, 0.3);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 100%;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .enemy-card-single:hover {
-            border-color: rgba(230, 57, 70, 0.6);
-            background: linear-gradient(135deg, rgba(230, 57, 70, 0.12) 0%, rgba(230, 57, 70, 0.06) 100%);
-        }
-
-        .enemy-image-large {
-            width: 100%;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            overflow: hidden;
-        }
-
-        .enemy-image-large img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .enemy-info-large {
-            display: flex;
-            flex-direction: column;
             gap: 1rem;
-        }
-
-        .enemy-info-large h3 {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: var(--accent-yellow);
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .enemy-info-large p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #ddd;
-            margin: 0;
-        }
-
-        .enemy-nav-dots {
-            display: none;
-            justify-content: center;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
             width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
-        .enemy-nav-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .enemy-nav-dot.active {
-            background: var(--primary-red);
-            transform: scale(1.5);
-            box-shadow: 0 0 15px rgba(230, 57, 70, 0.8);
-        }
-
-        .enemy-carousel-arrow {
-            width: 48px;
-            height: 48px;
+        .carousel-btn {
             background: linear-gradient(135deg, var(--primary-red) 0%, var(--hover-red) 100%);
             border: none;
             border-radius: 50%;
+            width: 50px;
+            height: 50px;
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
-            flex-shrink: 0;
-            padding: 0;
         }
 
-        .enemy-carousel-arrow:hover {
+        .carousel-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
         }
 
-        .enemy-carousel-prev {
-            order: -1;
+        .carousel-btn:active {
+            transform: scale(0.95);
         }
 
-        .enemy-carousel-next {
-            order: 1;
+        .carousel-content {
+            flex: 1;
+            min-width: 0;
         }
 
-        
+        .enemy-card {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.08) 0%, rgba(230, 57, 70, 0.03) 100%);
+            border: 2px solid rgba(230, 57, 70, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 0;
+        }
+
+        .enemy-card:hover {
+            border-color: rgba(230, 57, 70, 0.6);
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.12) 0%, rgba(230, 57, 70, 0.06) 100%);
+        }
+
+        .enemy-card-image {
+            width: 100%;
+            height: 250px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0.5rem;
+        }
+
+        .enemy-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .enemy-card-text h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .enemy-card-text p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ddd;
+            margin: 0;
+        }
 
         @media (max-width: 480px) {
             .auth-modal { width: calc(100% - 32px); }
@@ -1365,34 +1331,9 @@
             #maps .flip-grid { grid-template-columns: 1fr; }
             
             /* SHOW MOBILE CAROUSEL FOR CHARACTERS, HIDE FLIP-GRID */
-            #characters-first .enemies-mobile-carousel { display: block !important; }
-            #characters-first .enemies-mobile-carousel.active { display: block !important; }
+            #characters-first .mobile-enemies-carousel { display: block !important; }
+            #characters-first .mobile-enemies-carousel.active { display: block !important; }
             #characters-first .flip-grid { display: none !important; }
-            
-            /* Show arrows, hide nav dots */
-            .enemy-carousel-arrow { display: flex !important; }
-            .enemy-nav-dots { display: none !important; }
-            
-            /* Make carousel card full width and responsive */
-            .enemy-carousel-container { 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
-                padding: 0;
-            }
-            .enemy-card-single { 
-                width: 100%; 
-                padding: 1.5rem 1rem;
-                flex: 1;
-            }
-            .enemy-image-large { height: 280px; }
-            .enemy-carousel-arrow {
-                width: 44px;
-                height: 44px;
-                font-size: 1.6rem;
-                flex-shrink: 0;
-            }
             
             .characters-divider { display: none; }
             h2 { font-size: 1.8rem; }
@@ -1405,7 +1346,6 @@
             .flip-card-back h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
             .flip-card-back p { font-size: 1rem; line-height: 1.5; }
 
-            /* Stronger overrides to make carousel flip-cards larger on small devices */
             /* Ensure any carousel remnants don't affect the native grids */
             .enemies-flip-carousel, .enemies-simple-carousel { display: none !important; }
 
@@ -1637,25 +1577,24 @@
     <section id="characters-first">
         <h2>Ingredienti Nemici</h2>
         
-        <!-- Mobile Carousel: One enemy at a time, full width, super readable -->
-        <div class="enemies-mobile-carousel">
-            <div class="enemy-carousel-container">
-                <div class="enemy-card-single">
-                    <div class="enemy-image-large">
-                        <img id="mobileEnemyImage" src="carota.png" alt="Nemico">
-                    </div>
-                    <div class="enemy-info-large">
-                        <h3 id="mobileEnemyName">Carota Trottola</h3>
-                        <p id="mobileEnemyDesc">Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
+        <!-- Mobile Carousel -->
+        <div class="mobile-enemies-carousel">
+            <div class="carousel-wrapper">
+                <button class="carousel-btn carousel-prev" aria-label="Nemico precedente">❮</button>
+                
+                <div class="carousel-content">
+                    <div class="enemy-card">
+                        <div class="enemy-card-image">
+                            <img id="carouselImage" src="carota.png" alt="Nemico">
+                        </div>
+                        <div class="enemy-card-text">
+                            <h3 id="carouselName">Carota Trottola</h3>
+                            <p id="carouselDesc">Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Navigation dots -->
-                <div class="enemy-nav-dots" id="enemyNavDots"></div>
-                
-                <!-- Left/Right arrows for touch -->
-                <button class="enemy-carousel-arrow enemy-carousel-prev" aria-label="Nemico precedente">&#8249;</button>
-                <button class="enemy-carousel-arrow enemy-carousel-next" aria-label="Nemico successivo">&#8250;</button>
+                <button class="carousel-btn carousel-next" aria-label="Nemico successivo">❯</button>
             </div>
         </div>
         
@@ -1818,14 +1757,27 @@
             });
         });
 
-        // Flip card functionality
-        document.querySelectorAll('.flip-card').forEach(card => {
-            card.addEventListener('click', function() {
-                if (!this.classList.contains('construction')) {
-                    this.classList.toggle('flipped');
-                }
+        // Flip card functionality - Make sure we wait for DOM
+        function initializeFlipCards() {
+            const flipCards = document.querySelectorAll('.flip-card');
+            console.log('Found flip cards:', flipCards.length);
+            flipCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (!this.classList.contains('construction')) {
+                        this.classList.toggle('flipped');
+                        console.log('Card flipped, class:', this.className);
+                    }
+                });
             });
-        });
+        }
+
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeFlipCards);
+        } else {
+            initializeFlipCards();
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1979,11 +1931,16 @@
             updateSimpleEnemyCarousel();
         })();
 
-        // Removed mobile enemy carousel — using native flip-card grids on mobile (2-2-1 layout)
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.parallax-bg');
+            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
 
-        // Mobile Enemies Carousel - Show ONE enemy at a time, super readable
+        // Mobile Enemies Carousel
         (function() {
-            const enemyData = [
+            const enemies = [
                 { name: "Carota Trottola", desc: "Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!", image: "carota.png" },
                 { name: "Patata con pentola", desc: "Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!", image: "talpa.png" },
                 { name: "Grano con corona", desc: "Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!", image: "grano.png" },
@@ -1991,73 +1948,41 @@
                 { name: "Latte scolta che piange", desc: "Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi", image: "latte.png" }
             ];
 
-            let currentEnemyIndex = 0;
-            const carousel = document.querySelector('.enemies-mobile-carousel');
-            const navDotsContainer = document.getElementById('enemyNavDots');
-            const prevBtn = document.querySelector('.enemies-mobile-carousel .enemy-carousel-prev');
-            const nextBtn = document.querySelector('.enemies-mobile-carousel .enemy-carousel-next');
+            let currentIndex = 0;
 
-            if (!carousel || !prevBtn || !nextBtn) {
-                console.warn('Mobile enemies carousel elements not found');
-                return;
-            }
+            const carousel = document.querySelector('.mobile-enemies-carousel');
+            if (!carousel) return;
 
-            // Create navigation dots
-            function createNavDots() {
-                navDotsContainer.innerHTML = '';
-                enemyData.forEach((_, index) => {
-                    const dot = document.createElement('div');
-                    dot.classList.add('enemy-nav-dot');
-                    if (index === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToEnemy(index));
-                    navDotsContainer.appendChild(dot);
-                });
-            }
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            const imageEl = carousel.querySelector('#carouselImage');
+            const nameEl = carousel.querySelector('#carouselName');
+            const descEl = carousel.querySelector('#carouselDesc');
 
-            // Update carousel display
+            if (!prevBtn || !nextBtn || !imageEl || !nameEl || !descEl) return;
+
             function updateCarousel() {
-                const enemy = enemyData[currentEnemyIndex];
-                document.getElementById('mobileEnemyImage').src = enemy.image;
-                document.getElementById('mobileEnemyImage').alt = enemy.name;
-                document.getElementById('mobileEnemyName').textContent = enemy.name;
-                document.getElementById('mobileEnemyDesc').textContent = enemy.desc;
-
-                // Update active dot
-                document.querySelectorAll('.enemy-nav-dot').forEach((dot, idx) => {
-                    dot.classList.toggle('active', idx === currentEnemyIndex);
-                });
-            }
-
-            function goToEnemy(index) {
-                currentEnemyIndex = index;
-                updateCarousel();
+                const enemy = enemies[currentIndex];
+                imageEl.src = enemy.image;
+                imageEl.alt = enemy.name;
+                nameEl.textContent = enemy.name;
+                descEl.textContent = enemy.desc;
             }
 
             function nextEnemy() {
-                currentEnemyIndex = (currentEnemyIndex + 1) % enemyData.length;
+                currentIndex = (currentIndex + 1) % enemies.length;
                 updateCarousel();
             }
 
             function prevEnemy() {
-                currentEnemyIndex = (currentEnemyIndex - 1 + enemyData.length) % enemyData.length;
+                currentIndex = (currentIndex - 1 + enemies.length) % enemies.length;
                 updateCarousel();
             }
 
-            // Event listeners
-            nextBtn.addEventListener('click', nextEnemy);
             prevBtn.addEventListener('click', prevEnemy);
+            nextBtn.addEventListener('click', nextEnemy);
 
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (window.innerWidth <= 480) {
-                    if (e.key === 'ArrowRight') nextEnemy();
-                    if (e.key === 'ArrowLeft') prevEnemy();
-                }
-            });
-
-            // Initialize
             carousel.classList.add('active');
-            createNavDots();
             updateCarousel();
         })();
 </body>
