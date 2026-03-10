@@ -508,18 +508,13 @@
         .flip-card-wrapper {
             perspective: 1000px;
             height: 300px;
-            animation: slideUp 0.6s ease forwards;
-            opacity: 0;
         }
 
-        .flip-card-wrapper:nth-child(1) { animation-delay: 0.1s; }
-        .flip-card-wrapper:nth-child(2) { animation-delay: 0.2s; }
-        .flip-card-wrapper:nth-child(3) { animation-delay: 0.3s; }
-        .flip-card-wrapper:nth-child(4) { animation-delay: 0.4s; }
-        .flip-card-wrapper:nth-child(5) { animation-delay: 0.5s; }
-        .flip-card-wrapper:nth-child(6) { animation-delay: 0.6s; }
-        .flip-card-wrapper:nth-child(7) { animation-delay: 0.7s; }
-        .flip-card-wrapper:nth-child(8) { animation-delay: 0.8s; }
+        .flip-card-wrapper:nth-child(1) { --reveal-delay: 0.08s; }
+        .flip-card-wrapper:nth-child(2) { --reveal-delay: 0.16s; }
+        .flip-card-wrapper:nth-child(3) { --reveal-delay: 0.24s; }
+        .flip-card-wrapper:nth-child(4) { --reveal-delay: 0.32s; }
+        .flip-card-wrapper:nth-child(5) { --reveal-delay: 0.40s; }
 
         /* Contenitore della card: deve preservare il 3D */
         .flip-card {
@@ -802,8 +797,152 @@
         .social-icons img { width: 70%; height: 70%; object-fit: contain; display: block; }
 
         /* =====================================================
-           ENEMY CAROUSEL — MOBILE ONLY
+           HERO SPRITES — nemici fluttuanti nello sfondo
            ===================================================== */
+        .hero-sprite {
+            position: absolute;
+            opacity: 0.13;
+            pointer-events: none;
+            filter: drop-shadow(0 0 12px rgba(230, 57, 70, 0.4));
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        .hero-sprite-1 {
+            width: clamp(80px, 12vw, 190px);
+            bottom: 12%;
+            left: 4%;
+            animation: spriteFloat1 6s ease-in-out infinite;
+        }
+        .hero-sprite-2 {
+            width: clamp(60px, 9vw, 120px);
+            top: 18%;
+            right: 6%;
+            animation: spriteFloat2 7.5s ease-in-out infinite;
+        }
+        .hero-sprite-3 {
+            width: clamp(50px, 7vw, 100px);
+            top: 30%;
+            left: 8%;
+            animation: spriteFloat3 5.5s ease-in-out infinite;
+        }
+        .hero-sprite-4 {
+            width: clamp(70px, 10vw, 130px);
+            bottom: 22%;
+            right: 10%;
+            animation: spriteFloat1 8s ease-in-out infinite reverse;
+        }
+        .hero-sprite-5 {
+            width: clamp(70px, 10vw, 130px);
+            top: 35%;
+            right: 3%;
+            animation: spriteFloat5 7s ease-in-out infinite;
+        }
+
+        @keyframes spriteFloat1 {
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50%       { transform: translateY(-22px) rotate(4deg); }
+        }
+        @keyframes spriteFloat2 {
+            0%, 100% { transform: translateY(0) rotate(6deg) scale(1); }
+            50%       { transform: translateY(-18px) rotate(-6deg) scale(1.05); }
+        }
+        @keyframes spriteFloat3 {
+            0%, 100% { transform: translateY(0) rotate(2deg); }
+            50%       { transform: translateY(-14px) rotate(-2deg); }
+        }
+         @keyframes spriteFloat4 {
+            0%, 100% { transform: translateY(0) rotate(2deg); }
+            50%       { transform: translateY(-14px) rotate(-2deg); }
+        }
+         @keyframes spriteFloat5 {
+            0%, 100% { transform: translateY(0) rotate(2deg); }
+            50%       { transform: translateY(-14px) rotate(-2deg); }
+        }
+
+        /* =====================================================
+           SCROLL REVEAL
+           ===================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Stagger per card consecutive */
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+        .reveal-delay-4 { transition-delay: 0.32s; }
+        .reveal-delay-5 { transition-delay: 0.40s; }
+
+        /* =====================================================
+           FLIP HINT — piccolo badge "tocca per girare"
+           ===================================================== */
+        .flip-hint {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.55);
+            color: rgba(255,255,255,0.85);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 10;
+            white-space: nowrap;
+            animation: hintPulse 2.5s ease-in-out 1.2s 3 forwards;
+        }
+        /* Svanisce dopo 3 cicli */
+        @keyframes hintPulse {
+            0%   { opacity: 0; }
+            20%  { opacity: 1; }
+            80%  { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        /* Nasconde l'hint una volta girata la card */
+        .flip-card.flipped .flip-hint { display: none; }
+
+        /* =====================================================
+           SWIPE HINT — animazione iniziale carosello
+           ===================================================== */
+        @keyframes swipeNudge {
+            0%   { margin-left: var(--ml-base); }
+            30%  { margin-left: calc(var(--ml-base) - 28px); }
+            60%  { margin-left: var(--ml-base); }
+            100% { margin-left: var(--ml-base); }
+        }
+        /* Usata via JS con inline style */
+
+        /* Pallino swipe indicator — appare sotto il carosello la prima volta */
+        .swipe-hint-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0.6rem;
+            font-size: 0.78rem;
+            color: rgba(51,51,51,0.55);
+            letter-spacing: 0.4px;
+            animation: fadeOut 0.5s ease 3.5s forwards;
+        }
+        .swipe-hint-label svg {
+            width: 18px; height: 18px;
+            fill: none;
+            stroke: rgba(51,51,51,0.5);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        @keyframes fadeOut {
+            to { opacity: 0; pointer-events: none; }
+        }
 
         .enemy-carousel {
             display: none;
@@ -1059,8 +1198,15 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Sprite nemici fluttuanti -->
+        <img src="carota.png"   alt="" class="hero-sprite hero-sprite-1" width="190" height="160" aria-hidden="true">
+        <img src="pomodoro.png" alt="" class="hero-sprite hero-sprite-2" width="120" height="120" aria-hidden="true">
+        <img src="latte.png"    alt="" class="hero-sprite hero-sprite-3" width="100" height="100" aria-hidden="true">
+        <img src="grano.png"    alt="" class="hero-sprite hero-sprite-4" width="130" height="130" aria-hidden="true">
+        <img src="talpa.png"    alt="" class="hero-sprite hero-sprite-5" width="130" height="130" aria-hidden="true">
+
         <div class="hero-content">
-            <img src="mealstorm_logo2.png" alt="Mealstorm" class="logo-hero">
+            <img src="mealstorm_logo2.png" alt="Mealstorm" class="logo-hero" width="500" height="200">
             <p class="tagline">Quando la cucina diventa un campo di battaglia!</p>
             <div class="cta-buttons">
                 <a href="#download" class="btn btn-secondary">Scarica Ora</a>
@@ -1072,8 +1218,8 @@
 
     <!-- About Section -->
     <section id="about">
-        <h2>MEALSTORM</h2>
-        <div class="about-content">
+        <h2 class="reveal">MEALSTORM</h2>
+        <div class="about-content reveal reveal-delay-1">
             <div class="about-text">
                 <p>
                     <strong>Mealstorm</strong>, un roguelite frenetico dove vestirai i panni di un cuoco coraggioso 
@@ -1091,7 +1237,7 @@
                 </p>
             </div>
             <div class="about-image">
-                <img src="mc.png" alt="Mealstorm - Gameplay">
+                <img src="mc.png" alt="Mealstorm - Gameplay" width="350" height="350">
             </div>
         </div>
     </section>
@@ -1099,14 +1245,15 @@
     <div class="white-bg-wrapper">
         <!-- Maps Flip Grid -->
         <section id="maps">
-            <h2>Mappe Epiche</h2>
+            <h2 class="reveal">Mappe Epiche</h2>
             <div class="flip-grid">
                 <!-- Mappa 1 -->
-                <div class="flip-card-wrapper">
+                <div class="flip-card-wrapper reveal reveal-delay-1">
                     <div class="flip-card" data-flip="map">
                         <div class="flip-card-face flip-card-front">
-                            <img src="mappa1.png" alt="Trattoria">
+                            <img src="mappa1.png" alt="Trattoria" width="400" height="300">
                             <div class="flip-icon">↻</div>
+                            <div class="flip-hint">Clicca per scoprire</div>
                         </div>
                         <div class="flip-card-face flip-card-back">
                             <div class="flip-icon-back">↻</div>
@@ -1119,7 +1266,7 @@
                 </div>
 
                 <!-- Mappa 2 -->
-                <div class="flip-card-wrapper">
+                <div class="flip-card-wrapper reveal reveal-delay-2">
                     <div class="flip-card construction" data-flip="map">
                         <div class="flip-card-face flip-card-front">
                             <div class="construction-badge">In Costruzione</div>
@@ -1146,14 +1293,15 @@
         <div class="white-bg-wrapper">
             <!-- Characters - Prima riga (2 personaggi) -->
             <section id="characters-first">
-                <h2>Ingredienti Nemici</h2>
+                <h2 class="reveal">Ingredienti Nemici</h2>
                 <div class="flip-grid">
                     <!-- Carota -->
-                    <div class="flip-card-wrapper">
+                    <div class="flip-card-wrapper reveal reveal-delay-1">
                         <div class="flip-card" data-flip="character">
                             <div class="flip-card-face flip-card-front">
-                                <img src="carota.png" alt="Carota trottola">
+                                <img src="carota.png" alt="Carota trottola" width="300" height="300">
                                 <div class="flip-icon">↻</div>
+                                <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
                                 <div class="flip-icon-back">↻</div>
@@ -1164,11 +1312,12 @@
                     </div>
 
                     <!-- Patata -->
-                    <div class="flip-card-wrapper">
+                    <div class="flip-card-wrapper reveal reveal-delay-2">
                         <div class="flip-card" data-flip="character">
                             <div class="flip-card-face flip-card-front">
-                                <img src="talpa.png" alt="Talpa con pentola">
+                                <img src="talpa.png" alt="Talpa con pentola" width="300" height="300">
                                 <div class="flip-icon">↻</div>
+                                <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
                                 <div class="flip-icon-back">↻</div>
@@ -1277,6 +1426,12 @@
                 </div><!-- /enemy-stage -->
 
                 <div class="enemy-car-dots" id="enemyCarDots"></div>
+                <!-- Hint swipe — svanisce dopo 3.5s -->
+                <div class="swipe-hint-label" id="swipeHintLabel">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                    Scorri per vedere tutti
+                    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
             </div><!-- /enemy-carousel -->
 
             <div class="characters-divider"></div>
@@ -1285,11 +1440,12 @@
             <section id="characters-second">
                 <div class="flip-grid">
                     <!-- Grano -->
-                    <div class="flip-card-wrapper">
+                    <div class="flip-card-wrapper reveal reveal-delay-1">
                         <div class="flip-card" data-flip="character">
                             <div class="flip-card-face flip-card-front">
-                                <img src="grano.png" alt="Grano corona">
+                                <img src="grano.png" alt="Grano corona" width="300" height="300">
                                 <div class="flip-icon">↻</div>
+                                <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
                                 <div class="flip-icon-back">↻</div>
@@ -1300,11 +1456,12 @@
                     </div>
 
                     <!-- Pomodoro -->
-                    <div class="flip-card-wrapper">
+                    <div class="flip-card-wrapper reveal reveal-delay-2">
                         <div class="flip-card" data-flip="character">
                             <div class="flip-card-face flip-card-front">
-                                <img src="pomodoro.png" alt="Pomodoro esplosivo">
+                                <img src="pomodoro.png" alt="Pomodoro esplosivo" width="300" height="300">
                                 <div class="flip-icon">↻</div>
+                                <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
                                 <div class="flip-icon-back">↻</div>
@@ -1315,11 +1472,12 @@
                     </div>
 
                     <!-- Latte -->
-                    <div class="flip-card-wrapper">
+                    <div class="flip-card-wrapper reveal reveal-delay-3">
                         <div class="flip-card" data-flip="character">
                             <div class="flip-card-face flip-card-front">
-                                <img src="latte.png" alt="Latte che piange">
+                                <img src="latte.png" alt="Latte che piange" width="300" height="300">
                                 <div class="flip-icon">↻</div>
+                                <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
                                 <div class="flip-icon-back">↻</div>
@@ -1335,8 +1493,8 @@
 
     <!-- Download Section -->
     <section id="download">
-        <h2>Inizia l'Avventura</h2>
-        <div class="about-content download-content">
+        <h2 class="reveal">Inizia l'Avventura</h2>
+        <div class="about-content download-content reveal reveal-delay-1">
             <p style="font-size: 1.5rem; margin-bottom: 2rem;">
                 Scarica Mealstorm ora e preparati a cucinare la vittoria!
             </p>
@@ -1361,9 +1519,39 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Mealstorm. Tutti i diritti riservati.</p>
+        <p style="margin-top: 0.6rem; font-size: 0.85rem;">
+            <a href="privacy.html" style="color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;"
+               onmouseover="this.style.color='rgba(230,57,70,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+                Privacy Policy
+            </a>
+        </p>
     </footer>
 
     <script>
+        // ── SCROLL REVEAL ─────────────────────────────────────────
+        (function () {
+            const els = document.querySelectorAll('.reveal');
+            if (!els.length) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        // Apply stagger delay if set via CSS custom prop on the wrapper
+                        const delay = el.style.getPropertyValue('--reveal-delay') ||
+                                      (el.classList.contains('reveal-delay-1') ? '0.08s' :
+                                       el.classList.contains('reveal-delay-2') ? '0.16s' :
+                                       el.classList.contains('reveal-delay-3') ? '0.24s' :
+                                       el.classList.contains('reveal-delay-4') ? '0.32s' :
+                                       el.classList.contains('reveal-delay-5') ? '0.40s' : '0s');
+                        el.style.transitionDelay = delay;
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => observer.observe(el));
+        })();
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1378,13 +1566,10 @@
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // ── FLIP CARD (global — maps + desktop + carousel cards) ──
-        // Single listener for ALL flip-cards.
-        // For carousel cards: skip if the slide is dimmed (side preview cards).
+        // ── FLIP CARD ─────────────────────────────────────────────
         document.querySelectorAll('.flip-card').forEach(card => {
             card.addEventListener('click', function () {
                 if (this.classList.contains('construction')) return;
-                // If inside a carousel slide, only flip if it's the active (non-dimmed) card
                 const slide = this.closest('.enemy-slide');
                 if (slide && slide.classList.contains('slide-dim')) return;
                 this.classList.toggle('flipped');
@@ -1415,8 +1600,8 @@
 
             const slides = Array.from(track.querySelectorAll('.enemy-slide'));
             const TOTAL  = slides.length;
-            const GAP    = 14;      // px — deve corrispondere al CSS gap
-            const RATIO  = 0.94;   // card occupa 94% dello stage (3% peek per lato)
+            const GAP    = 14;
+            const RATIO  = 0.94;
             let current  = 0;
 
             /* ── Dots ── */
@@ -1431,12 +1616,15 @@
                 return Math.round(stage.offsetWidth * RATIO);
             }
 
-            /* Posiziona il track con margin-left (non translateX per non rompere 3D) */
-            function positionTrack(animate) {
+            function baseMargin(index) {
                 const stageW = stage.offsetWidth;
                 const w      = cardWidth();
                 const peek   = (stageW - w) / 2;
-                const ml     = peek - current * (w + GAP);
+                return peek - index * (w + GAP);
+            }
+
+            function positionTrack(animate, extraOffset) {
+                const ml = baseMargin(current) + (extraOffset || 0);
                 track.style.transition = animate
                     ? 'margin-left 0.40s cubic-bezier(0.25,0.46,0.45,0.94)'
                     : 'none';
@@ -1463,39 +1651,71 @@
                 refresh(true);
             }
 
-            /* ── Swipe touch ── */
-            let touchStartX = 0;
-            let touchStartY = 0;
-            let swiping     = false;
+            /* ── Swipe live (il dito trascina la card in tempo reale) ── */
+            let touchStartX  = 0;
+            let touchStartY  = 0;
+            let dragging     = false;
+            let dragAxis     = null; // 'h' | 'v' | null
 
             stage.addEventListener('touchstart', e => {
                 touchStartX = e.touches[0].clientX;
                 touchStartY = e.touches[0].clientY;
-                swiping = true;
-            }, { passive: true });
-
-            stage.addEventListener('touchend', e => {
-                if (!swiping) return;
-                swiping = false;
-                const dx = e.changedTouches[0].clientX - touchStartX;
-                const dy = e.changedTouches[0].clientY - touchStartY;
-                /* Solo se il gesto è prevalentemente orizzontale (>30px e non verticale) */
-                if (Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy)) {
-                    if (dx < 0) goTo(current + 1);  // swipe sinistra → avanti
-                    else        goTo(current - 1);  // swipe destra → indietro
-                }
+                dragging    = true;
+                dragAxis    = null;
+                track.style.transition = 'none'; // disabilita transition durante drag
             }, { passive: true });
 
             stage.addEventListener('touchmove', e => {
-                if (!swiping) return;
+                if (!dragging) return;
                 const dx = e.touches[0].clientX - touchStartX;
                 const dy = e.touches[0].clientY - touchStartY;
-                /* Se il gesto è orizzontale, blocca lo scroll verticale della pagina */
-                if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+
+                // Determina asse al primo movimento significativo
+                if (!dragAxis && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+                    dragAxis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
+                }
+
+                if (dragAxis === 'h') {
+                    e.preventDefault();
+                    // Segui il dito live, con resistenza ai bordi
+                    let offset = dx;
+                    const atStart = current === 0        && dx > 0;
+                    const atEnd   = current === TOTAL - 1 && dx < 0;
+                    if (atStart || atEnd) offset = dx * 0.25; // friction
+                    track.style.marginLeft = (baseMargin(current) + offset) + 'px';
+                }
             }, { passive: false });
 
+            stage.addEventListener('touchend', e => {
+                if (!dragging) return;
+                dragging = false;
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                const dy = e.changedTouches[0].clientY - touchStartY;
+                if (dragAxis === 'h' && Math.abs(dx) > 40) {
+                    if (dx < 0) goTo(current + 1);
+                    else        goTo(current - 1);
+                } else {
+                    refresh(true); // snap back
+                }
+                dragAxis = null;
+            }, { passive: true });
+
             /* ── Init ── */
-            requestAnimationFrame(() => refresh(false));
+            requestAnimationFrame(() => {
+                refresh(false);
+
+                // Animazione hint swipe: piccolo nudge a sinistra dopo 900ms
+                if (TOTAL > 1) {
+                    setTimeout(() => {
+                        track.style.transition = 'margin-left 0.38s ease';
+                        track.style.marginLeft = (baseMargin(0) - 32) + 'px';
+                        setTimeout(() => {
+                            track.style.transition = 'margin-left 0.38s ease';
+                            track.style.marginLeft = baseMargin(0) + 'px';
+                        }, 380);
+                    }, 900);
+                }
+            });
 
             let resizeTimer;
             window.addEventListener('resize', () => {
