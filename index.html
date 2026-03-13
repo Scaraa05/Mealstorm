@@ -806,34 +806,35 @@
             filter: drop-shadow(0 0 12px rgba(230, 57, 70, 0.4));
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
+            height: auto;   /* impedisce qualsiasi stretch */
         }
 
         .hero-sprite-1 {
-            width: auto;
+            width: clamp(80px, 12vw, 160px);
             bottom: 12%;
             left: 4%;
             animation: spriteFloat1 6s ease-in-out infinite;
         }
         .hero-sprite-2 {
-            width: auto;
+            width: clamp(60px, 9vw, 120px);
             top: 18%;
             right: 6%;
             animation: spriteFloat2 7.5s ease-in-out infinite;
         }
         .hero-sprite-3 {
-            width: auto;
-            top: 30%;
-            left: 8%;
+            width: clamp(50px, 7vw, 100px);
+            top: 55%;
+            left: 12%;
             animation: spriteFloat3 5.5s ease-in-out infinite;
         }
         .hero-sprite-4 {
-            width: auto;
+            width: clamp(70px, 10vw, 130px);
             bottom: 22%;
             right: 10%;
             animation: spriteFloat1 8s ease-in-out infinite reverse;
         }
         .hero-sprite-5 {
-            width: auto;
+            width: clamp(70px, 10vw, 130px);
             top: 35%;
             right: 3%;
             animation: spriteFloat5 7s ease-in-out infinite;
@@ -848,14 +849,6 @@
             50%       { transform: translateY(-18px) rotate(-6deg) scale(1.05); }
         }
         @keyframes spriteFloat3 {
-            0%, 100% { transform: translateY(0) rotate(2deg); }
-            50%       { transform: translateY(-14px) rotate(-2deg); }
-        }
-         @keyframes spriteFloat4 {
-            0%, 100% { transform: translateY(0) rotate(2deg); }
-            50%       { transform: translateY(-14px) rotate(-2deg); }
-        }
-         @keyframes spriteFloat5 {
             0%, 100% { transform: translateY(0) rotate(2deg); }
             50%       { transform: translateY(-14px) rotate(-2deg); }
         }
@@ -1052,12 +1045,6 @@
         @media (max-width: 768px) {
             .hamburger { display: flex; }
 
-        .hero-sprite-1 { bottom: 3%; left: -7%; }
-        .hero-sprite-2 { top: 15%; right: -3%; }
-        .hero-sprite-3 { top: 30%; left: 2%; }
-        .hero-sprite-4 { bottom: 8%; right: -2%; }
-        .hero-sprite-5 { top: 30%; right: -10%; }
-
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -1153,6 +1140,48 @@
                 margin-bottom: 1rem;
                 line-height: 1.6;
             }
+
+            /* ── Hero sprites: riposizionati per mobile ──────────────
+               Tutti spostati ai bordi inferiori/laterali estremi
+               così non coprono mai la navbar (≈70px) né il testo centrale.
+               Si usano solo valori "bottom" per ancorare in basso
+               e tenere il centro libero per logo + CTA.
+            ──────────────────────────────────────────────────────── */
+            .hero-sprite-1 {          /* carota — angolo basso-sinistra */
+                width: clamp(55px, 14vw, 85px);
+                top: auto;
+                bottom: 5%;
+                left: 1%;
+                right: auto;
+            }
+            .hero-sprite-2 {          /* pomodoro — lato destro, a metà altezza */
+                width: clamp(42px, 10vw, 62px);
+                top: auto;
+                bottom: 32%;
+                right: 1%;
+                left: auto;
+            }
+            .hero-sprite-3 {          /* latte — lato sinistro, sopra carota */
+                width: clamp(38px, 9vw, 56px);
+                top: auto;
+                bottom: 20%;
+                left: 0%;
+                right: auto;
+            }
+            .hero-sprite-4 {          /* grano — angolo basso-destra */
+                width: clamp(48px, 12vw, 72px);
+                top: auto;
+                bottom: 6%;
+                right: 1%;
+                left: auto;
+            }
+            .hero-sprite-5 {          /* talpa — lato destro, alto ma sotto navbar */
+                width: clamp(42px, 10vw, 62px);
+                top: auto;
+                bottom: 48%;
+                right: 0%;
+                left: auto;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1205,7 +1234,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <!-- Sprite nemici fluttuanti -->
-        <img src="carota.png"   alt="" class="hero-sprite hero-sprite-1" width="190" height="160" aria-hidden="true">
+        <img src="carota.png"   alt="" class="hero-sprite hero-sprite-1" width="160" height="auto" aria-hidden="true" style="height:auto;">
         <img src="pomodoro.png" alt="" class="hero-sprite hero-sprite-2" width="120" height="120" aria-hidden="true">
         <img src="latte.png"    alt="" class="hero-sprite hero-sprite-3" width="100" height="100" aria-hidden="true">
         <img src="grano.png"    alt="" class="hero-sprite hero-sprite-4" width="130" height="130" aria-hidden="true">
@@ -1504,9 +1533,10 @@
             <p style="font-size: 1.5rem; margin-bottom: 2rem;">
                 Scarica Mealstorm ora e preparati a cucinare la vittoria!
             </p>
-            <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Download per Windows</a>
-                <a href="#" class="btn btn-secondary">Download per Mac</a>
+            <div style="margin-top: 1rem; display: flex; justify-content: center;">
+                <iframe frameborder="0" src="https://itch.io/embed/4370669?fg_color=000000&amp;link_color=f92c31" width="552" height="167" style="max-width:100%;border-radius:8px;">
+                    <a href="https://mealstorm.itch.io/mealstorm">MealStorm by MealStorm</a>
+                </iframe>
             </div>
         </div>
         <div class="social-follow" aria-label="Follow us">
