@@ -852,6 +852,10 @@
             0%, 100% { transform: translateY(0) rotate(2deg); }
             50%       { transform: translateY(-14px) rotate(-2deg); }
         }
+        @keyframes spriteFloat5 {
+            0%, 100% { transform: translateY(0) rotate(-3deg) scale(1); }
+            50%       { transform: translateY(-20px) rotate(3deg) scale(1.04); }
+        }
 
         /* =====================================================
            SCROLL REVEAL
@@ -1147,38 +1151,38 @@
                Si usano solo valori "bottom" per ancorare in basso
                e tenere il centro libero per logo + CTA.
             ──────────────────────────────────────────────────────── */
-            .hero-sprite-1 {          /* carota — angolo basso-sinistra */
-                width: clamp(80px, 20vw, 120px);
+            .hero-sprite-1 {          /* carota — basso sinistra */
+                width: clamp(100px, 26vw, 150px);
                 top: auto;
-                bottom: 5%;
-                left: 1%;
-                right: auto;
-            }
-            .hero-sprite-2 {          /* pomodoro — lato destro, a metà altezza */
-                width: clamp(65px, 16vw, 95px);
-                top: auto;
-                bottom: 32%;
-                right: 1%;
-                left: auto;
-            }
-            .hero-sprite-3 {          /* latte — lato sinistro, sopra carota */
-                width: clamp(58px, 14vw, 85px);
-                top: auto;
-                bottom: 20%;
+                bottom: 8%;
                 left: 0%;
                 right: auto;
             }
-            .hero-sprite-4 {          /* grano — angolo basso-destra */
-                width: clamp(72px, 18vw, 105px);
+            .hero-sprite-2 {          /* pomodoro — destra, centro-basso */
+                width: clamp(85px, 22vw, 125px);
                 top: auto;
-                bottom: 6%;
-                right: 1%;
+                bottom: 28%;
+                right: 0%;
                 left: auto;
             }
-            .hero-sprite-5 {          /* talpa — lato destro, alto ma sotto navbar */
-                width: clamp(65px, 16vw, 95px);
+            .hero-sprite-3 {          /* latte — sinistra, centro */
+                width: clamp(78px, 20vw, 115px);
                 top: auto;
-                bottom: 48%;
+                bottom: 18%;
+                left: 0%;
+                right: auto;
+            }
+            .hero-sprite-4 {          /* grano — basso destra */
+                width: clamp(92px, 24vw, 135px);
+                top: auto;
+                bottom: 6%;
+                right: 0%;
+                left: auto;
+            }
+            .hero-sprite-5 {          /* talpa — destra, centro-alto */
+                width: clamp(85px, 22vw, 125px);
+                top: auto;
+                bottom: 44%;
                 right: 0%;
                 left: auto;
             }
