@@ -1,0 +1,48 @@
+# Mealstorm
+
+> Mealstorm è un videogioco indie roguelite d'azione per PC sviluppato da Ydea's Drawer.
+> Il giocatore veste i panni di un cuoco coraggioso e combatte contro ingredienti ribelli e impazziti.
+> Demo gratuita disponibile su itch.io. Sito ufficiale: https://mealstorm.game/
+
+## Descrizione del gioco
+
+Mealstorm è un roguelite frenetico ambientato in un mondo culinario caotico. Ogni partita genera
+run uniche in mappe diverse, con nemici scalabili in difficoltà e un sistema di progressione avvincente.
+Il gioco è attualmente in sviluppo e include una demo gratuita scaricabile su itch.io.
+
+## Meccaniche principali
+
+- Roguelite con run brevi e rigiocabilità alta
+- Mappe uniche (attualmente: Trattoria; prossimamente: Mercato Oscuro)
+- Nemici con comportamenti distinti: Trottarota, Patalpa, Sirgrano, Bomboro, LaTTe
+- Sistema di progressione con utensili sbloccabili
+- Combattimento frenetico in stile action arcade
+
+## Nemici
+
+- **Trottarota** (carota): mobilità altissima, attacchi ravvicinati a raffiche.
+- **Patalpa** (talpa/patata): tank con molti HP, lento ma resistente.
+- **Sirgrano** (grano): alto rate of fire, bassa resistenza, rimane quasi fermo.
+- **Bomboro** (pomodoro): bilanciato, si avvicina rotolando e può esplodere.
+- **LaTTe** (latte): cecchino, spara da lontano e satura lo schermo di proiettili.
+
+## Team
+
+Mealstorm è sviluppato da un team indie italiano (Ydea's Drawer) composto da 5 persone
+con ruoli di Game Direction, Sviluppo, Arte & Design, Game Design e Sound Design.
+
+## Link utili
+
+- Sito ufficiale: https://mealstorm.game/
+- Demo su itch.io: https://mealstorm.itch.io/mealstorm
+- Instagram: https://www.instagram.com/mealstorm_game/
+- TikTok: https://www.tiktok.com/@mealstorm_official
+
+## Informazioni tecniche
+
+- Piattaforma: PC (Windows)
+- Genere: Roguelite, Action, Indie
+- Lingua: Italiano
+- Stato: Demo gratuita disponibile
+- Sviluppatore/Publisher: Ydea's Drawer
+- Anno: 2025

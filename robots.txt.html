@@ -1,0 +1,59 @@
+# robots.txt – Mealstorm
+# https://mealstorm.game/
+
+# ── Crawler standard ─────────────────────────────────
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 1
+
+# ── Google ───────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+
+User-agent: Googlebot-Image
+Allow: /
+
+# ── Bing ─────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ── AI / LLM crawler – TUTTI AMMESSI ─────────────────
+# Permettiamo ai principali crawler AI di indicizzare i contenuti
+# per aumentare la visibilità su ChatGPT, Claude, Perplexity, Bing AI, ecc.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# ── Sitemap ───────────────────────────────────────────
+Sitemap: https://mealstorm.game/sitemap.xml

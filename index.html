@@ -1,57 +1,176 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta -->
-    <title>Mealstorm - Roguelite Culinario | Combatti le Verdure Ribelli</title>
-    <meta name="description" content="Mealstorm è un roguelite d'azione nel quale vestirai i panni di un cuoco coraggioso in missione per sconfiggere ingredienti impazziti. Mappe uniche, nemici epici e combattimenti frenetici ti aspettano!">
-    <meta name="keywords" content="mealstorm, roguelite, videogioco indie, gioco d'azione, cuoco, verdure, gaming, action-game">
+
+    <!-- ══════════════════════════════════════════════════════
+         SEO CORE
+         ══════════════════════════════════════════════════════ -->
+    <title>Mealstorm – Roguelite Culinario Indie | Combatti le Verdure Ribelli su PC</title>
+    <meta name="description" content="Mealstorm è un roguelite d'azione indie per PC: vesti i panni di un cuoco coraggioso e sconfiggi verdure ribelli in mappe uniche. Demo gratuita disponibile su itch.io!">
+    <meta name="keywords" content="mealstorm, roguelite, videogioco indie italiano, gioco d'azione PC, cuoco videogioco, verdure ribelli, itch.io, download demo gratuita">
     <meta name="author" content="Ydea's Drawer">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Facebook -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#e63946">
+    <meta name="copyright" content="Ydea's Drawer 2025">
+    <meta name="language" content="Italian">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="category" content="videogioco, roguelite, indie, action">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://mealstorm.game/">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="it" href="https://mealstorm.game/">
+    <link rel="alternate" hreflang="x-default" href="https://mealstorm.game/">
+
+    <!-- Sitemap hint -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Preconnect / preload risorse critiche -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://itch.io">
+    <link rel="preload" as="image" href="mealstorm_logo2.png">
+    <link rel="preload" as="image" href="mealstorm_logo.png">
+
+    <!-- ══════════════════════════════════════════════════════
+         OPEN GRAPH (Facebook / LinkedIn / WhatsApp)
+         ══════════════════════════════════════════════════════ -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mealstorm.game/">
-    <meta property="og:title" content="Mealstorm - Roguelite Culinario">
-    <meta property="og:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato. Scopri mappe uniche e combattimenti epici!">
+    <meta property="og:site_name" content="Mealstorm">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:title" content="Mealstorm – Roguelite Culinario Indie | Demo Gratuita">
+    <meta property="og:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico e colorato. Mappe uniche, nemici epici e combattimenti culinari ti aspettano. Scarica la demo gratis!">
     <meta property="og:image" content="https://mealstorm.game/og-image.jpg">
-    
-    <link rel="icon" type="image/png" href="mealstorm_logo2.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- Structured Data / JSON-LD -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "Mealstorm",
-  "url": "https://mealstorm.game/",
-  "description": "Roguelite d'azione in cui un cuoco combatte contro ingredienti impazziti attraverso run e mappe uniche.",
-  "image": "https://mealstorm.game/og-image.jpg",
-  "genre": ["Roguelite", "Action"],
-  "gamePlatform": ["PC"],
-  "inLanguage": "it",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Ydea's Drawer",
-    "url": "https://mealstorm.game/"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://mealstorm.game/#download",
-    "price": "4.99",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock"
-  },
-  "sameAs": [
-    "https://www.instagram.com/mealstorm_game/",
-    "https://www.tiktok.com/@mealstorm_official"
-  ]
-}
-</script>
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mealstorm – roguelite culinario indie per PC">
 
+    <!-- ══════════════════════════════════════════════════════
+         TWITTER / X CARDS
+         ══════════════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mealstorm_game">
+    <meta name="twitter:creator" content="@mealstorm_game">
+    <meta name="twitter:title" content="Mealstorm – Roguelite Culinario Indie">
+    <meta name="twitter:description" content="Un cuoco contro verdure ribelli in un roguelite frenetico! Demo gratuita su itch.io.">
+    <meta name="twitter:image" content="https://mealstorm.game/og-image.jpg">
+    <meta name="twitter:image:alt" content="Mealstorm logo e personaggi del gioco">
+
+    <!-- ══════════════════════════════════════════════════════
+         AI / LLM CRAWLER META
+         (Googlebot, GPTBot, ClaudeBot, PerplexityBot, Bingbot…)
+         ══════════════════════════════════════════════════════ -->
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <!-- Permetti ai crawler AI di indicizzare i contenuti -->
+    <meta name="GPTBot" content="index">
+    <meta name="ClaudeBot" content="index">
+    <meta name="PerplexityBot" content="index">
+    <meta name="CCBot" content="index">
+
+    <!-- ══════════════════════════════════════════════════════
+         FAVICONS
+         ══════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/png" sizes="32x32" href="mealstorm_logo2.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="mealstorm_logo2.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- ══════════════════════════════════════════════════════
+         STRUCTURED DATA / JSON-LD  (VideoGame + Organization + Team)
+         ══════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "VideoGame",
+          "@id": "https://mealstorm.game/#game",
+          "name": "Mealstorm",
+          "alternateName": "MealStorm",
+          "url": "https://mealstorm.game/",
+          "description": "Mealstorm è un roguelite d'azione indie per PC: vesti i panni di un cuoco coraggioso e sconfiggi ingredienti ribelli in mappe uniche con combattimenti frenetici.",
+          "image": "https://mealstorm.game/og-image.jpg",
+          "screenshot": "https://mealstorm.game/mc.png",
+          "genre": ["Roguelite", "Action", "Indie"],
+          "gamePlatform": ["PC", "Windows"],
+          "inLanguage": "it",
+          "applicationCategory": "Game",
+          "operatingSystem": "Windows",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://mealstorm.itch.io/mealstorm",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "description": "Demo gratuita disponibile su itch.io"
+          },
+          "publisher": {
+            "@id": "https://mealstorm.game/#organization"
+          },
+          "creator": {
+            "@id": "https://mealstorm.game/#organization"
+          },
+          "sameAs": [
+            "https://www.instagram.com/mealstorm_game/",
+            "https://www.tiktok.com/@mealstorm_official",
+            "https://mealstorm.itch.io/mealstorm"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://mealstorm.game/#organization",
+          "name": "Ydea's Drawer",
+          "url": "https://mealstorm.game/",
+          "logo": "https://mealstorm.game/mealstorm_logo.png",
+          "sameAs": [
+            "https://www.instagram.com/mealstorm_game/",
+            "https://www.tiktok.com/@mealstorm_official"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://mealstorm.game/#website",
+          "url": "https://mealstorm.game/",
+          "name": "Mealstorm",
+          "description": "Sito ufficiale del videogioco indie roguelite Mealstorm",
+          "inLanguage": "it",
+          "publisher": {
+            "@id": "https://mealstorm.game/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://mealstorm.game/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mealstorm.game/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Download Demo",
+              "item": "https://mealstorm.game/#download"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <style>
         * {
@@ -113,9 +232,7 @@
             transition: transform 0.3s ease;
         }
 
-        .logo-nav:hover {
-            transform: scale(1.05);
-        }
+        .logo-nav:hover { transform: scale(1.05); }
 
         .nav-links {
             display: flex;
@@ -142,13 +259,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-red);
-        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--primary-red); }
 
         .hamburger {
             display: none;
@@ -178,11 +290,8 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
                 radial-gradient(circle at 20% 50%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(230, 57, 70, 0.15) 0%, transparent 50%);
             animation: pulseGlow 4s ease-in-out infinite;
@@ -271,17 +380,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
         @keyframes slideUp {
             from { transform: translateY(10px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Prezzo */
         .price-badge {
             display: inline-block;
             background: var(--primary-red);
@@ -301,10 +404,7 @@
         }
 
         /* Sezioni con sfondo bianco */
-        #maps,
-        #characters {
-            color: #333;
-        }
+        #maps, #characters { color: #333; }
 
         .white-bg-wrapper {
             background-color: #f5f5f5;
@@ -313,17 +413,8 @@
             padding: 5rem calc(50vw - 50% + 2rem);
         }
 
-        #maps {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        #characters {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        #maps { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        #characters { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 
         #maps h2,
         #characters h2 {
@@ -425,10 +516,7 @@
             box-shadow: 0 0 15px rgba(230, 57, 70, 0.6);
         }
 
-        /* =====================================================
-           FLIP CARD — FIX PRINCIPALE
-           ===================================================== */
-
+        /* ── FLIP CARD ──────────────────────────────────────────── */
         .flip-grid {
             display: grid;
             gap: 2rem;
@@ -438,23 +526,15 @@
             margin-right: auto;
         }
 
-        #maps .flip-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+        #maps .flip-grid { grid-template-columns: repeat(2, 1fr); }
 
-        .flip-card.construction {
-            position: relative;
-        }
+        .flip-card.construction { position: relative; }
 
         .flip-card.construction::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                #ffd60a, #ffd60a 20px,
-                #000000 20px, #000000 40px
-            );
+            background: repeating-linear-gradient(45deg, #ffd60a, #ffd60a 20px, #000000 20px, #000000 40px);
             pointer-events: none;
             z-index: 5;
             border-radius: 15px;
@@ -462,8 +542,7 @@
 
         .construction-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(230, 57, 70, 0.95);
             color: white;
@@ -516,7 +595,6 @@
         .flip-card-wrapper:nth-child(4) { --reveal-delay: 0.32s; }
         .flip-card-wrapper:nth-child(5) { --reveal-delay: 0.40s; }
 
-        /* Contenitore della card: deve preservare il 3D */
         .flip-card {
             position: relative;
             width: 100%;
@@ -525,27 +603,19 @@
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
             border-radius: 15px;
-            /* Transizione flip + hover scale */
             transition: transform 0.65s ease, box-shadow 0.3s ease;
         }
 
-        /* Hover: leggero ingrandimento (solo se NON è in fase di flip) */
         .flip-card:hover {
             box-shadow: 0 0 30px rgba(230, 57, 70, 0.8), 0 10px 40px rgba(230, 57, 70, 0.6);
         }
 
-        /* Stato flippato */
-        .flip-card.flipped {
-            transform: rotateY(180deg);
-        }
+        .flip-card.flipped { transform: rotateY(180deg); }
 
-        /* Le due facce: ENTRAMBE absolute, backface hidden */
         .flip-card-face {
-            position: absolute;         /* ← fondamentale */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             border-radius: 15px;
@@ -553,18 +623,14 @@
             overflow: hidden;
         }
 
-        /* Faccia frontale */
         .flip-card-front {
             background: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* NON ha transform — è la faccia "0°" */
         }
 
-        #characters .flip-card-front {
-            background: transparent;
-        }
+        #characters .flip-card-front { background: transparent; }
 
         .flip-card-front img {
             width: 95%;
@@ -575,13 +641,10 @@
             border-radius: 15px;
         }
 
-        /* Icona flip — fronte */
         .flip-icon {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
+            top: 15px; right: 15px;
+            width: 40px; height: 40px;
             background: rgba(230, 57, 70, 0.9);
             border-radius: 50%;
             display: flex;
@@ -601,17 +664,12 @@
             to { transform: rotate(360deg); }
         }
 
-        .flip-card:hover .flip-icon {
-            animation: rotateFlip 0.6s ease-in-out;
-        }
+        .flip-card:hover .flip-icon { animation: rotateFlip 0.6s ease-in-out; }
 
-        /* Icona flip — retro */
         .flip-icon-back {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
+            top: 15px; right: 15px;
+            width: 40px; height: 40px;
             background: rgba(245, 245, 245, 0.9);
             border-radius: 50%;
             display: flex;
@@ -626,13 +684,10 @@
             border: 2px solid rgba(230, 57, 70, 0.5);
         }
 
-        .flip-card:hover .flip-icon-back {
-            animation: rotateFlip 0.6s ease-in-out;
-        }
+        .flip-card:hover .flip-icon-back { animation: rotateFlip 0.6s ease-in-out; }
 
-        /* Faccia posteriore: ruotata di 180° di default → invisibile finché il contenitore non viene flippato */
         .flip-card-back {
-            transform: rotateY(180deg);          /* ← la ruota al contrario */
+            transform: rotateY(180deg);
             background: linear-gradient(135deg, rgba(230, 57, 70, 0.95) 0%, rgba(193, 18, 31, 0.95) 100%);
             padding: 2rem;
             display: flex;
@@ -658,10 +713,7 @@
             font-weight: 500;
         }
 
-        /* =====================================================
-           ABOUT / DOWNLOAD / FOOTER
-           ===================================================== */
-
+        /* ── ABOUT / DOWNLOAD / FOOTER ───────────────────────────── */
         .about-content {
             background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(230,57,70,0.1) 100%);
             padding: clamp(2rem, 5vw, 4rem);
@@ -772,7 +824,6 @@
         }
 
         .social-follow .label { font-weight: 600; font-size: 1.1rem; letter-spacing: 0.5px; }
-
         .social-icons { display: flex; gap: 1rem; }
 
         .social-icons a {
@@ -796,9 +847,7 @@
 
         .social-icons img { width: 70%; height: 70%; object-fit: contain; display: block; }
 
-        /* =====================================================
-           HERO SPRITES — nemici fluttuanti nello sfondo
-           ===================================================== */
+        /* ── HERO SPRITES ─────────────────────────────────────────── */
         .hero-sprite {
             position: absolute;
             opacity: 0.13;
@@ -806,39 +855,14 @@
             filter: drop-shadow(0 0 12px rgba(230, 57, 70, 0.4));
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
-            height: auto;   /* impedisce qualsiasi stretch */
+            height: auto;
         }
 
-        .hero-sprite-1 {
-            width: clamp(80px, 12vw, 160px);
-            bottom: 12%;
-            left: 4%;
-            animation: spriteFloat1 6s ease-in-out infinite;
-        }
-        .hero-sprite-2 {
-            width: clamp(60px, 9vw, 120px);
-            top: 18%;
-            right: 6%;
-            animation: spriteFloat2 7.5s ease-in-out infinite;
-        }
-        .hero-sprite-3 {
-            width: clamp(50px, 7vw, 100px);
-            top: 18%;
-            left: 12%;
-            animation: spriteFloat3 5.5s ease-in-out infinite;
-        }
-        .hero-sprite-4 {
-            width: clamp(70px, 10vw, 130px);
-            bottom: 22%;
-            right: 10%;
-            animation: spriteFloat1 8s ease-in-out infinite reverse;
-        }
-        .hero-sprite-5 {
-            width: clamp(70px, 10vw, 130px);
-            top: 35%;
-            right: 3%;
-            animation: spriteFloat5 7s ease-in-out infinite;
-        }
+        .hero-sprite-1 { width: clamp(80px, 12vw, 160px); bottom: 12%; left: 4%; animation: spriteFloat1 6s ease-in-out infinite; }
+        .hero-sprite-2 { width: clamp(60px, 9vw, 120px); top: 18%; right: 6%; animation: spriteFloat2 7.5s ease-in-out infinite; }
+        .hero-sprite-3 { width: clamp(50px, 7vw, 100px); top: 18%; left: 12%; animation: spriteFloat3 5.5s ease-in-out infinite; }
+        .hero-sprite-4 { width: clamp(70px, 10vw, 130px); bottom: 22%; right: 10%; animation: spriteFloat1 8s ease-in-out infinite reverse; }
+        .hero-sprite-5 { width: clamp(70px, 10vw, 130px); top: 35%; right: 3%; animation: spriteFloat5 7s ease-in-out infinite; }
 
         @keyframes spriteFloat1 {
             0%, 100% { transform: translateY(0) rotate(-4deg); }
@@ -857,28 +881,21 @@
             50%       { transform: translateY(-20px) rotate(3deg) scale(1.04); }
         }
 
-        /* =====================================================
-           SCROLL REVEAL
-           ===================================================== */
+        /* ── SCROLL REVEAL ─────────────────────────────────────────── */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
             transition: opacity 0.65s ease, transform 0.65s ease;
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Stagger per card consecutive */
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.08s; }
         .reveal-delay-2 { transition-delay: 0.16s; }
         .reveal-delay-3 { transition-delay: 0.24s; }
         .reveal-delay-4 { transition-delay: 0.32s; }
         .reveal-delay-5 { transition-delay: 0.40s; }
 
-        /* =====================================================
-           FLIP HINT — piccolo badge "tocca per girare"
-           ===================================================== */
+        /* ── FLIP HINT ──────────────────────────────────────────────── */
         .flip-hint {
             position: absolute;
             bottom: 10px;
@@ -896,28 +913,17 @@
             white-space: nowrap;
             animation: hintPulse 2.5s ease-in-out 1.2s 3 forwards;
         }
-        /* Svanisce dopo 3 cicli */
+
         @keyframes hintPulse {
             0%   { opacity: 0; }
             20%  { opacity: 1; }
             80%  { opacity: 1; }
             100% { opacity: 0; }
         }
-        /* Nasconde l'hint una volta girata la card */
+
         .flip-card.flipped .flip-hint { display: none; }
 
-        /* =====================================================
-           SWIPE HINT — animazione iniziale carosello
-           ===================================================== */
-        @keyframes swipeNudge {
-            0%   { margin-left: var(--ml-base); }
-            30%  { margin-left: calc(var(--ml-base) - 28px); }
-            60%  { margin-left: var(--ml-base); }
-            100% { margin-left: var(--ml-base); }
-        }
-        /* Usata via JS con inline style */
-
-        /* Pallino swipe indicator — appare sotto il carosello la prima volta */
+        /* ── SWIPE HINT ─────────────────────────────────────────────── */
         .swipe-hint-label {
             display: flex;
             align-items: center;
@@ -929,6 +935,7 @@
             letter-spacing: 0.4px;
             animation: fadeOut 0.5s ease 3.5s forwards;
         }
+
         .swipe-hint-label svg {
             width: 18px; height: 18px;
             fill: none;
@@ -937,43 +944,21 @@
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-        @keyframes fadeOut {
-            to { opacity: 0; pointer-events: none; }
-        }
 
-        .enemy-carousel {
-            display: none;
-            width: 100%;
-            margin-top: 1.5rem;
-        }
+        @keyframes fadeOut { to { opacity: 0; pointer-events: none; } }
 
-        .enemy-stage {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
+        .enemy-carousel { display: none; width: 100%; margin-top: 1.5rem; }
+        .enemy-stage { position: relative; width: 100%; overflow: hidden; }
 
-        /*
-         * margin-left invece di translateX: non crea stacking context,
-         * quindi il 3D dei figli non viene appiattito su WebKit mobile.
-         */
         .enemy-track {
             display: flex;
             gap: 14px;
             transition: margin-left 0.40s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .enemy-slide {
-            flex: 0 0 auto;
-            transition: opacity 0.3s ease;
-        }
+        .enemy-slide { flex: 0 0 auto; transition: opacity 0.3s ease; }
+        .enemy-slide.slide-dim { opacity: 0.32; pointer-events: none; }
 
-        .enemy-slide.slide-dim {
-            opacity: 0.32;
-            pointer-events: none;
-        }
-
-        /* Card grande: 92% della stage width, formato quadrato */
         .enemy-slide .flip-card-wrapper {
             width: 100%;
             aspect-ratio: 1 / 1;
@@ -983,16 +968,9 @@
             animation: none !important;
         }
 
-        .enemy-slide .flip-card {
-            height: 100%;
-        }
+        .enemy-slide .flip-card { height: 100%; }
+        .enemy-slide .flip-card-face { box-shadow: none; }
 
-        /* Nessuna ombra dietro le card nel carosello */
-        .enemy-slide .flip-card-face {
-            box-shadow: none;
-        }
-
-        /* Dots */
         .enemy-car-dots {
             display: flex;
             justify-content: center;
@@ -1001,8 +979,7 @@
         }
 
         .enemy-car-dot {
-            width: 11px;
-            height: 11px;
+            width: 11px; height: 11px;
             border-radius: 50%;
             background: rgba(51, 51, 51, 0.28);
             border: 1px solid rgba(51, 51, 51, 0.2);
@@ -1016,36 +993,211 @@
             box-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
         }
 
-        /* Testo leggibile sul retro nel carosello */
-        .enemy-slide .flip-card-back {
-            padding: 1.4rem 1.1rem;
+        .enemy-slide .flip-card-back { padding: 1.4rem 1.1rem; }
+        .enemy-slide .flip-card-back h3 { font-size: 1.2rem; margin-bottom: 0.55rem; letter-spacing: 0; line-height: 1.25; }
+        .enemy-slide .flip-card-back p { font-size: 0.95rem; line-height: 1.55; }
+        .enemy-slide .flip-icon, .enemy-slide .flip-icon-back { width: 34px; height: 34px; font-size: 1.2rem; top: 10px; right: 10px; }
+
+        /* ══════════════════════════════════════════════════════
+           IL NOSTRO TEAM — SEZIONE
+           ══════════════════════════════════════════════════════ */
+        #team {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #0d0d0d 0%, #130505 50%, #0d0d0d 100%);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 5rem calc(50vw - 50% + 2rem);
+            max-width: 100vw;
         }
 
-        .enemy-slide .flip-card-back h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.55rem;
-            letter-spacing: 0;
-            line-height: 1.25;
+        /* Sfondo con bordi sfumati per raccordare col resto della pagina */
+        #team::before,
+        #team::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0;
+            height: 80px;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .enemy-slide .flip-card-back p {
-            font-size: 0.95rem;
+        #team::before {
+            top: 0;
+            background: linear-gradient(to bottom, #0a0a0a, transparent);
+        }
+
+        #team::after {
+            bottom: 0;
+            background: linear-gradient(to top, #0a0a0a, transparent);
+        }
+
+        /* Sprite fluttuanti di sfondo */
+        .team-sprite {
+            position: absolute;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.3));
+            opacity: 0.07;
+            height: auto;
+            z-index: 0;
+        }
+
+        /* 8 sprite, posizioni diverse */
+        .ts-1  { width: clamp(60px,  8vw, 120px); top: 8%;   left: 1%;   animation: tsFloat1 6.2s ease-in-out infinite; }
+        .ts-2  { width: clamp(50px,  7vw, 100px); top: 5%;   left: 22%;  animation: tsFloat2 7.8s ease-in-out infinite; }
+        .ts-3  { width: clamp(70px,  9vw, 130px); top: 12%;  right: 5%;  animation: tsFloat3 5.9s ease-in-out infinite; }
+        .ts-4  { width: clamp(55px,  7vw, 110px); top: 35%;  left: 3%;   animation: tsFloat1 8.5s ease-in-out infinite reverse; }
+        .ts-5  { width: clamp(65px,  8vw, 115px); bottom: 15%; left: 15%; animation: tsFloat2 6.7s ease-in-out infinite; }
+        .ts-6  { width: clamp(60px,  8vw, 110px); bottom: 10%; right: 8%; animation: tsFloat3 7.2s ease-in-out infinite reverse; }
+        .ts-7  { width: clamp(50px,  6vw,  90px); top: 60%;  right: 2%;  animation: tsFloat1 9.1s ease-in-out infinite; }
+        .ts-8  { width: clamp(75px, 10vw, 140px); bottom: 28%; right: 22%; animation: tsFloat2 5.5s ease-in-out infinite; }
+
+        @keyframes tsFloat1 {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50%       { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes tsFloat2 {
+            0%, 100% { transform: translateY(0) rotate(4deg) scale(1); }
+            50%       { transform: translateY(-16px) rotate(-4deg) scale(1.04); }
+        }
+
+        @keyframes tsFloat3 {
+            0%, 100% { transform: translateY(0) rotate(2deg); }
+            50%       { transform: translateY(-24px) rotate(-3deg); }
+        }
+
+        /* Wrapper interno */
+        .team-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Griglia team — 5 in riga su desktop */
+        .team-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: nowrap;
+            margin-top: 2rem;
+        }
+
+        /* Card singola membro */
+        .team-card {
+            flex: 1 1 0;
+            min-width: 0;
+            background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(230,57,70,0.06) 100%);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 16px;
+            padding: 2rem 1.2rem 1.8rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(circle at 50% 0%, rgba(230,57,70,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(230, 57, 70, 0.25), 0 0 0 1px rgba(230,57,70,0.35);
+            border-color: rgba(230, 57, 70, 0.45);
+        }
+
+        .team-card:hover::before { opacity: 1; }
+
+        /* Foto membro */
+        .team-photo-wrapper {
+            width: clamp(80px, 11vw, 110px);
+            height: clamp(80px, 11vw, 110px);
+            margin: 0 auto 1.2rem;
+            border-radius: 50%;
+            border: 3px solid rgba(230, 57, 70, 0.5);
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.2);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .team-card:hover .team-photo-wrapper {
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.5);
+            border-color: var(--primary-red);
+        }
+
+        .team-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-photo-wrapper img { transform: scale(1.08); }
+
+        /* Nome */
+        .team-name {
+            font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+            font-weight: 700;
+            color: var(--light-text);
+            letter-spacing: 0.3px;
+            margin-bottom: 0.35rem;
+            line-height: 1.2;
+        }
+
+        /* Ruolo */
+        .team-role {
+            font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+            font-weight: 600;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Descrizione */
+        .team-desc {
+            font-size: clamp(0.68rem, 0.85vw, 0.8rem);
             line-height: 1.55;
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 400;
         }
 
-        .enemy-slide .flip-icon,
-        .enemy-slide .flip-icon-back {
-            width: 34px;
-            height: 34px;
-            font-size: 1.2rem;
-            top: 10px;
-            right: 10px;
+        /* ── RESPONSIVE TEAM ─────────────────────────────────── */
+        @media (max-width: 900px) {
+            .team-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.2rem;
+            }
+
+            .team-card {
+                width: 100%;
+                max-width: 380px;
+                flex: none;
+            }
+
+            .team-photo-wrapper {
+                width: 90px;
+                height: 90px;
+            }
+
+            .team-name  { font-size: 1.05rem; }
+            .team-role  { font-size: 0.82rem; }
+            .team-desc  { font-size: 0.82rem; }
         }
 
-        /* =====================================================
-           RESPONSIVE
-           ===================================================== */
-
+        /* ── RESPONSIVE GENERALE ─────────────────────────────── */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
 
@@ -1069,11 +1221,9 @@
             .about-image { flex: 0 0 auto; }
             h2 { font-size: 2rem; }
 
-            /* Maps: stack in a single column */
             .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
 
-            /* Maps flip-card-wrapper 4:3 */
             .flip-card-wrapper {
                 aspect-ratio: 4 / 3;
                 height: auto !important;
@@ -1085,49 +1235,27 @@
             .flip-card { height: 100%; }
 
             .flip-card-front img {
-                width: 100%;
-                height: 100%;
+                width: 100%; height: 100%;
                 object-fit: contain;
                 padding: 0.5rem;
                 border-radius: 12px;
             }
 
-        /* ── Enemy characters: HIDE grids, SHOW carousel ── */
             #characters-first .flip-grid,
             #characters-second .flip-grid,
             .characters-divider { display: none !important; }
 
             .enemy-carousel { display: block; }
 
-            /* Niente ombra rossa sul hover/touch delle card nel carosello */
             .enemy-slide .flip-card:hover,
-            .enemy-slide .flip-card:active {
-                box-shadow: none !important;
-            }
+            .enemy-slide .flip-card:active { box-shadow: none !important; }
 
-            /* Sezione personaggi: meno padding verticale per non sprecare spazio */
-            #characters-first {
-                padding-top: 1.5rem;
-                padding-bottom: 0.5rem;
-            }
+            #characters-first { padding-top: 1.5rem; padding-bottom: 0.5rem; }
+            #characters-second { padding-top: 0.5rem; padding-bottom: 1.5rem; }
 
-            #characters-second {
-                padding-top: 0.5rem;
-                padding-bottom: 1.5rem;
-            }
+            .white-bg-wrapper { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 
-            /* Wrapper bianco: padding verticale ridotto */
-            #characters-first ~ * .white-bg-wrapper,
-            .white-bg-wrapper {
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
-            }
-
-            /* Sezione download: immagine di sfondo adattata al layout mobile */
-            #download {
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-            }
+            #download { padding-top: 2rem; padding-bottom: 2rem; }
 
             #download .about-content {
                 background:
@@ -1145,53 +1273,24 @@
                 line-height: 1.6;
             }
 
-            /* ── Hero sprites: riposizionati per mobile ──────────────
-               Tutti spostati ai bordi inferiori/laterali estremi
-               così non coprono mai la navbar (≈70px) né il testo centrale.
-               Si usano solo valori "bottom" per ancorare in basso
-               e tenere il centro libero per logo + CTA.
-            ──────────────────────────────────────────────────────── */
-            .hero-sprite-1 {          /* carota — basso sinistra */
-                width: clamp(100px, 26vw, 150px);
-                top: auto;
-                bottom: 8%;
-                left: 0%;
-                right: auto;
-            }
-            .hero-sprite-2 {          /* pomodoro — destra, centro-basso */
-                width: clamp(85px, 22vw, 125px);
-                top: auto;
-                bottom: 28%;
-                right: 0%;
-                left: auto;
-            }
-            .hero-sprite-3 {          /* latte — sinistra, centro */
-                width: clamp(78px, 20vw, 115px);
-                top: auto;
-                bottom: 18%;
-                left: 0%;
-                right: auto;
-            }
-            .hero-sprite-4 {          /* grano — basso destra */
-                width: clamp(92px, 24vw, 135px);
-                top: auto;
-                bottom: 6%;
-                right: 0%;
-                left: auto;
-            }
-            .hero-sprite-5 {          /* talpa — destra, centro-alto */
-                width: clamp(85px, 22vw, 125px);
-                top: auto;
-                bottom: 44%;
-                right: 0%;
-                left: auto;
-            }
+            /* Sprite hero mobile */
+            .hero-sprite-1 { width: clamp(110px, 28vw, 160px); top: auto; bottom: 8%;  left: 0%; right: auto; }
+            .hero-sprite-2 { width: clamp(95px,  24vw, 135px); top: auto; bottom: 28%; right: 0%; left: auto; }
+            .hero-sprite-3 { width: clamp(88px,  22vw, 125px); top: auto; bottom: 38%; left: 0%; right: auto; }
+            .hero-sprite-4 { width: clamp(102px, 26vw, 145px); top: auto; bottom: 6%;  right: 0%; left: auto; }
+            .hero-sprite-5 { width: clamp(95px,  24vw, 135px); top: auto; bottom: 52%; right: 0%; left: auto; }
+
+            /* Sprite team: riduci su mobile */
+            .ts-1, .ts-2, .ts-3, .ts-4 { display: none; }
+            .ts-5 { width: 80px; bottom: 5%; left: 2%; }
+            .ts-6 { width: 70px; top: 5%;   right: 2%; }
+            .ts-7 { width: 60px; top: 40%;  right: 2%; }
+            .ts-8 { display: none; }
         }
 
         @media (max-width: 480px) {
             .flip-grid { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
             #maps .flip-grid { grid-template-columns: 1fr; }
-            /* character grids already hidden by the 768px rule; keep carousel */
             #characters-first .flip-grid,
             #characters-second .flip-grid,
             .characters-divider { display: none !important; }
@@ -1218,46 +1317,49 @@
 <body>
     <div class="parallax-bg"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
+    <!-- ════════════════ NAVBAR ════════════════ -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navigazione principale">
         <div class="nav-container">
-            <img src="mealstorm_logo.png" alt="Mealstorm Logo" class="logo-nav">
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Gioco</a></li>
-                <li><a href="#maps">Mappe</a></li>
-                <li><a href="#characters">Ingredienti</a></li>
-                <li><a href="#download">Download</a></li>
+            <a href="#home" aria-label="Mealstorm – torna alla Home">
+                <img src="mealstorm_logo.png" alt="Logo Mealstorm" class="logo-nav" width="160" height="50">
+            </a>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#home"       role="menuitem">Home</a></li>
+                <li role="none"><a href="#about"      role="menuitem">Gioco</a></li>
+                <li role="none"><a href="#maps"       role="menuitem">Mappe</a></li>
+                <li role="none"><a href="#characters" role="menuitem">Ingredienti</a></li>
+                <li role="none"><a href="#team"       role="menuitem">Team</a></li>
+                <li role="none"><a href="#download"   role="menuitem">Download</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span><span></span><span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <!-- Sprite nemici fluttuanti -->
-        <img src="carota.png"   alt="" class="hero-sprite hero-sprite-1" width="160" height="auto" aria-hidden="true" style="height:auto;">
-        <img src="pomodoro.png" alt="" class="hero-sprite hero-sprite-2" width="120" height="120" aria-hidden="true">
-        <img src="latte.png"    alt="" class="hero-sprite hero-sprite-3" width="100" height="100" aria-hidden="true">
-        <img src="grano.png"    alt="" class="hero-sprite hero-sprite-4" width="130" height="130" aria-hidden="true">
-        <img src="talpa.png"    alt="" class="hero-sprite hero-sprite-5" width="130" height="130" aria-hidden="true">
+    <!-- ════════════════ HERO ════════════════ -->
+    <header class="hero" id="home" aria-label="Benvenuto in Mealstorm">
+        <img src="carota.png"   alt="" class="hero-sprite hero-sprite-1" width="160" aria-hidden="true">
+        <img src="pomodoro.png" alt="" class="hero-sprite hero-sprite-2" width="120" aria-hidden="true">
+        <img src="latte.png"    alt="" class="hero-sprite hero-sprite-3" width="100" aria-hidden="true">
+        <img src="grano.png"    alt="" class="hero-sprite hero-sprite-4" width="130" aria-hidden="true">
+        <img src="talpa.png"    alt="" class="hero-sprite hero-sprite-5" width="130" aria-hidden="true">
 
         <div class="hero-content">
-            <img src="mealstorm_logo2.png" alt="Mealstorm" class="logo-hero" width="500" height="200">
+            <img src="mealstorm_logo2.png" alt="Mealstorm – Roguelite Culinario" class="logo-hero" width="500" height="200">
             <p class="tagline">Quando la cucina diventa un campo di battaglia!</p>
             <div class="cta-buttons">
-                <a href="#download" class="btn btn-secondary">Scarica Ora</a>
-                <a href="#about" class="btn btn-secondary">Scopri di Più</a>
+                <a href="#download" class="btn btn-secondary" aria-label="Scarica la demo gratuita di Mealstorm">Scarica Ora</a>
+                <a href="#about"    class="btn btn-secondary" aria-label="Scopri di più su Mealstorm">Scopri di Più</a>
             </div>
-            <div class="price-badge">PROVA LA DEMO GRATUITA</div>
+            <div class="price-badge" aria-label="Demo gratuita disponibile">PROVA LA DEMO GRATUITA</div>
         </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="reveal">MEALSTORM</h2>
+    <!-- ════════════════ ABOUT ════════════════ -->
+    <main>
+    <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" class="reveal">MEALSTORM</h2>
         <div class="about-content reveal reveal-delay-1">
             <div class="about-text">
                 <p>
@@ -1276,42 +1378,45 @@
                 </p>
             </div>
             <div class="about-image">
-                <img src="mc.png" alt="Mealstorm - Gameplay" width="350" height="350">
+                <img src="mc.png" alt="Il cuoco protagonista di Mealstorm in azione" width="350" height="350" loading="lazy">
             </div>
         </div>
     </section>
 
+    <!-- ════════════════ WHITE WRAPPER (MAPPE + NEMICI) ════════════════ -->
     <div class="white-bg-wrapper">
-        <!-- Maps Flip Grid -->
-        <section id="maps">
-            <h2 class="reveal">Mappe Epiche</h2>
-            <div class="flip-grid">
+
+        <!-- ── MAPS ── -->
+        <section id="maps" aria-labelledby="maps-heading">
+            <h2 id="maps-heading" class="reveal">Mappe Epiche</h2>
+            <div class="flip-grid" role="list">
+
                 <!-- Mappa 1 -->
-                <div class="flip-card-wrapper reveal reveal-delay-1">
-                    <div class="flip-card" data-flip="map">
+                <div class="flip-card-wrapper reveal reveal-delay-1" role="listitem">
+                    <div class="flip-card" data-flip="map" role="button" tabindex="0" aria-label="Scopri la mappa Trattoria">
                         <div class="flip-card-face flip-card-front">
-                            <img src="mappa1.png" alt="Trattoria" width="400" height="300">
-                            <div class="flip-icon">↻</div>
+                            <img src="mappa1.png" alt="Mappa Trattoria – sala da pranzo della nonna" width="400" height="300" loading="lazy">
+                            <div class="flip-icon" aria-hidden="true">↻</div>
                             <div class="flip-hint">Clicca per scoprire</div>
                         </div>
                         <div class="flip-card-face flip-card-back">
-                            <div class="flip-icon-back">↻</div>
+                            <div class="flip-icon-back" aria-hidden="true">↻</div>
                             <h3>Trattoria</h3>
                             <p>Una trattoria dove ogni stanza è una battaglia: dal forno rovente alla cantina dei vini, 
-                                passando per la sala da pranzo della nonna. Sopravvivi fino all'Antica Sala del Banchetto per affrontare 
-                                il Boss definitivo!</p>
+                               passando per la sala da pranzo della nonna. Sopravvivi fino all'Antica Sala del Banchetto per affrontare 
+                               il Boss definitivo!</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mappa 2 -->
-                <div class="flip-card-wrapper reveal reveal-delay-2">
-                    <div class="flip-card construction" data-flip="map">
+                <!-- Mappa 2 (in costruzione) -->
+                <div class="flip-card-wrapper reveal reveal-delay-2" role="listitem">
+                    <div class="flip-card construction" data-flip="map" aria-label="Mappa Mercato Oscuro – in costruzione">
                         <div class="flip-card-face flip-card-front">
                             <div class="construction-badge">In Costruzione</div>
                         </div>
                         <div class="flip-card-face flip-card-back">
-                            <div class="flip-icon-back">↻</div>
+                            <div class="flip-icon-back" aria-hidden="true">↻</div>
                             <h3>Mercato Oscuro</h3>
                             <p>Un antico mercato avvolto dall'ombra. Gli ingredienti ribelli si nascondono tra i banchi. Stai attento ai colpi di sorpresa!</p>
                         </div>
@@ -1320,47 +1425,49 @@
             </div>
         </section>
 
-        <!-- Separatore Tematico -->
-        <div class="separator-section">
+        <!-- ── SEPARATORE ── -->
+        <div class="separator-section" aria-hidden="true">
             <div class="separator-content">
                 <div class="separator-line"></div>
-                <div class="separator-text"> Affronta gli Ingredienti </div>
+                <div class="separator-text">⚔️ Affronta gli Ingredienti ⚔️</div>
                 <div class="separator-line"></div>
             </div>
         </div>
 
         <div class="white-bg-wrapper">
-            <!-- Characters - Prima riga (2 personaggi) -->
-            <section id="characters-first">
-                <h2 class="reveal">Ingredienti Nemici</h2>
-                <div class="flip-grid">
+
+            <!-- ── CHARACTERS (prima riga) ── -->
+            <section id="characters-first" aria-labelledby="chars-heading">
+                <h2 id="chars-heading" class="reveal">Ingredienti Nemici</h2>
+                <div class="flip-grid" role="list">
+
                     <!-- Carota -->
-                    <div class="flip-card-wrapper reveal reveal-delay-1">
-                        <div class="flip-card" data-flip="character">
+                    <div class="flip-card-wrapper reveal reveal-delay-1" role="listitem">
+                        <div class="flip-card" data-flip="character" role="button" tabindex="0" aria-label="Scopri il nemico Trottarota">
                             <div class="flip-card-face flip-card-front">
-                                <img src="carota.png" alt="Carota trottola" width="300" height="300">
-                                <div class="flip-icon">↻</div>
+                                <img src="carota.png" alt="Trottarota – carota nemica velocissima" width="300" height="300" loading="lazy">
+                                <div class="flip-icon" aria-hidden="true">↻</div>
                                 <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
-                                <div class="flip-icon-back">↻</div>
-                                <h3>Carota Trottola</h3>
+                                <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                <h3>trottarota</h3>
                                 <p>Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Patata -->
-                    <div class="flip-card-wrapper reveal reveal-delay-2">
-                        <div class="flip-card" data-flip="character">
+                    <!-- Talpa/Patata -->
+                    <div class="flip-card-wrapper reveal reveal-delay-2" role="listitem">
+                        <div class="flip-card" data-flip="character" role="button" tabindex="0" aria-label="Scopri il nemico Patalpa">
                             <div class="flip-card-face flip-card-front">
-                                <img src="talpa.png" alt="Talpa con pentola" width="300" height="300">
-                                <div class="flip-icon">↻</div>
+                                <img src="talpa.png" alt="Patalpa – nemico tank con pentola" width="300" height="300" loading="lazy">
+                                <div class="flip-icon" aria-hidden="true">↻</div>
                                 <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
-                                <div class="flip-icon-back">↻</div>
-                                <h3>Patata con pentola</h3>
+                                <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                <h3>patalpa</h3>
                                 <p>Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!</p>
                             </div>
                         </div>
@@ -1368,207 +1475,297 @@
                 </div>
             </section>
 
-            <!-- ══════════════════════════════════════════════════════
-                 MOBILE ENEMY CAROUSEL  (hidden on desktop via CSS)
-                 Shows all 5 enemies with peek of prev/next card
-                 ══════════════════════════════════════════════════════ -->
-            <div class="enemy-carousel" id="enemyCarousel">
+            <!-- ── MOBILE CAROUSEL ── -->
+            <div class="enemy-carousel" id="enemyCarousel" aria-label="Carosello nemici" role="region">
                 <div class="enemy-stage" id="enemyCarStage">
                     <div class="enemy-track" id="enemyCarTrack">
-
-                            <!-- Slide 1: Carota -->
-                            <div class="enemy-slide">
-                                <div class="flip-card-wrapper">
-                                    <div class="flip-card">
-                                        <div class="flip-card-face flip-card-front">
-                                            <img src="carota.png" alt="Carota trottola">
-                                            <div class="flip-icon">↻</div>
-                                        </div>
-                                        <div class="flip-card-face flip-card-back">
-                                            <div class="flip-icon-back">↻</div>
-                                            <h3>Carota Trottola</h3>
-                                            <p>Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
-                                        </div>
+                        <!-- Slide 1: Carota -->
+                        <div class="enemy-slide">
+                            <div class="flip-card-wrapper">
+                                <div class="flip-card" role="button" tabindex="0">
+                                    <div class="flip-card-face flip-card-front">
+                                        <img src="carota.png" alt="Trottarota – carota nemica">
+                                        <div class="flip-icon" aria-hidden="true">↻</div>
+                                    </div>
+                                    <div class="flip-card-face flip-card-back">
+                                        <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                        <h3>trottarota</h3>
+                                        <p>Scatti rapidissimi e raffiche veloci: ti chiude la distanza in un attimo. Se la sottovaluti, ti travolge a sprint!</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Slide 2: Patata -->
-                            <div class="enemy-slide">
-                                <div class="flip-card-wrapper">
-                                    <div class="flip-card">
-                                        <div class="flip-card-face flip-card-front">
-                                            <img src="talpa.png" alt="Talpa con pentola">
-                                            <div class="flip-icon">↻</div>
-                                        </div>
-                                        <div class="flip-card-face flip-card-back">
-                                            <div class="flip-icon-back">↻</div>
-                                            <h3>Patata con pentola</h3>
-                                            <p>Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!</p>
-                                        </div>
+                        </div>
+                        <!-- Slide 2: Patata -->
+                        <div class="enemy-slide">
+                            <div class="flip-card-wrapper">
+                                <div class="flip-card" role="button" tabindex="0">
+                                    <div class="flip-card-face flip-card-front">
+                                        <img src="talpa.png" alt="Patalpa – talpa con pentola">
+                                        <div class="flip-icon" aria-hidden="true">↻</div>
+                                    </div>
+                                    <div class="flip-card-face flip-card-back">
+                                        <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                        <h3>patalpa</h3>
+                                        <p>Un vero tank: tantissimi HP e avanza lentamente. Non spara in fretta, ma se ti inchioda, non lo butti giù facilmente!</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Slide 3: Grano -->
-                            <div class="enemy-slide">
-                                <div class="flip-card-wrapper">
-                                    <div class="flip-card">
-                                        <div class="flip-card-face flip-card-front">
-                                            <img src="grano.png" alt="Grano corona">
-                                            <div class="flip-icon">↻</div>
-                                        </div>
-                                        <div class="flip-card-face flip-card-back">
-                                            <div class="flip-icon-back">↻</div>
-                                            <h3>Grano con corona</h3>
-                                            <p>Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!</p>
-                                        </div>
+                        </div>
+                        <!-- Slide 3: Grano -->
+                        <div class="enemy-slide">
+                            <div class="flip-card-wrapper">
+                                <div class="flip-card" role="button" tabindex="0">
+                                    <div class="flip-card-face flip-card-front">
+                                        <img src="grano.png" alt="Sirgrano – grano con corona">
+                                        <div class="flip-icon" aria-hidden="true">↻</div>
+                                    </div>
+                                    <div class="flip-card-face flip-card-back">
+                                        <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                        <h3>sirgrano</h3>
+                                        <p>Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Slide 4: Pomodoro -->
-                            <div class="enemy-slide">
-                                <div class="flip-card-wrapper">
-                                    <div class="flip-card">
-                                        <div class="flip-card-face flip-card-front">
-                                            <img src="pomodoro.png" alt="Pomodoro esplosivo">
-                                            <div class="flip-icon">↻</div>
-                                        </div>
-                                        <div class="flip-card-face flip-card-back">
-                                            <div class="flip-icon-back">↻</div>
-                                            <h3>Pomodoro Esplosivo</h3>
-                                            <p>Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti!</p>
-                                        </div>
+                        </div>
+                        <!-- Slide 4: Pomodoro -->
+                        <div class="enemy-slide">
+                            <div class="flip-card-wrapper">
+                                <div class="flip-card" role="button" tabindex="0">
+                                    <div class="flip-card-face flip-card-front">
+                                        <img src="pomodoro.png" alt="Bomboro – pomodoro esplosivo">
+                                        <div class="flip-icon" aria-hidden="true">↻</div>
+                                    </div>
+                                    <div class="flip-card-face flip-card-back">
+                                        <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                        <h3>bomboro</h3>
+                                        <p>Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti!</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Slide 5: Latte -->
-                            <div class="enemy-slide">
-                                <div class="flip-card-wrapper">
-                                    <div class="flip-card">
-                                        <div class="flip-card-face flip-card-front">
-                                            <img src="latte.png" alt="Latte che piange">
-                                            <div class="flip-icon">↻</div>
-                                        </div>
-                                        <div class="flip-card-face flip-card-back">
-                                            <div class="flip-icon-back">↻</div>
-                                            <h3>Latte scolta che piange</h3>
-                                            <p>Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi.</p>
-                                        </div>
+                        </div>
+                        <!-- Slide 5: Latte -->
+                        <div class="enemy-slide">
+                            <div class="flip-card-wrapper">
+                                <div class="flip-card" role="button" tabindex="0">
+                                    <div class="flip-card-face flip-card-front">
+                                        <img src="latte.png" alt="LaTTe – latte che piange e spara">
+                                        <div class="flip-icon" aria-hidden="true">↻</div>
+                                    </div>
+                                    <div class="flip-card-face flip-card-back">
+                                        <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                        <h3>laTTe</h3>
+                                        <p>Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi.</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                        </div><!-- /enemy-track -->
-                </div><!-- /enemy-stage -->
-
-                <div class="enemy-car-dots" id="enemyCarDots"></div>
-                <!-- Hint swipe — svanisce dopo 3.5s -->
-                <div class="swipe-hint-label" id="swipeHintLabel">
+                <div class="enemy-car-dots" id="enemyCarDots" role="tablist" aria-label="Selezione nemico"></div>
+                <div class="swipe-hint-label" id="swipeHintLabel" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
                     Scorri per vedere tutti
                     <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
-            </div><!-- /enemy-carousel -->
+            </div>
 
-            <div class="characters-divider"></div>
+            <div class="characters-divider" aria-hidden="true"></div>
 
-            <!-- Characters - Seconda riga (3 personaggi) -->
-            <section id="characters-second">
-                <div class="flip-grid">
+            <!-- ── CHARACTERS (seconda riga) ── -->
+            <section id="characters-second" aria-labelledby="chars-heading">
+                <div class="flip-grid" role="list">
+
                     <!-- Grano -->
-                    <div class="flip-card-wrapper reveal reveal-delay-1">
-                        <div class="flip-card" data-flip="character">
+                    <div class="flip-card-wrapper reveal reveal-delay-1" role="listitem">
+                        <div class="flip-card" data-flip="character" role="button" tabindex="0" aria-label="Scopri il nemico Sirgrano">
                             <div class="flip-card-face flip-card-front">
-                                <img src="grano.png" alt="Grano corona" width="300" height="300">
-                                <div class="flip-icon">↻</div>
+                                <img src="grano.png" alt="Sirgrano – grano con corona reale" width="300" height="300" loading="lazy">
+                                <div class="flip-icon" aria-hidden="true">↻</div>
                                 <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
-                                <div class="flip-icon-back">↻</div>
-                                <h3>Grano con corona</h3>
+                                <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                <h3>sirgrano</h3>
                                 <p>Tiri a velocità folle ma poca resistenza. Rimane quasi fermo: se entri in linea di fuoco, ti tritura!</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Pomodoro -->
-                    <div class="flip-card-wrapper reveal reveal-delay-2">
-                        <div class="flip-card" data-flip="character">
+                    <div class="flip-card-wrapper reveal reveal-delay-2" role="listitem">
+                        <div class="flip-card" data-flip="character" role="button" tabindex="0" aria-label="Scopri il nemico Bomboro">
                             <div class="flip-card-face flip-card-front">
-                                <img src="pomodoro.png" alt="Pomodoro esplosivo" width="300" height="300">
-                                <div class="flip-icon">↻</div>
+                                <img src="pomodoro.png" alt="Bomboro – pomodoro esplosivo che rotola" width="300" height="300" loading="lazy">
+                                <div class="flip-icon" aria-hidden="true">↻</div>
                                 <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
-                                <div class="flip-icon-back">↻</div>
-                                <h3>Pomodoro Esplosivo</h3>
+                                <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                <h3>bomboro</h3>
                                 <p>Compatto e bilanciato, ma con un finale esplosivo. Rotola verso di te e può saltare in aria quando meno te lo aspetti</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Latte -->
-                    <div class="flip-card-wrapper reveal reveal-delay-3">
-                        <div class="flip-card" data-flip="character">
+                    <div class="flip-card-wrapper reveal reveal-delay-3" role="listitem">
+                        <div class="flip-card" data-flip="character" role="button" tabindex="0" aria-label="Scopri il nemico LaTTe">
                             <div class="flip-card-face flip-card-front">
-                                <img src="latte.png" alt="Latte che piange" width="300" height="300">
-                                <div class="flip-icon">↻</div>
+                                <img src="latte.png" alt="LaTTe – brick di latte che spara da lontano" width="300" height="300" loading="lazy">
+                                <div class="flip-icon" aria-hidden="true">↻</div>
                                 <div class="flip-hint">Clicca per scoprire</div>
                             </div>
                             <div class="flip-card-face flip-card-back">
-                                <div class="flip-icon-back">↻</div>
-                                <h3>Latte scolta che piange</h3>
+                                <div class="flip-icon-back" aria-hidden="true">↻</div>
+                                <h3>laTTe</h3>
                                 <p>Spara da lontano e ti tiene sotto pressione: se lo ignori, riempie lo schermo di colpi</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
-    </div>
 
-    <!-- Download Section -->
-    <section id="download">
-        <h2 class="reveal">Inizia l'Avventura</h2>
+        </div><!-- /inner white-bg-wrapper -->
+    </div><!-- /outer white-bg-wrapper -->
+
+    <!-- ════════════════════════════════════════════════════════════
+         IL NOSTRO TEAM
+         ════════════════════════════════════════════════════════════ -->
+    <section id="team" aria-labelledby="team-heading">
+
+        <!-- 8 sprite fluttuanti di sfondo -->
+        <img src="gnocchi.png" alt="gnocchi" class="team-sprite ts-1" aria-hidden="true">
+        <img src="sus.png" alt="zuppa_sus" class="team-sprite ts-2" aria-hidden="true">
+        <img src="UWpatata (1).png" alt="uw_patata" class="team-sprite ts-3" aria-hidden="true">
+        <img src="UWpomodoro (1).png" alt="uw_pomodoro" class="team-sprite ts-4" aria-hidden="true">
+        <img src="frittelle.png" alt="frittelle" class="team-sprite ts-5" aria-hidden="true">
+        <img src="pizza.png" alt="pizza" class="team-sprite ts-6" aria-hidden="true">
+        <img src="UWcarota (2).png" alt="uw_carota" class="team-sprite ts-7" aria-hidden="true">
+        <img src="UWlatte (1).png" alt="uw_latte" class="team-sprite ts-8" aria-hidden="true">
+
+        <div class="team-inner">
+            <h2 id="team-heading" class="reveal">Il Nostro Team</h2>
+
+            <div class="team-grid" role="list">
+
+                <!-- Riccardo Ditadi -->
+                <article class="team-card reveal reveal-delay-1" role="listitem" itemscope itemtype="https://schema.org/Person">
+                    <div class="team-photo-wrapper">
+                        <img src="team/foto1.jpg"
+                             alt="Foto_Riccardo"
+                             width="110" height="110" loading="lazy"
+                             itemprop="image">
+                    </div>
+                    <p class="team-name" itemprop="name">Riccardo Ditadi</p>
+                    <p class="team-role" itemprop="jobTitle">Concept artist, Texture artist & modellatore</p>
+                    <p class="team-desc" itemprop="description">Sviluppa l'identità visiva dei personaggi e degli ambienti, dal concept alla modellazione finale.</p>
+                </article>
+
+                <!-- Paolo Zambon -->
+                <article class="team-card reveal reveal-delay-2" role="listitem" itemscope itemtype="https://schema.org/Person">
+                    <div class="team-photo-wrapper">
+                        <img src="team/foto2.jpg"
+                             alt="Foto_Paolo"
+                             width="110" height="110" loading="lazy"
+                             itemprop="image">
+                    </div>
+                    <p class="team-name" itemprop="name">Paolo Zambon</p>
+                    <p class="team-role" itemprop="jobTitle">Capo modellatore & level designer</p>
+                    <p class="team-desc" itemprop="description">Supervisiona la produzione 3D e progetta i livelli curandone bilanciamento e coerenza visiva.</p>
+                </article>
+
+                <!-- Jerden Medel -->
+                <article class="team-card reveal reveal-delay-3" role="listitem" itemscope itemtype="https://schema.org/Person">
+                    <div class="team-photo-wrapper">
+                        <img src="team/foto3.jpg"
+                             alt="Foto_Jerden"
+                             width="110" height="110" loading="lazy"
+                             itemprop="image">
+                    </div>
+                    <p class="team-name" itemprop="name">Jerden Medel</p>
+                    <p class="team-role" itemprop="jobTitle">Project manager & programmatrice</p>
+                    <p class="team-desc" itemprop="description">Coordina il team, gestisce le milestone e contribuisce attivamente allo sviluppo del codice.</p>
+                </article>
+
+                <!-- Daniele Piccolo -->
+                <article class="team-card reveal reveal-delay-4" role="listitem" itemscope itemtype="https://schema.org/Person">
+                    <div class="team-photo-wrapper">
+                        <img src="team/foto4.jpg"
+                             alt="Foto_Daniele"
+                             width="110" height="110" loading="lazy"
+                             itemprop="image">
+                    </div>
+                    <p class="team-name" itemprop="name">Daniele Piccolo</p>
+                    <p class="team-role" itemprop="jobTitle">Capo programmatore & narrative</p>
+                    <p class="team-desc" itemprop="description">Guida lo sviluppo tecnico del progetto e cura la costruzione del lore e della narrativa di gioco.</p>
+                </article>
+
+                <!-- Pietro Castagna -->
+                <article class="team-card reveal reveal-delay-5" role="listitem" itemscope itemtype="https://schema.org/Person">
+                    <div class="team-photo-wrapper">
+                        <img src="team/foto5.jpg"
+                             alt="Foto_Pietro"
+                             width="110" height="110" loading="lazy"
+                             itemprop="image">
+                    </div>
+                    <p class="team-name" itemprop="name">Pietro Castagna</p>
+                    <p class="team-role" itemprop="jobTitle">Modellatore, animatore & grafico UI</p>
+                    <p class="team-desc" itemprop="description">Si occupa di modellazione 3D, animazione dei personaggi e progettazione dell'interfaccia utente.</p>
+                </article>
+
+            </div><!-- /team-grid -->
+        </div><!-- /team-inner -->
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download" aria-labelledby="download-heading">
+        <h2 id="download-heading" class="reveal">Inizia l'Avventura</h2>
         <div class="about-content download-content reveal reveal-delay-1">
             <p style="font-size: 1.5rem; margin-bottom: 2rem;">
                 Scarica Mealstorm ora e preparati a cucinare la vittoria!
             </p>
             <div style="margin-top: 1rem; display: flex; justify-content: center;">
-                <iframe frameborder="0" src="https://itch.io/embed/4370669?fg_color=000000&amp;link_color=f92c31" width="552" height="167" style="max-width:100%;border-radius:8px;">
-                    <a href="https://mealstorm.itch.io/mealstorm">MealStorm by MealStorm</a>
+                <iframe frameborder="0"
+                        title="Mealstorm su itch.io – scarica la demo gratuita"
+                        src="https://itch.io/embed/4370669?fg_color=000000&amp;link_color=f92c31"
+                        width="552" height="167"
+                        style="max-width:100%;border-radius:8px;"
+                        loading="lazy">
+                    <a href="https://mealstorm.itch.io/mealstorm">MealStorm – roguelite culinario su itch.io</a>
                 </iframe>
             </div>
         </div>
-        <div class="social-follow" aria-label="Follow us">
+        <div class="social-follow" aria-label="Seguici sui social">
             <div class="label">Follow us on</div>
-            <div class="social-icons" role="group" aria-label="Social links">
-                <a href="https://www.instagram.com/mealstorm_game/" aria-label="Instagram" title="Instagram">
-                    <img src="instagram.png" alt="Instagram">
+            <div class="social-icons" role="group" aria-label="Link social Mealstorm">
+                <a href="https://www.instagram.com/mealstorm_game/" aria-label="Mealstorm su Instagram" title="Instagram" rel="noopener noreferrer" target="_blank">
+                    <img src="instagram.png" alt="Instagram" loading="lazy">
                 </a>
-                <a href="https://www.tiktok.com/@mealstorm_official" aria-label="TikTok" title="TikTok">
-                    <img src="tiktok.png" alt="TikTok">
+                <a href="https://www.tiktok.com/@mealstorm_official" aria-label="Mealstorm su TikTok" title="TikTok" rel="noopener noreferrer" target="_blank">
+                    <img src="tiktok.png" alt="TikTok" loading="lazy">
                 </a>
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Mealstorm. Tutti i diritti riservati.</p>
+    <!-- FOOTER  -->
+    <footer role="contentinfo">
+        <p>&copy; 2025 Mealstorm – Ydea's Drawer. Tutti i diritti riservati.</p>
         <p style="margin-top: 0.6rem; font-size: 0.85rem;">
-            <a href="privacy.html" style="color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;"
-               onmouseover="this.style.color='rgba(230,57,70,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">
+            <a href="privacy.html"
+               style="color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;"
+               onmouseover="this.style.color='rgba(230,57,70,0.8)'"
+               onmouseout="this.style.color='rgba(255,255,255,0.45)'">
                 Privacy Policy
             </a>
         </p>
     </footer>
 
+    <!-- JAVASCRIPT -->
     <script>
-        // ── SCROLL REVEAL ─────────────────────────────────────────
+        // ── SCROLL REVEAL ──────────────────────────────────────────
         (function () {
             const els = document.querySelectorAll('.reveal');
             if (!els.length) return;
@@ -1576,62 +1773,69 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const el = entry.target;
-                        // Apply stagger delay if set via CSS custom prop on the wrapper
                         const delay = el.style.getPropertyValue('--reveal-delay') ||
-                                      (el.classList.contains('reveal-delay-1') ? '0.08s' :
-                                       el.classList.contains('reveal-delay-2') ? '0.16s' :
-                                       el.classList.contains('reveal-delay-3') ? '0.24s' :
-                                       el.classList.contains('reveal-delay-4') ? '0.32s' :
-                                       el.classList.contains('reveal-delay-5') ? '0.40s' : '0s');
+                            (el.classList.contains('reveal-delay-1') ? '0.08s' :
+                             el.classList.contains('reveal-delay-2') ? '0.16s' :
+                             el.classList.contains('reveal-delay-3') ? '0.24s' :
+                             el.classList.contains('reveal-delay-4') ? '0.32s' :
+                             el.classList.contains('reveal-delay-5') ? '0.40s' : '0s');
                         el.style.transitionDelay = delay;
                         el.classList.add('visible');
                         observer.unobserve(el);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.10 });
             els.forEach(el => observer.observe(el));
         })();
 
-        // Navbar scroll effect
+        // ── NAVBAR SCROLL ─────────────────────────────────────────
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
 
-        // Mobile menu toggle
+        // ── HAMBURGER MENU ────────────────────────────────────────
         const hamburger = document.getElementById('hamburger');
         const navLinks  = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
         });
-
-        // ── FLIP CARD ─────────────────────────────────────────────
-        document.querySelectorAll('.flip-card').forEach(card => {
-            card.addEventListener('click', function () {
-                if (this.classList.contains('construction')) return;
-                const slide = this.closest('.enemy-slide');
-                if (slide && slide.classList.contains('slide-dim')) return;
-                this.classList.toggle('flipped');
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // Smooth scroll
+        // ── FLIP CARDS ────────────────────────────────────────────
+        document.querySelectorAll('.flip-card').forEach(card => {
+            const toggle = () => {
+                if (card.classList.contains('construction')) return;
+                const slide = card.closest('.enemy-slide');
+                if (slide && slide.classList.contains('slide-dim')) return;
+                card.classList.toggle('flipped');
+            };
+            card.addEventListener('click', toggle);
+            card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+        });
+
+        // ── SMOOTH SCROLL ─────────────────────────────────────────
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Parallax effect
+        // ── PARALLAX ──────────────────────────────────────────────
         window.addEventListener('scroll', () => {
-            const parallax = document.querySelector('.parallax-bg');
-            parallax.style.transform = `translateY(${window.pageYOffset * 0.5}px)`;
-        });
+            document.querySelector('.parallax-bg').style.transform =
+                `translateY(${window.pageYOffset * 0.5}px)`;
+        }, { passive: true });
 
-        // ── ENEMY CAROUSEL (mobile only) ─────────────────────────
+        // ── ENEMY CAROUSEL (mobile) ───────────────────────────────
         (function () {
             const stage    = document.getElementById('enemyCarStage');
             const track    = document.getElementById('enemyCarTrack');
@@ -1644,31 +1848,28 @@
             const RATIO  = 0.94;
             let current  = 0;
 
-            /* ── Dots ── */
             slides.forEach((_, i) => {
                 const dot = document.createElement('div');
                 dot.className = 'enemy-car-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', `Nemico ${i + 1}`);
                 dot.addEventListener('click', () => goTo(i));
                 dotsWrap.appendChild(dot);
             });
 
-            function cardWidth() {
-                return Math.round(stage.offsetWidth * RATIO);
-            }
-
+            function cardWidth() { return Math.round(stage.offsetWidth * RATIO); }
             function baseMargin(index) {
                 const stageW = stage.offsetWidth;
-                const w      = cardWidth();
-                const peek   = (stageW - w) / 2;
+                const w = cardWidth();
+                const peek = (stageW - w) / 2;
                 return peek - index * (w + GAP);
             }
 
-            function positionTrack(animate, extraOffset) {
-                const ml = baseMargin(current) + (extraOffset || 0);
+            function positionTrack(animate, extra) {
                 track.style.transition = animate
                     ? 'margin-left 0.40s cubic-bezier(0.25,0.46,0.45,0.94)'
                     : 'none';
-                track.style.marginLeft = ml + 'px';
+                track.style.marginLeft = (baseMargin(current) + (extra || 0)) + 'px';
             }
 
             function refresh(animate) {
@@ -1691,37 +1892,26 @@
                 refresh(true);
             }
 
-            /* ── Swipe live (il dito trascina la card in tempo reale) ── */
-            let touchStartX  = 0;
-            let touchStartY  = 0;
-            let dragging     = false;
-            let dragAxis     = null; // 'h' | 'v' | null
+            let touchStartX = 0, touchStartY = 0, dragging = false, dragAxis = null;
 
             stage.addEventListener('touchstart', e => {
                 touchStartX = e.touches[0].clientX;
                 touchStartY = e.touches[0].clientY;
-                dragging    = true;
-                dragAxis    = null;
-                track.style.transition = 'none'; // disabilita transition durante drag
+                dragging = true; dragAxis = null;
+                track.style.transition = 'none';
             }, { passive: true });
 
             stage.addEventListener('touchmove', e => {
                 if (!dragging) return;
                 const dx = e.touches[0].clientX - touchStartX;
                 const dy = e.touches[0].clientY - touchStartY;
-
-                // Determina asse al primo movimento significativo
-                if (!dragAxis && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+                if (!dragAxis && (Math.abs(dx) > 6 || Math.abs(dy) > 6))
                     dragAxis = Math.abs(dx) >= Math.abs(dy) ? 'h' : 'v';
-                }
-
                 if (dragAxis === 'h') {
                     e.preventDefault();
-                    // Segui il dito live, con resistenza ai bordi
-                    let offset = dx;
-                    const atStart = current === 0        && dx > 0;
+                    const atStart = current === 0 && dx > 0;
                     const atEnd   = current === TOTAL - 1 && dx < 0;
-                    if (atStart || atEnd) offset = dx * 0.25; // friction
+                    const offset  = (atStart || atEnd) ? dx * 0.25 : dx;
                     track.style.marginLeft = (baseMargin(current) + offset) + 'px';
                 }
             }, { passive: false });
@@ -1730,21 +1920,14 @@
                 if (!dragging) return;
                 dragging = false;
                 const dx = e.changedTouches[0].clientX - touchStartX;
-                const dy = e.changedTouches[0].clientY - touchStartY;
-                if (dragAxis === 'h' && Math.abs(dx) > 40) {
-                    if (dx < 0) goTo(current + 1);
-                    else        goTo(current - 1);
-                } else {
-                    refresh(true); // snap back
-                }
+                if (dragAxis === 'h' && Math.abs(dx) > 40)
+                    goTo(dx < 0 ? current + 1 : current - 1);
+                else refresh(true);
                 dragAxis = null;
             }, { passive: true });
 
-            /* ── Init ── */
             requestAnimationFrame(() => {
                 refresh(false);
-
-                // Animazione hint swipe: piccolo nudge a sinistra dopo 900ms
                 if (TOTAL > 1) {
                     setTimeout(() => {
                         track.style.transition = 'margin-left 0.38s ease';

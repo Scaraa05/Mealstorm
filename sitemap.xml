@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Pagina principale -->
+  <url>
+    <loc>https://mealstorm.game/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <!-- Immagini principali per Google Image Search -->
+    <image:image>
+      <image:loc>https://mealstorm.game/og-image.jpg</image:loc>
+      <image:title>Mealstorm – Roguelite Culinario Indie</image:title>
+      <image:caption>Banner ufficiale del videogioco indie roguelite Mealstorm</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/mealstorm_logo2.png</image:loc>
+      <image:title>Logo di Mealstorm</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/mappa1.png</image:loc>
+      <image:title>Mappa Trattoria – Mealstorm</image:title>
+      <image:caption>La mappa Trattoria, prima mappa giocabile in Mealstorm</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/carota.png</image:loc>
+      <image:title>Trottarota – nemico carota di Mealstorm</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/talpa.png</image:loc>
+      <image:title>Patalpa – nemico tank di Mealstorm</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/grano.png</image:loc>
+      <image:title>Sirgrano – nemico grano di Mealstorm</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/pomodoro.png</image:loc>
+      <image:title>Bomboro – nemico pomodoro esplosivo di Mealstorm</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mealstorm.game/latte.png</image:loc>
+      <image:title>LaTTe – nemico latte a distanza di Mealstorm</image:title>
+    </image:image>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://mealstorm.game/privacy.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>
